@@ -404,3 +404,49 @@ section:nth-of-type(even) {
     flex-direction: column;
   }
 }
+
+/* --- Qualityセクションのインナー調整 --- */
+#quality .quality-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4%; /* 左右の余白を他のセクションと統一 */
+  display: flex;
+  gap: 40px;
+}
+
+/* 偶数番目のセクション内のカード（白背景のセクションで目立たせる） */
+section:nth-of-type(even) .quality-item {
+  background: #fdfdfd; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+/* --- セクション背景の交互適用を確定させる --- */
+/* 奇数: MainVisual(1), Quality(3), Gallery(5) */
+section:nth-of-type(odd) {
+  background-color: var(--bg-color);
+}
+
+/* 偶数: About(2), Process(4), Contact(6) */
+section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* --- スムーススクロール（リンクを押した時に滑らかに動く） --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ヘッダーの高さ分、移動先を下にずらす調整 */
+section {
+  scroll-margin-top: 80px; 
+}
+
+/* --- Qualityアイテムのスマホ対応微調整 --- */
+@media (max-width: 768px) {
+  .quality-container {
+    padding: 0 5% !important;
+  }
+  .quality-item {
+    padding: 30px 20px;
+  }
+}
