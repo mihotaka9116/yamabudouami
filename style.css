@@ -24,8 +24,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5% !important;
-  background-color: #fcfaf5 !important; /* 背景をベージュに */
+  padding: 20px 5%;
+  background-color: #fcfaf5; /* 背景をベージュに */
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -41,17 +41,17 @@ body {
 
 .site-title h1 {
   font-family: 'Noto Serif JP', serif;
-  font-size: 2rem !important;
-  color: var(--main-color) !important; /* 茶色を強制適用 */
+  font-size: 2rem;
+  color: var(--main-color); 
   margin: 0;
-  text-shadow: none !important; /* 以前の影設定を削除 */
+  text-shadow: none;
 }
 
 .logo-img {
   height: 60px;
   width: auto;
   display: block;
-  background: transparent !important;
+  background: transparent;
 }
 
 /* ナビゲーションの文字 */
@@ -65,15 +65,15 @@ body {
 
 .nav a {
   text-decoration: none;
-  color: var(--main-color) !important; /* 茶色を強制適用 */
-  font-size: 1.1rem !important;
+  color: var(--main-color); /* 茶色を強制適用 */
+  font-size: 1.1rem;
   font-weight: 700;
   position: relative;
   transition: 0.3s;
 }
 
 .nav a:hover {
-  color: #8d6e63 !important; /* ホバー時に明るい茶色 */
+  color: #8d6e63; /* ホバー時に明るい茶色 */
 }
 
 /* ホバー時の下線 */
@@ -122,8 +122,8 @@ body {
 
 /* 送信ボタン（茶色） */
 .button input[type="submit"] {
-  background: var(--main-color) !important;
-  color: #fff !important;
+  background: var(--main-color);
+  color: #fff;
   border: none;
   padding: 15px 80px;
   cursor: pointer;
@@ -136,13 +136,13 @@ body {
 
 /* --- 7. Footer --- */
 #footer {
-  background-color: var(--main-color) !important; /* 送信ボタンと同じ茶色 */
+  background-color: var(--main-color); /* 送信ボタンと同じ茶色 */
   color: #fff !important;
   text-align: center;
   padding: 40px 0 !important;
   width: 100%;
 }
-#footer p { color: #fff !important; margin: 0; }
+#footer p { color: #fff; margin: 0; }
 
 /* --- 8. Animations --- */
 .js-fadein { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
