@@ -594,6 +594,36 @@ h2 {
     width: 100%;             /* 幅いっぱいにする */
 }
 
+/* フッター全体の調整 */
+#footer {
+    background-color: var(--main-color); /* モスグリーン */
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* インスタアイコン自体のスタイル */
+.instagram-icon-link {
+    color: #fff;             /* アイコンの色を白に */
+    font-size: 2rem;         /* アイコンの大きさ */
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 15px;     /* コピーライトとの間隔 */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ホバーした時の動き */
+.instagram-icon-link:hover {
+    opacity: 0.7;            /* 少し透明にする */
+    transform: scale(1.1);   /* わずかに大きくする */
+}
+
+/* コピーライトの文字 */
+#footer p {
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
 
 
 
