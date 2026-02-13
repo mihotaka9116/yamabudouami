@@ -486,3 +486,6 @@ section {
   font-size: 0.9rem;
   color: #666;
 }
+.sec-title {
+  letter-spacing: 0.15em; /* 文字の間を少しあける */
+}
