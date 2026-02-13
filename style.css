@@ -490,4 +490,23 @@ section {
   letter-spacing: 0.15em; /* 文字の間を少しあける */
 }
 
+/* インスタアイコンのスタイル */
+.instagram-link {
+    font-size: 24px;          /* アイコンの大きさ */
+    color: #555;              /* サイトに馴染む落ち着いたグレー */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+/* ホバー時に少し色を濃く（またはブランドカラーに） */
+.instagram-link:hover {
+    color: #C13584;          /* インスタのブランドカラー、またはサイトのアクセントカラー */
+    opacity: 0.8;
+}
+
+footer i {
+    vertical-align: middle;
+}
+
 
