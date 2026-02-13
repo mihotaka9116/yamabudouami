@@ -489,3 +489,89 @@ section {
 .sec-title {
   letter-spacing: 0.15em; /* 文字の間を少しあける */
 }
+
+/* --- Gallery（ブラッシュアップ版） --- */
+
+/* 1. カード全体の設定 */
+.gallery-grid li {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden; /* 画像の角を丸めるため */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05); /* 柔らかい影 */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ホバー時にカード全体を少し浮かせる */
+.gallery-grid li:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(93, 64, 55, 0.15);
+}
+
+/* 2. 画像エリア */
+.gallery-grid .img-box {
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* ホバー時に画像だけをじわっと拡大 */
+.gallery-grid li:hover img {
+  transform: scale(1.1);
+}
+
+/* 3. 情報エリア（文字部分） */
+.item-info {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.item-name {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+/* 作品名の下に短い飾り線 */
+.item-name::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 30px;
+  height: 1px;
+  background: var(--main-color);
+  transform: translateX(-50%);
+}
+
+.item-detail {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 8px;
+}
+
+.item-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #8d6e63; /* 少し明るい茶色でアクセント */
+}
+
+/* スマホでの調整：影を少し弱める */
+@media (max-width: 768px) {
+  .gallery-grid {
+    gap: 25px; /* 間隔を少し詰める */
+  }
+  .gallery-grid li:hover {
+    transform: translateY(-5px); /* スマホは浮きを控えめに */
+  }
+}
