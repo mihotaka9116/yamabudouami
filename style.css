@@ -366,7 +366,7 @@ section:nth-of-type(even) {
   #header {
     flex-direction: column; /* ロゴとナビを縦に並べる */
     align-items: center;
-    padding: 15px 0 !important; /* 横の余白をなくして広く使う */
+    padding: 15px 0; /* 横の余白をなくして広く使う */
   }
 
   /* ナビゲーションを横スクロール可能にする */
@@ -393,7 +393,7 @@ section:nth-of-type(even) {
 
   .nav a {
     white-space: nowrap; /* 文字が途中で改行されないようにする */
-    font-size: 0.95rem !important; /* 少しだけ文字を小さく */
+    font-size: 0.95rem; /* 少しだけ文字を小さく */
   }
 
   .main-copy h2 {
@@ -468,7 +468,7 @@ section {
 /* --- Qualityアイテムのスマホ対応微調整 --- */
 @media (max-width: 768px) {
   .quality-container {
-    padding: 0 5% !important;
+    padding: 0 5%;
   }
   .quality-item {
     padding: 30px 20px;
