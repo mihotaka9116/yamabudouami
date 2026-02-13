@@ -1,0 +1,406 @@
+@charset "UTF-8";
+
+/* --- 1. Fonts & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700&display=swap');
+
+:root {
+  --main-color: #2d4033; /* 深みのあるモスグリーン */
+  --bg-color: #f3f4f1;   /* わずかに緑がかったグレーベージュ */
+  --text-color: #2b2b2b;
+}
+/* --- 2. Base --- */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* --- 3. Header (茶色統一版) --- */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5% !important;
+  background-color: #fcfaf5 !important; /* 背景をベージュに */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(93, 64, 55, 0.1);
+}
+
+.site-title a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.site-title h1 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 2rem !important;
+  color: var(--main-color) !important; /* 茶色を強制適用 */
+  margin: 0;
+  text-shadow: none !important; /* 以前の影設定を削除 */
+}
+
+.logo-img {
+  height: 60px;
+  width: auto;
+  display: block;
+  background: transparent !important;
+}
+
+/* ナビゲーションの文字 */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--main-color) !important; /* 茶色を強制適用 */
+  font-size: 1.1rem !important;
+  font-weight: 700;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav a:hover {
+  color: #8d6e63 !important; /* ホバー時に明るい茶色 */
+}
+
+/* ホバー時の下線 */
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--main-color);
+  transition: 0.3s;
+  transform: translateX(-50%);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* --- 4. Main Visual --- */
+#mainvisual { width: 100%; position: relative; overflow: hidden; }
+#mainvisual img { width: 100%; height: auto; display: block; }
+.main-copy {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff; text-align: center; width: 100%;
+}
+.main-copy h2 {
+  font-family: 'Noto Serif JP', serif; font-size: 3rem;
+  letter-spacing: 0.3em; text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+}
+
+/* --- 5. Sections & Gallery --- */
+.wrapper { max-width: 1100px; margin: 0 auto; padding: 100px 4%; }
+.sec-title { font-family: 'Noto Serif JP', serif; text-align: center; font-size: 2.2rem; margin-bottom: 60px; }
+.jp-sub { display: block; font-size: 0.9rem; color: #888; margin-top: 10px; }
+
+.about-text { background: #fff; padding: 50px; border-radius: 15px; text-align: center; }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; list-style: none; padding: 0; }
+.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
+
+/* --- 6. Contact & Button --- */
+#contact form { max-width: 600px; margin: 0 auto; padding: 40px; background: #fff; border-radius: 10px; }
+#contact input, #contact textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; }
+
+/* 送信ボタン（茶色） */
+.button input[type="submit"] {
+  background: var(--main-color) !important;
+  color: #fff !important;
+  border: none;
+  padding: 15px 80px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.inst-link { color: var(--main-color); border: 1px solid var(--main-color); padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+
+/* --- 7. Footer --- */
+#footer {
+  background-color: var(--main-color) !important; /* 送信ボタンと同じ茶色 */
+  color: #fff !important;
+  text-align: center;
+  padding: 40px 0 !important;
+  width: 100%;
+}
+#footer p { color: #fff !important; margin: 0; }
+
+/* --- 8. Animations --- */
+.js-fadein { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
+.js-fadein.is-show { opacity: 1; transform: translateY(0); }
+
+/* --- 9. Responsive --- */
+@media (max-width: 768px) {
+  #header { flex-direction: column; gap: 15px; }
+  .main-copy h2 { font-size: 1.8rem; }
+}
+
+/* --- 6. Process (横並びに変更) --- */
+.process-list {
+  display: flex;
+  justify-content: space-between; /* 均等に配置 */
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.process-item {
+  flex: 1; /* すべて同じ幅にする */
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  text-align: center;
+  position: relative;
+}
+
+/* 矢印のような装飾（PCのみ） */
+@media (min-width: 769px) {
+  .process-item:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    transform: translateY(-50%);
+    color: var(--main-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
+
+/* --- 7. Gallery (ズームエフェクト) --- */
+.gallery-grid li {
+  overflow: hidden; /* 枠からはみ出した部分を隠す */
+  border-radius: 10px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease; /* ゆっくり拡大させる */
+}
+
+/* カーソルを合わせた時の動き */
+.gallery-grid li:hover img {
+  transform: scale(1.1); /* 1.1倍に拡大 */
+}
+
+@media (max-width: 768px) {
+  /* スマホでは縦に並べる */
+  .process-list {
+    flex-direction: column;
+  }
+  
+  .process-item {
+    max-width: 100%;
+  }
+}
+
+/* --- Instagramボタンのカスタマイズ --- */
+.inst-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 40px;      /* ボタンを大きく、押しやすく */
+  background-color: transparent; /* 最初は枠線のみ */
+  color: var(--main-color);
+  border: 2px solid var(--main-color); /* 枠線を少し太く */
+  border-radius: 30px;     /* 角を丸くして柔らかい印象に */
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  transition: all 0.4s ease; /* 変化をなめらかに */
+  position: relative;
+  overflow: hidden;
+}
+
+/* マウスを置いた時（ホバー）の演出 */
+.inst-link:hover {
+  background-color: var(--main-color); /* 背景が茶色に */
+  color: #fff;                         /* 文字が白に */
+  transform: translateY(-3px);          /* 少し上に浮き上がる */
+  box-shadow: 0 5px 15px rgba(93, 64, 55, 0.3); /* 影をつけて浮遊感を出す */
+}
+
+/* ボタンの前にInstagramのアイコン（的なもの）を擬似的に追加する場合 */
+.inst-link::before {
+  content: "📸"; /* カメラの絵文字、またはWebフォント */
+  margin-right: 10px;
+}
+
+.contact-intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* --- 背景色の交互設定 --- */
+
+/* 奇数番目のセクション（About, Galleryなど） */
+section:nth-of-type(odd) {
+  background-color: var(--bg-color); /* 薄いグレーベージュ */
+}
+
+/* 偶数番目のセクション（Process, Contactなど） */
+section:nth-of-type(even) {
+  background-color: #ffffff; /* 純粋な白 */
+}
+
+/* セクション内の余白調整（背景色を端まで見せるため） */
+.wrapper {
+  max-width: 100%; /* 横幅いっぱいに背景を広げる */
+  padding: 100px 0; /* 上下の余白のみ指定 */
+}
+
+/* コンテンツが広がりすぎないように内側にコンテナを適用 */
+.about-text, 
+.process-list, 
+.gallery-grid, 
+.contact-intro, 
+#contact form {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+/* Aboutの白いボックスは背景と同化するので、少し影を強めるか枠線を消すのがおすすめ */
+.about-text {
+  background: #fff;
+  border: 1px solid #e0e0e0; /* 薄い枠線を追加 */
+  box-shadow: none; /* 交互背景のときは影なしですっきりさせる */
+}
+
+/* --- 背景色の交互設定（ブラッシュアップ版） --- */
+
+/* 全てのセクションの基本設定 */
+section {
+  width: 100%;
+  padding: 100px 0; /* 上下の余白 */
+}
+
+/* 奇数番目：About, Gallery */
+section:nth-of-type(odd) {
+  background-color: var(--bg-color);
+}
+
+/* 偶数番目：Process, Order */
+section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* 共通のインナーコンテナ：中身を中央に寄せる */
+.sec-title,
+.about-text, 
+.process-list, 
+.gallery-grid, 
+.contact-intro, 
+#contact form {
+  max-width: 1100px; /* コンテンツの最大幅 */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+/* 特殊対応：About内の白いボックスを背景に馴染ませる */
+.about-text {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05); /* 非常に薄い枠線 */
+  border-radius: 15px;
+  padding: 50px 4%; /* ボックス内の余白 */
+}
+
+/* モバイル対応：スマホで余白が詰まりすぎないように */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ヘッダー全体の調整 */
+  #header {
+    flex-direction: column; /* ロゴとナビを縦に並べる */
+    align-items: center;
+    padding: 15px 0 !important; /* 横の余白をなくして広く使う */
+  }
+
+  /* ナビゲーションを横スクロール可能にする */
+  .nav {
+    width: 100%;
+    overflow-x: auto; /* はみ出た分を横スクロールに */
+    -webkit-overflow-scrolling: touch; /* 指に吸い付くような滑らかな動き */
+    padding: 10px 0;
+  }
+
+  .nav ul {
+    display: flex;
+    justify-content: flex-start; /* 左端から並べる */
+    width: max-content; /* 中身の幅を確保する */
+    margin: 0 auto; /* メニューが少ない時は中央に寄る */
+    padding: 0 20px; /* 両端に少し余白を作る */
+    gap: 20px; /* メニュー同士の間隔を少し詰める */
+  }
+
+  /* スクロールバーを非表示にする（見た目をスッキリさせる） */
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    white-space: nowrap; /* 文字が途中で改行されないようにする */
+    font-size: 0.95rem !important; /* 少しだけ文字を小さく */
+  }
+
+  .main-copy h2 {
+    font-size: 1.5rem; /* メインコピーもスマホサイズに最適化 */
+  }
+}
+
+/* Qualityセクションのスタイル */
+.quality-container {
+  display: flex;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.quality-item {
+  flex: 1;
+  background: rgba(45, 64, 51, 0.03); /* メインカラーを極薄く敷く */
+  padding: 40px;
+  border-left: 4px solid var(--main-color); /* 左側にアクセントライン */
+}
+
+.quality-item h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+  .quality-container {
+    flex-direction: column;
+  }
+}
