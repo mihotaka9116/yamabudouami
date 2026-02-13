@@ -680,6 +680,74 @@ h2 {
     .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 }
 
+/* --- Header 全体 --- */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  background-color: #fff; /* 背景を白にして清潔感を */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* --- タイトルを他の色（モスグリーン）と同じにする --- */
+.site-title h1 a {
+  text-decoration: none;
+  color: var(--main-color); /* rootで設定したモスグリーンを適用 */
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.5rem;
+}
+
+/* --- PC用ナビゲーション（消えないように設定） --- */
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+/* PCではハンバーガーボタンを隠す */
+.hamburger {
+  display: none;
+}
+
+/* --- スマホ用設定 (768px以下) --- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* スマホの時だけ出す */
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%; /* 画面の外に隠す */
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: 0.4s;
+  }
+
+  /* ハンバーガーが開いた時だけ表示 */
+  .nav.is-active {
+    right: 0;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 40px;
+  }
+}
+
 
 
 
