@@ -137,9 +137,33 @@
   </section>
 </main>
 
+  <script>
+// ページが読み込まれたら実行
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // 画面に入ったらクラスを追加
+        entry.target.classList.add('is-show');
+        // 一度表示されたら監視を終了
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1 // 10%見えたら反応
+  });
+
+  // すべてのフェードイン対象を監視
+  const fadeElements = document.querySelectorAll('.js-fadein');
+  fadeElements.forEach((el) => {
+    observer.observe(el);
+  });
+});
+</script>
+</body>
+
 <footer id="footer">
   <p>&copy; 2026 山葡萄編みのかごバッグ 遠野</p>
 </footer>
-
-</body>
 </html>
