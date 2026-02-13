@@ -8,8 +8,11 @@
   --bg-color: #f3f4f1;   /* わずかに緑がかったグレーベージュ */
   --text-color: #2b2b2b;
 }
+
 /* --- 2. Base --- */
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
 body {
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
@@ -19,103 +22,73 @@ body {
   overflow-x: hidden;
 }
 
-/* メインの見出しや、ロゴマークの色に */
+/* 共通の見出し設定：中央寄せ */
 h2 {
-    color: #C5A059;
-    border-bottom: 1px solid #C5A059; /* 下線も合わせると統一感が出ます */
+  color: var(--main-color);
+  border-bottom: 2px solid var(--main-color);
+  display: block;
+  width: fit-content;
+  margin: 0 auto 30px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.15em;
 }
 
-/* インスタアイコンもゴールドに */
-.instagram-link {
-    color: #C5A059;
-}
-
-/* お問い合わせボタンなど */
-.btn {
-    background-color: #C5A059;
-    color: #fff;
-    padding: 10px 25px;
-    border-radius: 2px; /* 少し角を残すと伝統的な印象に */
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #A68549; /* ホバー時は少し暗く */
-}
-
-/* --- 3. Header (茶色統一版) --- */
+/* --- 3. Header --- */
 #header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5%;
-  background-color: #fcfaf5; /* 背景をベージュに */
+  padding: 15px 5%;
+  background-color: #fcfaf5;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(93, 64, 55, 0.1);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.site-title a {
-  text-decoration: none;
+/* サイト名＋アイコンの装飾 */
+.site-title h1 { margin: 0; }
+.site-title h1 a {
   display: flex;
   align-items: center;
-  gap: 15px;
-}
-
-.site-title h1 {
+  gap: 12px;
+  text-decoration: none;
+  color: var(--main-color);
   font-family: 'Noto Serif JP', serif;
-  font-size: 2rem;
-  color: var(--main-color); 
-  margin: 0;
-  text-shadow: none;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border: 1px solid var(--main-color); /* 枠線装飾 */
+  border-radius: 2px;
+  transition: 0.3s;
 }
 
-.logo-img {
-  height: 60px;
-  width: auto;
-  display: block;
-  background: transparent;
+.site-title h1 a:hover {
+  background-color: var(--main-color);
+  color: #fff;
 }
 
-/* ナビゲーションの文字 */
+.site-title h1 a i { font-size: 1.1rem; }
+
+/* PC用ナビ */
 .nav ul {
   display: flex;
   list-style: none;
   gap: 30px;
   margin: 0;
-  padding: 0;
 }
 
 .nav a {
   text-decoration: none;
-  color: var(--main-color); /* 茶色を強制適用 */
-  font-size: 1.1rem;
-  font-weight: 700;
-  position: relative;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1rem;
   transition: 0.3s;
 }
 
-.nav a:hover {
-  color: #8d6e63; /* ホバー時に明るい茶色 */
-}
-
-/* ホバー時の下線 */
-.nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--main-color);
-  transition: 0.3s;
-  transform: translateX(-50%);
-}
-
-.nav a:hover::after {
-  width: 100%;
-}
+.nav a:hover { opacity: 0.6; }
 
 /* --- 4. Main Visual --- */
 #mainvisual { width: 100%; position: relative; overflow: hidden; }
@@ -126,763 +99,100 @@ h2 {
   color: #fff; text-align: center; width: 100%;
 }
 .main-copy h2 {
-  font-family: 'Noto Serif JP', serif; font-size: 3rem;
-  letter-spacing: 0.3em; text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+  font-size: 3rem; color: #fff; border: none; /* MV内は線なし */
+  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
 }
 
-/* --- 5. Sections & Gallery --- */
-.wrapper { max-width: 1100px; margin: 0 auto; padding: 100px 4%; }
-.sec-title { font-family: 'Noto Serif JP', serif; text-align: center; font-size: 2.2rem; margin-bottom: 60px; }
-.jp-sub { display: block; font-size: 0.9rem; color: #888; margin-top: 10px; }
+/* --- 5. Sections Layout --- */
+section { padding: 100px 0; scroll-margin-top: 70px; }
+section:nth-of-type(odd) { background-color: var(--bg-color); }
+section:nth-of-type(even) { background-color: #ffffff; }
 
-.about-text { background: #fff; padding: 50px; border-radius: 15px; text-align: center; }
+.wrapper { max-width: 1100px; margin: 0 auto; padding: 0 4%; }
+.sec-title { font-size: 2.2rem; margin-bottom: 60px; }
+.jp-sub { display: block; font-size: 0.9rem; color: #888; margin-top: 10px; border: none; }
 
-.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; list-style: none; padding: 0; }
-.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 10px; }
+/* --- 6. Contents Detail --- */
+/* About */
+.about-text { background: #fff; padding: 50px; border-radius: 15px; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
 
-/* --- 6. Contact & Button --- */
-#contact form { max-width: 600px; margin: 0 auto; padding: 40px; background: #fff; border-radius: 10px; }
+/* Quality */
+.quality-container { display: flex; gap: 40px; }
+.quality-item {
+  flex: 1; background: rgba(45, 64, 51, 0.03);
+  padding: 40px; border-left: 4px solid var(--main-color);
+}
+
+/* Process */
+.process-list { display: flex; justify-content: space-between; gap: 20px; }
+.process-item {
+  flex: 1; background: #fff; padding: 30px; border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px; list-style: none; padding: 0;
+}
+.gallery-grid li { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.5s; }
+.gallery-grid li:hover img { transform: scale(1.1); }
+.item-info { padding: 15px; text-align: center; }
+
+/* --- 7. Contact & Footer --- */
+#contact form { max-width: 600px; margin: 40px auto; padding: 40px; background: #fff; border-radius: 10px; }
 #contact input, #contact textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; }
 
-/* 送信ボタン（茶色） */
+.button { text-align: center; }
 .button input[type="submit"] {
-  background: var(--main-color);
-  color: #fff;
-  border: none;
-  padding: 15px 80px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 5px;
-  transition: 0.3s;
+  background: var(--main-color); color: #fff; border: none;
+  padding: 15px 80px; cursor: pointer; border-radius: 5px; transition: 0.3s;
 }
 
-.inst-link { color: var(--main-color); border: 1px solid var(--main-color); padding: 10px 20px; text-decoration: none; border-radius: 5px; }
-
-/* --- 7. Footer --- */
-#footer {
-  background-color: var(--main-color); /* 送信ボタンと同じ茶色 */
-  color: #fff !important;
-  text-align: center;
-  padding: 40px 0 !important;
-  width: 100%;
+.inst-link {
+  display: inline-block; padding: 12px 30px; border: 2px solid var(--main-color);
+  color: var(--main-color); text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.4s;
 }
-#footer p { color: #fff; margin: 0; }
+.inst-link:hover { background: var(--main-color); color: #fff; transform: translateY(-3px); }
+
+#footer { background-color: var(--main-color); color: #fff; text-align: center; padding: 40px 0; }
+#footer p { margin: 0; font-size: 0.8rem; }
+.instagram-icon-link { color: #fff; font-size: 2rem; margin-bottom: 10px; display: inline-block; transition: 0.3s; }
+.instagram-icon-link:hover { opacity: 0.7; transform: scale(1.1); }
 
 /* --- 8. Animations --- */
 .js-fadein { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
 .js-fadein.is-show { opacity: 1; transform: translateY(0); }
 
 /* --- 9. Responsive --- */
-@media (max-width: 768px) {
-  #header { flex-direction: column; gap: 15px; }
-  .main-copy h2 { font-size: 1.8rem; }
-}
+.hamburger { display: none; }
 
-/* --- 6. Process (横並びに変更) --- */
-.process-list {
-  display: flex;
-  justify-content: space-between; /* 均等に配置 */
-  gap: 20px;
-  margin-top: 50px;
-}
-
-.process-item {
-  flex: 1; /* すべて同じ幅にする */
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-  text-align: center;
-  position: relative;
-}
-
-/* 矢印のような装飾（PCのみ） */
-@media (min-width: 769px) {
-  .process-item:not(:last-child)::after {
-    content: "→";
-    position: absolute;
-    top: 50%;
-    right: -15px;
-    transform: translateY(-50%);
-    color: var(--main-color);
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-}
-
-/* --- 7. Gallery (ズームエフェクト) --- */
-.gallery-grid li {
-  overflow: hidden; /* 枠からはみ出した部分を隠す */
-  border-radius: 10px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease; /* ゆっくり拡大させる */
-}
-
-/* カーソルを合わせた時の動き */
-.gallery-grid li:hover img {
-  transform: scale(1.1); /* 1.1倍に拡大 */
-}
-
-@media (max-width: 768px) {
-  /* スマホでは縦に並べる */
-  .process-list {
-    flex-direction: column;
-  }
-  
-  .process-item {
-    max-width: 100%;
-  }
-}
-
-/* --- Instagramボタンのカスタマイズ --- */
-.inst-link {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 15px 40px;      /* ボタンを大きく、押しやすく */
-  background-color: transparent; /* 最初は枠線のみ */
-  color: var(--main-color);
-  border: 2px solid var(--main-color); /* 枠線を少し太く */
-  border-radius: 30px;     /* 角を丸くして柔らかい印象に */
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  transition: all 0.4s ease; /* 変化をなめらかに */
-  position: relative;
-  overflow: hidden;
-}
-
-/* マウスを置いた時（ホバー）の演出 */
-.inst-link:hover {
-  background-color: var(--main-color); /* 背景が茶色に */
-  color: #fff;                         /* 文字が白に */
-  transform: translateY(-3px);          /* 少し上に浮き上がる */
-  box-shadow: 0 5px 15px rgba(93, 64, 55, 0.3); /* 影をつけて浮遊感を出す */
-}
-
-/* ボタンの前にInstagramのアイコン（的なもの）を擬似的に追加する場合 */
-.inst-link::before {
-  content: "📸"; /* カメラの絵文字、またはWebフォント */
-  margin-right: 10px;
-}
-
-.contact-intro {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* --- 背景色の交互設定 --- */
-
-/* 奇数番目のセクション（About, Galleryなど） */
-section:nth-of-type(odd) {
-  background-color: var(--bg-color); /* 薄いグレーベージュ */
-}
-
-/* 偶数番目のセクション（Process, Contactなど） */
-section:nth-of-type(even) {
-  background-color: #ffffff; /* 純粋な白 */
-}
-
-/* セクション内の余白調整（背景色を端まで見せるため） */
-.wrapper {
-  max-width: 100%; /* 横幅いっぱいに背景を広げる */
-  padding: 100px 0; /* 上下の余白のみ指定 */
-}
-
-/* コンテンツが広がりすぎないように内側にコンテナを適用 */
-.about-text, 
-.process-list, 
-.gallery-grid, 
-.contact-intro, 
-#contact form {
-  max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 4%;
-  padding-right: 4%;
-}
-
-/* Aboutの白いボックスは背景と同化するので、少し影を強めるか枠線を消すのがおすすめ */
-.about-text {
-  background: #fff;
-  border: 1px solid #e0e0e0; /* 薄い枠線を追加 */
-  box-shadow: none; /* 交互背景のときは影なしですっきりさせる */
-}
-
-/* --- 背景色の交互設定（ブラッシュアップ版） --- */
-
-/* 全てのセクションの基本設定 */
-section {
-  width: 100%;
-  padding: 100px 0; /* 上下の余白 */
-}
-
-/* 奇数番目：About, Gallery */
-section:nth-of-type(odd) {
-  background-color: var(--bg-color);
-}
-
-/* 偶数番目：Process, Order */
-section:nth-of-type(even) {
-  background-color: #ffffff;
-}
-
-/* 共通のインナーコンテナ：中身を中央に寄せる */
-.sec-title,
-.about-text, 
-.process-list, 
-.gallery-grid, 
-.contact-intro, 
-#contact form {
-  max-width: 1100px; /* コンテンツの最大幅 */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 4%;
-  padding-right: 4%;
-}
-
-/* 特殊対応：About内の白いボックスを背景に馴染ませる */
-.about-text {
-  background: #ffffff;
-  border: 1px solid rgba(0,0,0,0.05); /* 非常に薄い枠線 */
-  border-radius: 15px;
-  padding: 50px 4%; /* ボックス内の余白 */
-}
-
-/* モバイル対応：スマホで余白が詰まりすぎないように */
-@media (max-width: 768px) {
-  section {
-    padding: 60px 0;
-  }
-}
-
-@media (max-width: 768px) {
-  /* ヘッダー全体の調整 */
-  #header {
-    flex-direction: column; /* ロゴとナビを縦に並べる */
-    align-items: center;
-    padding: 15px 0; /* 横の余白をなくして広く使う */
-  }
-
-  /* ナビゲーションを横スクロール可能にする */
-  .nav {
-    width: 100%;
-    overflow-x: auto; /* はみ出た分を横スクロールに */
-    -webkit-overflow-scrolling: touch; /* 指に吸い付くような滑らかな動き */
-    padding: 10px 0;
-  }
-
-  .nav ul {
-    display: flex;
-    justify-content: flex-start; /* 左端から並べる */
-    width: max-content; /* 中身の幅を確保する */
-    margin: 0 auto; /* メニューが少ない時は中央に寄る */
-    padding: 0 20px; /* 両端に少し余白を作る */
-    gap: 20px; /* メニュー同士の間隔を少し詰める */
-  }
-
-  /* スクロールバーを非表示にする（見た目をスッキリさせる） */
-  .nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav a {
-    white-space: nowrap; /* 文字が途中で改行されないようにする */
-    font-size: 0.95rem; /* 少しだけ文字を小さく */
-  }
-
-  .main-copy h2 {
-    font-size: 1.5rem; /* メインコピーもスマホサイズに最適化 */
-  }
-}
-
-/* Qualityセクションのスタイル */
-.quality-container {
-  display: flex;
-  gap: 40px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.quality-item {
-  flex: 1;
-  background: rgba(45, 64, 51, 0.03); /* メインカラーを極薄く敷く */
-  padding: 40px;
-  border-left: 4px solid var(--main-color); /* 左側にアクセントライン */
-}
-
-.quality-item h3 {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  color: var(--main-color);
-}
-
-@media (max-width: 768px) {
-  .quality-container {
-    flex-direction: column;
-  }
-}
-
-/* --- Qualityセクションのインナー調整 --- */
-#quality .quality-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 4%; /* 左右の余白を他のセクションと統一 */
-  display: flex;
-  gap: 40px;
-}
-
-/* 偶数番目のセクション内のカード（白背景のセクションで目立たせる） */
-section:nth-of-type(even) .quality-item {
-  background: #fdfdfd; 
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-/* --- セクション背景の交互適用を確定させる --- */
-/* 奇数: MainVisual(1), Quality(3), Gallery(5) */
-section:nth-of-type(odd) {
-  background-color: var(--bg-color);
-}
-
-/* 偶数: About(2), Process(4), Contact(6) */
-section:nth-of-type(even) {
-  background-color: #ffffff;
-}
-
-/* --- スムーススクロール（リンクを押した時に滑らかに動く） --- */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ヘッダーの高さ分、移動先を下にずらす調整 */
-section {
-  scroll-margin-top: 80px; 
-}
-
-/* --- Qualityアイテムのスマホ対応微調整 --- */
-@media (max-width: 768px) {
-  .quality-container {
-    padding: 0 5%;
-  }
-  .quality-item {
-    padding: 30px 20px;
-  }
-}
-
-/* 最初は透明で、40px下に配置 */
-.js-fadein {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-
-/* JavaScriptでこのクラスがついたら、見えるようになる */
-.js-fadein.is-show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.gallery-grid li {
-  position: relative;
-  background: #fff;
-  padding-bottom: 15px; /* 下に文字が入るスペースを作る */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.item-info {
-  padding: 15px;
-  text-align: center;
-}
-
-.item-name {
-  font-weight: bold;
-  color: var(--main-color);
-  margin-bottom: 5px;
-}
-
-.item-price {
-  font-size: 0.9rem;
-  color: #666;
-}
-.sec-title {
-  letter-spacing: 0.15em; /* 文字の間を少しあける */
-}
-
-/* インスタアイコンのスタイル */
-.instagram-link {
-    font-size: 24px;          /* アイコンの大きさ */
-    color: #555;              /* サイトに馴染む落ち着いたグレー */
-    text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-block;
-}
-
-/* ホバー時に少し色を濃く（またはブランドカラーに） */
-.instagram-link:hover {
-    color: #C13584;          /* インスタのブランドカラー、またはサイトのアクセントカラー */
-    opacity: 0.8;
-}
-
-footer i {
-    vertical-align: middle;
-}
-
-/* --- 2. Base --- */
-/* メインの見出し：ゴールドからメインカラーに戻し、装飾を洗練 */
-h2 {
-    color: var(--main-color);
-    border-bottom: 2px solid var(--main-color); /* 少し太くして存在感を出す */
-    display: inline-block; /* 下線を文字の長さに合わせる */
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-}
-
-/* インスタアイコン：ゴールドからメインカラーへ */
-.instagram-link {
-    font-size: 24px;
-    color: var(--main-color); /* メインカラーに変更 */
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-/* ホバー時は少しだけ色を薄くして、動きを出す */
-.instagram-link:hover {
-    color: var(--main-color);
-    opacity: 0.6;
-    transform: scale(1.1);
-}
-
-/* お問い合わせボタン：ゴールドからメインカラーへ */
-.btn {
-    background-color: var(--main-color); /* メインカラーに変更 */
-    color: #fff;
-    padding: 12px 35px;
-    border: none;
-    border-radius: 4px; /* 山ぶどうのイメージに合わせて少しだけ角を丸く */
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background-color: #3e5846; /* メインカラーより少し明るく（または暗く）して反応を見せる */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 64, 51, 0.2);
-}
-
-/* セクションタイトル（h2）を中央寄せにする */
-h2 {
-    color: var(--main-color);
-    border-bottom: 2px solid var(--main-color);
-    display: block;          /* inline-blockから変更 */
-    width: fit-content;      /* 文字の幅に合わせる */
-    margin: 0 auto 30px;    /* 左右のmarginをautoにして中央寄せ */
-    padding-bottom: 10px;
-    text-align: center;      /* テキスト自体も中央に */
-}
-
-/* もし .sec-title というクラスを共通で使っている場合 */
-.sec-title {
-    text-align: center;      /* テキストを中央寄せ */
-    width: 100%;             /* 幅いっぱいにする */
-}
-
-/* フッター全体の調整 */
-#footer {
-    background-color: var(--main-color); /* モスグリーン */
-    color: #fff;
-    text-align: center;
-    padding: 40px 0;
-}
-
-/* インスタアイコン自体のスタイル */
-.instagram-icon-link {
-    color: #fff;             /* アイコンの色を白に */
-    font-size: 2rem;         /* アイコンの大きさ */
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 15px;     /* コピーライトとの間隔 */
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* ホバーした時の動き */
-.instagram-icon-link:hover {
-    opacity: 0.7;            /* 少し透明にする */
-    transform: scale(1.1);   /* わずかに大きくする */
-}
-
-/* コピーライトの文字 */
-#footer p {
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-}
-
-/* PCではボタンを隠す */
-.hamburger {
-    display: none;
-    cursor: pointer;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    z-index: 1001; /* ナビより上にする */
-}
-
-.hamburger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--main-color);
-    position: absolute;
-    transition: all 0.4s;
-}
-
-.hamburger span:nth-child(1) { top: 0; }
-.hamburger span:nth-child(2) { top: 11px; }
-.hamburger span:nth-child(3) { bottom: 0; }
-
-/* スマホ表示（768px以下） */
-@media (max-width: 768px) {
-    .hamburger { display: block; }
-
-    .nav {
-        position: fixed;
-        top: 0;
-        right: -100%; /* 最初は画面の外へ */
-        width: 80%;   /* メニューの幅 */
-        height: 100vh;
-        background-color: rgba(252, 250, 245, 0.95); /* 背景色 */
-        transition: all 0.5s;
-        z-index: 1000;
-        padding-top: 100px;
-    }
-
-    .nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-
-    /* メニューが開いた時（JSでクラスを付与） */
-    .nav.is-active {
-        right: 0;
-    }
-
-    /* ボタンが「×」になるアニメーション */
-    .hamburger.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-    .hamburger.is-active span:nth-child(2) { opacity: 0; }
-    .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-}
-
-/* --- Header 全体 --- */
-#header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  background-color: #fff; /* 背景を白にして清潔感を */
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* --- タイトルを他の色（モスグリーン）と同じにする --- */
-.site-title h1 a {
-  text-decoration: none;
-  color: var(--main-color); /* rootで設定したモスグリーンを適用 */
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.5rem;
-}
-
-/* --- PC用ナビゲーション（消えないように設定） --- */
-.nav ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-/* PCではハンバーガーボタンを隠す */
-.hamburger {
-  display: none;
-}
-
-/* --- スマホ用設定 (768px以下) --- */
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* スマホの時だけ出す */
+    display: block; z-index: 1001; width: 30px; height: 24px; position: relative;
   }
-
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%; /* 画面の外に隠す */
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95);
-    transition: 0.4s;
-  }
-
-  /* ハンバーガーが開いた時だけ表示 */
-  .nav.is-active {
-    right: 0;
-  }
-
-  .nav ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 40px;
-  }
-}
-
-.site-title h1 a {
-    display: inline-block;
-    padding: 5px 15px;
-    border: 1px solid var(--main-color); /* モスグリーンの細い枠線 */
-    border-radius: 2px;
-    letter-spacing: 0.1em; /* 文字の間隔を広げて高級感を出す */
-    transition: all 0.3s;
-    text-decoration: none;
-    color: var(--main-color);
-}
-
-.site-title h1 a:hover {
-    background-color: var(--main-color); /* ホバー時に背景がモスグリーンに */
-    color: #fff; /* 文字が白に */
-}
-
-.site-title h1 a {
-    display: flex;
-    align-items: center; /* アイコンと文字を上下中央で揃える */
-    gap: 10px;           /* アイコンと文字の間の隙間 */
-    text-decoration: none;
-    color: var(--main-color);
-    font-family: 'Noto Serif JP', serif;
-    font-size: 1.5rem;
-}
-
-.site-title h1 a i {
-    font-size: 1.2rem;   /* アイコンを文字より少し小さくして上品に */
-    opacity: 0.8;        /* 少しだけ透かして馴染ませる */
-    color: var(--main-color);
-}
-
-/* --- タイトルとアイコンの装飾 --- */
-.site-title h1 a {
-  display: flex;
-  align-items: center; /* アイコンと文字を上下中央で揃える */
-  gap: 12px;           /* アイコンと文字の間の隙間 */
-  text-decoration: none;
-  color: var(--main-color);
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.5rem;
-  letter-spacing: 0.05em;
-}
-
-/* アイコン自体の調整 */
-.site-title h1 a i {
-  font-size: 1.2rem;   /* 文字より少し小さくして上品に */
-  color: var(--main-color);
-  opacity: 0.9;
-}
-
-/* --- ヘッダーのレイアウト --- */
-#header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  background-color: #fcfaf5;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* --- PC用ナビゲーション --- */
-.nav ul {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-/* PCではハンバーガーを隠す */
-.hamburger {
-  display: none;
-}
-
-/* --- スマホ用設定 (768px以下) --- */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; /* スマホでボタンを表示 */
-    cursor: pointer;
-    width: 30px;
-    height: 24px;
-    position: relative;
-    z-index: 1001;
-  }
-
-  /* ハンバーガーの三本線 */
   .hamburger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--main-color);
-    position: absolute;
-    transition: 0.4s;
+    display: block; width: 100%; height: 2px; background-color: var(--main-color);
+    position: absolute; transition: 0.4s;
   }
   .hamburger span:nth-child(1) { top: 0; }
   .hamburger span:nth-child(2) { top: 11px; }
   .hamburger span:nth-child(3) { bottom: 0; }
-
-  /* ×印に変えるアニメーション */
+  
   .hamburger.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
   .hamburger.is-active span:nth-child(2) { opacity: 0; }
   .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
 
   .nav {
-    position: fixed;
-    top: 0;
-    right: -100%; /* 画面外に隠す */
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(252, 250, 245, 0.98);
-    transition: 0.5s;
-    z-index: 1000;
+    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+    background: rgba(252, 250, 245, 0.98); transition: 0.5s; z-index: 1000;
+    padding-top: 100px;
   }
+  .nav.is-active { right: 0; }
+  .nav ul { flex-direction: column; align-items: center; gap: 40px; }
 
-  .nav.is-active {
-    right: 0; /* 画面内に引き出す */
-  }
-
-  .nav ul {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    gap: 40px;
-  }
+  .main-copy h2 { font-size: 1.8rem; }
+  .quality-container, .process-list { flex-direction: column; }
+  section { padding: 60px 0; }
 }
-
-
-
-
