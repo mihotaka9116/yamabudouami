@@ -140,50 +140,6 @@
   </section>
 </main>
 
-  <script>
-// ページが読み込まれたら実行
-document.addEventListener('DOMContentLoaded', function() {
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // 画面に入ったらクラスを追加
-        entry.target.classList.add('is-show');
-        // 一度表示されたら監視を終了
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1 // 10%見えたら反応
-  });
-
-  // すべてのフェードイン対象を監視
-  const fadeElements = document.querySelectorAll('.js-fadein');
-  fadeElements.forEach((el) => {
-    observer.observe(el);
-  });
-});
-</script>
-  const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
-
-// ボタンをクリックしたらクラスを付け外しする
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('is-active');
-    nav.classList.toggle('is-active');
-});
-
-// メニュー内のリンクをクリックしたらメニューを閉じる
-const navLinks = document.querySelectorAll('.nav a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('is-active');
-        nav.classList.remove('is-active');
-    });
-});
-
-</body>
-
 <footer id="footer">
   <div class="footer-content">
     <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" rel="noopener noreferrer" class="instagram-icon-link">
@@ -192,4 +148,46 @@ navLinks.forEach(link => {
     <p>© 2026 山葡萄編みのかごバッグ 遠野</p>
   </div>
 </footer>
+
+<script>
+// すべてのスクリプトをここにまとめます
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // --- フェードインアニメーション ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  const fadeElements = document.querySelectorAll('.js-fadein');
+  fadeElements.forEach((el) => {
+    observer.observe(el);
+  });
+
+  // --- ハンバーガーメニュー ---
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
+    nav.classList.toggle('is-active');
+  });
+
+  const navLinks = document.querySelectorAll('.nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('is-active');
+      nav.classList.remove('is-active');
+    });
+  });
+});
+</script>
+
+</body>
 </html>
