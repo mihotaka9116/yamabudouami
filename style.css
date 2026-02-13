@@ -463,3 +463,26 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+.gallery-grid li {
+  position: relative;
+  background: #fff;
+  padding-bottom: 15px; /* 下に文字が入るスペースを作る */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.item-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.item-name {
+  font-weight: bold;
+  color: var(--main-color);
+  margin-bottom: 5px;
+}
+
+.item-price {
+  font-size: 0.9rem;
+  color: #666;
+}
