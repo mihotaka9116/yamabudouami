@@ -450,3 +450,16 @@ section {
     padding: 30px 20px;
   }
 }
+
+/* 最初は透明で、40px下に配置 */
+.js-fadein {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* JavaScriptでこのクラスがついたら、見えるようになる */
+.js-fadein.is-show {
+  opacity: 1;
+  transform: translateY(0);
+}
