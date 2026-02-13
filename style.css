@@ -577,6 +577,23 @@ h2 {
     box-shadow: 0 4px 12px rgba(45, 64, 51, 0.2);
 }
 
+/* セクションタイトル（h2）を中央寄せにする */
+h2 {
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+    display: block;          /* inline-blockから変更 */
+    width: fit-content;      /* 文字の幅に合わせる */
+    margin: 0 auto 30px;    /* 左右のmarginをautoにして中央寄せ */
+    padding-bottom: 10px;
+    text-align: center;      /* テキスト自体も中央に */
+}
+
+/* もし .sec-title というクラスを共通で使っている場合 */
+.sec-title {
+    text-align: center;      /* テキストを中央寄せ */
+    width: 100%;             /* 幅いっぱいにする */
+}
+
 
 
 
