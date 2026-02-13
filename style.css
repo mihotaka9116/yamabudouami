@@ -748,6 +748,22 @@ h2 {
   }
 }
 
+.site-title h1 a {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid var(--main-color); /* モスグリーンの細い枠線 */
+    border-radius: 2px;
+    letter-spacing: 0.1em; /* 文字の間隔を広げて高級感を出す */
+    transition: all 0.3s;
+    text-decoration: none;
+    color: var(--main-color);
+}
+
+.site-title h1 a:hover {
+    background-color: var(--main-color); /* ホバー時に背景がモスグリーンに */
+    color: #fff; /* 文字が白に */
+}
+
 
 
 
