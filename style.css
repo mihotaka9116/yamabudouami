@@ -764,6 +764,22 @@ h2 {
     color: #fff; /* 文字が白に */
 }
 
+.site-title h1 a {
+    display: flex;
+    align-items: center; /* アイコンと文字を上下中央で揃える */
+    gap: 10px;           /* アイコンと文字の間の隙間 */
+    text-decoration: none;
+    color: var(--main-color);
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.5rem;
+}
+
+.site-title h1 a i {
+    font-size: 1.2rem;   /* アイコンを文字より少し小さくして上品に */
+    opacity: 0.8;        /* 少しだけ透かして馴染ませる */
+    color: var(--main-color);
+}
+
 
 
 
