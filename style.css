@@ -19,6 +19,30 @@ body {
   overflow-x: hidden;
 }
 
+/* メインの見出しや、ロゴマークの色に */
+h2 {
+    color: #C5A059;
+    border-bottom: 1px solid #C5A059; /* 下線も合わせると統一感が出ます */
+}
+
+/* インスタアイコンもゴールドに */
+.instagram-link {
+    color: #C5A059;
+}
+
+/* お問い合わせボタンなど */
+.btn {
+    background-color: #C5A059;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 2px; /* 少し角を残すと伝統的な印象に */
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #A68549; /* ホバー時は少し暗く */
+}
+
 /* --- 3. Header (茶色統一版) --- */
 #header {
   display: flex;
@@ -508,5 +532,7 @@ section {
 footer i {
     vertical-align: middle;
 }
+
+background: linear-gradient(135deg, #CFB53B 0%, #D4AF37 50%, #8B7355 100%);
 
 
