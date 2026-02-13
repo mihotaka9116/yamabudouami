@@ -164,6 +164,23 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+  const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
+
+// ボタンをクリックしたらクラスを付け外しする
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
+    nav.classList.toggle('is-active');
+});
+
+// メニュー内のリンクをクリックしたらメニューを閉じる
+const navLinks = document.querySelectorAll('.nav a');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('is-active');
+        nav.classList.remove('is-active');
+    });
+});
 </body>
 
 <footer id="footer">
