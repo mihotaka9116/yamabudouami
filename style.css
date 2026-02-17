@@ -196,3 +196,38 @@ section:nth-of-type(even) { background-color: #ffffff; }
   .quality-container, .process-list { flex-direction: column; }
   section { padding: 60px 0; }
 }
+
+/* CONTACTセクション全体を中央寄せにする */
+#contact {
+  text-align: center; /* セクション内のテキスト、インライン要素を中央へ */
+  padding: 80px 0;
+}
+
+/* お問い合わせ文言の調整 */
+#contact p {
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+/* Instagramボタンの調整 */
+.insta-btn {
+  display: inline-block; /* 中央寄せが効くようにinline-block化 */
+  margin: 0 auto;        /* 念のための中央配置設定 */
+  padding: 12px 30px;
+  background-color: #5d4037; /* 山ぶどうらしい落ち着いた茶色など */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: opacity 0.3s;
+}
+
+.insta-btn:hover {
+  opacity: 0.8;
+}
+
+/* もしInstagramアイコン画像を入れている場合 */
+.insta-btn img {
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 20px; /* サイズはお好みで */
+}
