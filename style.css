@@ -231,3 +231,79 @@ section:nth-of-type(even) { background-color: #ffffff; }
   margin-right: 8px;
   width: 20px; /* サイズはお好みで */
 }
+
+/* ご購入の流れスタイル */
+#how-to-order {
+  padding: 80px 20px;
+  background-color: #fdfdfd; /* わずかに色を変えて区切りを明確に */
+}
+
+.order-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.order-step {
+  flex: 1;
+  background: #fff;
+  padding: 40px 25px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.order-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.step-num {
+  font-family: 'Georgia', serif;
+  font-size: 2.2rem;
+  color: #8b4513; /* 山葡萄をイメージした落ち着いた茶色 */
+  display: block;
+  margin-bottom: 15px;
+  font-weight: italic;
+}
+
+.order-step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.order-step p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  text-align: left;
+  color: #666;
+}
+
+.btn-sm {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: #444;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.8rem;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+
+.btn-sm:hover {
+  background: #8b4513;
+}
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .order-container {
+    flex-direction: column;
+  }
+  .order-step {
+    padding: 30px 20px;
+  }
+}
