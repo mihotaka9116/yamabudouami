@@ -464,3 +464,14 @@ margin-top:400px;
 
 .b2 { left: 33.33%; transition-delay: 0.15s; }
 .b3 { left: 66.66%; transition-delay: 0.3s; }
+
+/* 最初は透明 */
+.multi-slit img {
+  opacity: 0;
+  transition: opacity 1.5s ease 0.8s; /* バーが抜けてから表示 */
+}
+
+/* メインビジュアルに is-active がついたら表示 */
+#mainvisual.is-active .multi-slit img {
+  opacity: 1 !important;
+}
