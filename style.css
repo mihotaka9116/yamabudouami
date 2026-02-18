@@ -316,57 +316,67 @@ body {
 margin-top:400px;
 }
 
-/* --- メインビジュアルのスリット演出（決定版） --- */
+/* --- メインビジュアル演出の修正版 --- */
 #mainvisual {
-  width: 100%;
-  height: 80vh; /* 画面の8割くらいの高さにすると迫力が出ます */
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    height: 80vh; /* 高さをしっかり確保 */
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
 }
 
 .multi-slit {
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .multi-slit img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  /* 画像も少し遅れてズームアウトさせるとリッチになります */
-  transform: scale(1.1);
-  transition: transform 2.5s ease-out 0.6s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* 最初は隠す */
+    transform: scale(1.1);
+    transition: opacity 1.5s ease 0.8s, transform 2s ease 0.8s;
 }
 
-/* 3本の白いバー */
+/* 3本の白いバー（マスク） */
 .bar {
-  position: absolute;
-  top: 0;
-  width: 33.34%; /* 隙間ができないよう微調整 */
-  height: 100%;
-  background: #fff;
-  z-index: 10;
-  /* イージングを cubic-bezier にすることで高級感のある動きに */
-  transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    width: 33.34%;
+    height: 100%;
+    background: #fff;
+    z-index: 10;
+    /* transitionの書き方を修正 */
+    transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
+    transform: translateY(0); /* 最初は画面を覆う */
 }
 
 .b1 { left: 0; }
 .b2 { left: 33.33%; }
 .b3 { left: 66.66%; }
 
-/* --- アニメーション発火時の命令 --- */
+/* --- アニメーション発火 --- */
 
-/* is-show クラスがついたらバーを上にスライド */
+/* is-showクラスがついたらバーを上に飛ばす */
 #mainvisual.is-show .bar {
-  transform: translateY(-100%);
+    transform: translateY(-100%);
 }
 
-/* 2枚目と3枚目に時間差（ディレイ）をつけてスライド */
-#mainvisual.is-show .b2 { transition-delay: 0.15s; }
-#mainvisual.is-show .b3 { transition-delay: 0.3s; }
+.b2 { transition-delay: 0.15s; }
+.b3 { transition-delay: 0.3s; }
 
-/* 画像を 1.1倍から1倍に戻す */
+/* 画像をふわっと出す */
 #mainvisual.is-show img {
-  transform: scale(1);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* 【安全装置】JSが万が一動かなくても10秒経ったら消える設定 */
+@keyframes forceShow {
+    to { transform: translateY(-100%); }
+}
+#mainvisual:not(.is-show) .bar {
+    animation: forceShow 1s forwards 10s;
 }
