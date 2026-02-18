@@ -1,142 +1,48 @@
-// 画面の中に要素が入ってきたら処理をする（Intersection Observer）
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // 画面内に入ったら .is-show クラスを付与
-      entry.target.classList.add('is-show');
-      
-      // 一度表示されたら監視をやめる
-      observer.unobserve(entry.target);
-    }
-  });
-}, {
-  root: null,
-  rootMargin: '0px -50px', // 左右少し内側で反応するように調整
-  threshold: 0.1 // 10%見えたら実行
-});
-
-// .js-fadein がついた要素をすべて監視する
-const fadeElements = document.querySelectorAll('.js-fadein');
-fadeElements.forEach((el) => {
-  observer.observe(el);
-});
-
-gsap.to(".bar",{
-  y:"-100%",
-  duration:1,
-  stagger:0.15,
-  ease:"power2.inOut",
-  scrollTrigger:{trigger:".multi-slit", start:"top 80%"}
-});
-
-// スクリプトの最後、Observerの設定の下あたりに追加してください
-window.addEventListener('load', () => {
-  const mv = document.getElementById('mainvisual');
-  if (mv) {
-    // 0.3秒だけ待ってからアニメーションを開始（少し余裕を持たせる）
-    setTimeout(() => {
-      mv.classList.add('is-show');
-    }, 300);
-  }
-});
-
 document.addEventListener('DOMContentLoaded', function() {
   
-  // 1. メインビジュアルのアニメーションを即座に開始
+  // 1. メインビジュアル専用のトリガー
+  // ページ読み込み完了から0.5秒後に実行
   const mv = document.getElementById('mainvisual');
   if (mv) {
-    // ページ読み込み完了から0.5秒後に実行
     setTimeout(() => {
-      mv.classList.add('is-show');
+      mv.classList.add('is-active'); // CSSの .is-active と連動
     }, 500);
   }
 
-  // 2. その他のフェードイン（スクロール用）
+  // 2. その他のフェードイン（Aboutセクション以降）
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-show');
+        entry.target.classList.add('is-show'); // CSSの .is-show と連動
+        observer.unobserve(entry.target); // 一度表示されたら監視終了
       }
     });
-  }, { threshold: 0.1 });
+  }, { 
+    threshold: 0.1 
+  });
 
   // js-fadeinクラスがついた要素を監視
   document.querySelectorAll('.js-fadein').forEach((el) => {
     observer.observe(el);
   });
 
-  // --- ハンバーガーメニュー等の他のコードはそのまま下に続けてください ---
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  // --- メインビジュアルを即座に動かす ---
-  const mv = document.getElementById('mainvisual');
-  if (mv) {
-    // 0.5秒後にアニメーション開始
-    setTimeout(() => {
-      mv.classList.add('is-active');
-    }, 500);
-  }
-
-  // --- その他のフェードイン（About以降用） ---
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-show');
-        // 一度表示されたら監視をやめる（パフォーマンス向上）
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.js-fadein').forEach((el) => {
-    observer.observe(el);
-  });
-
-  // （ハンバーガーメニューのコードはそのまま続けてください）
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+  // 3. ハンバーガーメニュー
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
   
-  // --- 【追加】メインビジュアルを動かすトリガー ---
-  const mv = document.getElementById('mainvisual');
-  if (mv) {
-    // 0.3秒後にアニメーション開始（クラス名を is-active に統一）
-    setTimeout(() => {
-      mv.classList.add('is-active');
-    }, 300);
-  }
-
-  // --- 既存のフェードイン監視コードなどはそのまま ---
-  const observer = new IntersectionObserver((entries) => {
-    // ...省略...
-  });
-  // ...省略...
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // 1. メインビジュアル専用のトリガー
-  const mv = document.getElementById('mainvisual');
-  if (mv) {
-    // ページ読み込みから0.5秒後に開始
-    setTimeout(() => {
-      mv.classList.add('is-active');
-    }, 500);
-  }
-
-  // 2. その他の要素（Aboutなど）のスクロール監視
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-show');
-      }
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('is-active');
+      nav.classList.toggle('is-active');
     });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.js-fadein').forEach((el) => {
-    observer.observe(el);
-  });
-
-  // （ハンバーガーメニューのコードもここに続けてOKです）
+    // メニューリンククリックで閉じる
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('is-active');
+        nav.classList.remove('is-active');
+      });
+    });
+  }
 });
