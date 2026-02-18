@@ -307,3 +307,29 @@ section:nth-of-type(even) { background-color: #ffffff; }
     padding: 30px 20px;
   }
 }
+
+/* サイト名＋アイコンの装飾（色を反転） */
+.site-title h1 a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  
+  /* --- ここで色を逆にします --- */
+  background-color: var(--main-color); /* 背景をモスグリーンに */
+  color: #fff;                        /* 文字を白に */
+  
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  padding: 5px 15px; /* 少し余白を広げると綺麗です */
+  border: 1px solid var(--main-color);
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* ホバーした時に元のデザイン（白背景）に戻るようにする */
+.site-title h1 a:hover {
+  background-color: transparent;
+  color: var(--main-color);
+}
