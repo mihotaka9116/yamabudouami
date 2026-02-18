@@ -95,3 +95,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // （ハンバーガーメニューのコードはそのまま続けてください）
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // --- 【追加】メインビジュアルを動かすトリガー ---
+  const mv = document.getElementById('mainvisual');
+  if (mv) {
+    // 0.3秒後にアニメーション開始（クラス名を is-active に統一）
+    setTimeout(() => {
+      mv.classList.add('is-active');
+    }, 300);
+  }
+
+  // --- 既存のフェードイン監視コードなどはそのまま ---
+  const observer = new IntersectionObserver((entries) => {
+    // ...省略...
+  });
+  // ...省略...
+});
