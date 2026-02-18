@@ -20,3 +20,11 @@ const fadeElements = document.querySelectorAll('.js-fadein');
 fadeElements.forEach((el) => {
   observer.observe(el);
 });
+
+gsap.to(".bar",{
+  y:"-100%",
+  duration:1,
+  stagger:0.15,
+  ease:"power2.inOut",
+  scrollTrigger:{trigger:".multi-slit", start:"top 80%"}
+});
