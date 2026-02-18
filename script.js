@@ -39,3 +39,31 @@ window.addEventListener('load', () => {
     }, 300);
   }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. メインビジュアルのアニメーションを即座に開始
+  const mv = document.getElementById('mainvisual');
+  if (mv) {
+    // ページ読み込み完了から0.5秒後に実行
+    setTimeout(() => {
+      mv.classList.add('is-show');
+    }, 500);
+  }
+
+  // 2. その他のフェードイン（スクロール用）
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // js-fadeinクラスがついた要素を監視
+  document.querySelectorAll('.js-fadein').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // --- ハンバーガーメニュー等の他のコードはそのまま下に続けてください ---
+});
