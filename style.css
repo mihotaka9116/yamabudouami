@@ -415,3 +415,52 @@ margin-top:400px;
 #mainvisual.is-active .bar {
   transform: translateY(-100%);
 }
+
+/* --- メインビジュアル演出の修正 --- */
+#mainvisual {
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.multi-slit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 最初は透明にしておく */
+.multi-slit img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; 
+  transform: scale(1.1);
+  transition: opacity 1.5s ease 0.8s, transform 2.5s ease 0.6s;
+}
+
+/* 【重要】is-activeがついたら不透明（1）にする */
+#mainvisual.is-active .multi-slit img {
+  opacity: 1 !important;
+  transform: scale(1);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  width: 33.35%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+/* 【重要】is-activeがついたらバーを上に飛ばす */
+#mainvisual.is-active .bar {
+  transform: translateY(-100%);
+}
+
+.b2 { left: 33.33%; transition-delay: 0.15s; }
+.b3 { left: 66.66%; transition-delay: 0.3s; }
