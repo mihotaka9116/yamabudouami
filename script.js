@@ -28,3 +28,14 @@ gsap.to(".bar",{
   ease:"power2.inOut",
   scrollTrigger:{trigger:".multi-slit", start:"top 80%"}
 });
+
+// スクリプトの最後、Observerの設定の下あたりに追加してください
+window.addEventListener('load', () => {
+  const mv = document.getElementById('mainvisual');
+  if (mv) {
+    // 0.3秒だけ待ってからアニメーションを開始（少し余裕を持たせる）
+    setTimeout(() => {
+      mv.classList.add('is-show');
+    }, 300);
+  }
+});
