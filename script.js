@@ -1,48 +1,22 @@
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // 1. メインビジュアル専用のトリガー
-  // ページ読み込み完了から0.5秒後に実行
-  const mv = document.getElementById('mainvisual');
-  if (mv) {
-    setTimeout(() => {
-      mv.classList.add('is-active'); // CSSの .is-active と連動
-    }, 500);
-  }
-
-  // 2. その他のフェードイン（Aboutセクション以降）
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-show'); // CSSの .is-show と連動
-        observer.unobserve(entry.target); // 一度表示されたら監視終了
-      }
-    });
-  }, { 
-    threshold: 0.1 
+// 画面の中に要素が入ってきたら処理をする（Intersection Observer）
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // 画面内に入ったら .is-show クラスを付与
+      entry.target.classList.add('is-show');
+      
+      // 一度表示されたら監視をやめる
+      observer.unobserve(entry.target);
+    }
   });
+}, {
+  root: null,
+  rootMargin: '0px -50px', // 左右少し内側で反応するように調整
+  threshold: 0.1 // 10%見えたら実行
+});
 
-  // js-fadeinクラスがついた要素を監視
-  document.querySelectorAll('.js-fadein').forEach((el) => {
-    observer.observe(el);
-  });
-
-  // 3. ハンバーガーメニュー
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-  
-  if (hamburger && nav) {
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('is-active');
-      nav.classList.toggle('is-active');
-    });
-
-    // メニューリンククリックで閉じる
-    const navLinks = document.querySelectorAll('.nav a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('is-active');
-        nav.classList.remove('is-active');
-      });
-    });
-  }
+// .js-fadein がついた要素をすべて監視する
+const fadeElements = document.querySelectorAll('.js-fadein');
+fadeElements.forEach((el) => {
+  observer.observe(el);
 });
