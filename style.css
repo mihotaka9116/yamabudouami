@@ -370,3 +370,48 @@ margin-top:400px;
   opacity: 1;
   transform: scale(1);
 }
+
+/* --- メインビジュアル演出の最終調整 --- */
+#mainvisual {
+  width: 100%;
+  height: 85vh; /* 高さをしっかり出す */
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.multi-slit {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.multi-slit img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; /* 最初は隠す */
+  transform: scale(1.1);
+  transition: opacity 1.2s ease 0.8s, transform 2.5s ease 0.6s; /* バーが動いてから表示 */
+}
+
+/* クラス「is-active」がついた時、画像を表示する */
+#mainvisual.is-active .multi-slit img {
+  opacity: 1 !important; /* 強制的に表示 */
+  transform: scale(1);
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  width: 33.34%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
+}
+
+/* バーを上に逃がす命令 */
+#mainvisual.is-active .bar {
+  transform: translateY(-100%);
+}
