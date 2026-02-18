@@ -333,3 +333,26 @@ section:nth-of-type(even) { background-color: #ffffff; }
   background-color: transparent;
   color: var(--main-color);
 }
+
+@media (max-width: 768px) {
+  /* ヘッダーの中身を縦並びにする */
+  #header {
+    flex-direction: column; 
+    gap: 15px;             /* ロゴとボタンの間の余白 */
+    padding: 20px 0;       /* 上下の余白を調整 */
+  }
+
+  /* ハンバーガーメニューの位置調整 */
+  .hamburger {
+    display: block;
+    margin: 0 auto;        /* 中央に配置 */
+    position: relative;    /* 固定位置を解除 */
+    right: auto;
+    top: auto;
+  }
+  
+  /* ナビゲーションが開く位置の調整 */
+  .nav {
+    top: 120px;            /* ロゴ+メニューの高さ分、開始位置を下げる */
+  }
+}
