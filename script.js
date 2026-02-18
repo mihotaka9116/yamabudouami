@@ -113,3 +113,30 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   // ...省略...
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // 1. メインビジュアル専用のトリガー
+  const mv = document.getElementById('mainvisual');
+  if (mv) {
+    // ページ読み込みから0.5秒後に開始
+    setTimeout(() => {
+      mv.classList.add('is-active');
+    }, 500);
+  }
+
+  // 2. その他の要素（Aboutなど）のスクロール監視
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.js-fadein').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // （ハンバーガーメニューのコードもここに続けてOKです）
+});
