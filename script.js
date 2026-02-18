@@ -67,3 +67,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- ハンバーガーメニュー等の他のコードはそのまま下に続けてください ---
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  // --- メインビジュアルを即座に動かす ---
+  const mv = document.getElementById('mainvisual');
+  if (mv) {
+    // 0.5秒後にアニメーション開始
+    setTimeout(() => {
+      mv.classList.add('is-active');
+    }, 500);
+  }
+
+  // --- その他のフェードイン（About以降用） ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+        // 一度表示されたら監視をやめる（パフォーマンス向上）
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.js-fadein').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // （ハンバーガーメニューのコードはそのまま続けてください）
+});
