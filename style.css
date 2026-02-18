@@ -316,67 +316,57 @@ body {
 margin-top:400px;
 }
 
-/* --- メインビジュアル演出の修正版 --- */
+/* --- メインビジュアル演出の完成版 --- */
 #mainvisual {
-    width: 100%;
-    height: 80vh; /* 高さをしっかり確保 */
-    position: relative;
-    overflow: hidden;
-    background-color: #fff;
+  width: 100%;
+  height: 80vh; /* 高さを確保 */
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 0; /* 余計な余白を消す */
+}
+
+.area {
+  margin-top: 0 !important; /* 現在の400pxをリセット */
+  height: 100%;
 }
 
 .multi-slit {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .multi-slit img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0; /* 最初は隠す */
-    transform: scale(1.1);
-    transition: opacity 1.5s ease 0.8s, transform 2s ease 0.8s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1.5s ease 0.8s, transform 2s ease 0.8s;
 }
 
-/* 3本の白いバー（マスク） */
+/* 3本の白いバー */
 .bar {
-    position: absolute;
-    top: 0;
-    width: 33.34%;
-    height: 100%;
-    background: #fff;
-    z-index: 10;
-    /* transitionの書き方を修正 */
-    transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
-    transform: translateY(0); /* 最初は画面を覆う */
+  position: absolute;
+  top: 0;
+  width: 33.34%;
+  height: 100%;
+  background: #fff;
+  z-index: 10;
+  transition: transform 1.5s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
 .b1 { left: 0; }
-.b2 { left: 33.33%; }
-.b3 { left: 66.66%; }
+.b2 { left: 33.33%; transition-delay: 0.15s; }
+.b3 { left: 66.66%; transition-delay: 0.3s; }
 
-/* --- アニメーション発火 --- */
-
-/* is-showクラスがついたらバーを上に飛ばす */
-#mainvisual.is-show .bar {
-    transform: translateY(-100%);
+/* アニメーション発火用（is-activeがついたら動く） */
+#mainvisual.is-active .bar {
+  transform: translateY(-100%);
 }
 
-.b2 { transition-delay: 0.15s; }
-.b3 { transition-delay: 0.3s; }
-
-/* 画像をふわっと出す */
-#mainvisual.is-show img {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* 【安全装置】JSが万が一動かなくても10秒経ったら消える設定 */
-@keyframes forceShow {
-    to { transform: translateY(-100%); }
-}
-#mainvisual:not(.is-show) .bar {
-    animation: forceShow 1s forwards 10s;
+#mainvisual.is-active img {
+  opacity: 1;
+  transform: scale(1);
 }
