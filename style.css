@@ -389,11 +389,12 @@ body {
 
 #mainvisual img {
   width: 100%;
-  height: auto;      /* 高さを自動（画像本来の比率）にする */
-  max-height: 80vh;  /* 画面の8割以上の高さにはならないように制限する */
-  object-fit: cover;
-}
+  height: 80vh;      /* または 100vh */
+  object-fit: cover; /* 必須 */
 
+  /* ▼ ここを「bottom」または「％」で調整します ▼ */
+  object-position: center bottom; 
+}
 #mainvisual img {
   /* 画像のレンダリングを鮮明にする（エッジが立ちます） */
   image-rendering: -webkit-optimize-contrast; 
