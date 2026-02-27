@@ -427,3 +427,19 @@ section:nth-of-type(even) {
   padding: 18px 50px;
   letter-spacing: 0.1em;
 }
+
+/* Add this to your #how-to-order section for a cleaner look */
+.order-step {
+  border: 1px solid #dcd6d0; /* Soften the border color */
+  position: relative;
+}
+
+/* Add a decorative element to the step number */
+.step-num::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--main-color);
+  margin: 10px auto;
+}
