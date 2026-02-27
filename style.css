@@ -409,26 +409,32 @@ body {
 }
 
 #mainvisual img {
-    width: 100%;
-    /* 高さを「画面いっぱい」にせず、自動（auto）にします。これでボケが解消されます */
-    height: auto; 
-    /* PCで見ている時に画像が巨大になりすぎないよう制限をかけます */
-    max-height: 85vh; 
-    /* 画像の表示位置を「下（カゴがある方）」に合わせます */
-    object-position: center bottom;
-    object-fit: contain; /* coverからcontainに変えると、画像全体が収まるようになります */
+    width: 100%;       /* 横幅を画面いっぱいに */
+    height: 70vh;      /* 高さを画面の7割に固定（引き伸ばしすぎを防止） */
+    object-fit: cover; /* 横幅いっぱいに広げつつ、はみ出た分を切り抜く */
+    
+    /* ▼ カゴが下の方にあるので、表示基準を「下」にします ▼ */
+    object-position: center bottom; 
+    
     display: block;
-    margin: 0 auto;
+    image-rendering: -webkit-optimize-contrast; /* ぼやけを軽減する設定 */
 }
 
-/* スマホで見るときは少しだけ高さを出す調整 */
+/* キャッチコピー（文字）が画像に被って読みづらい場合の調整 */
+.main-copy h2 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(0,0,0,0.7); /* 文字の影を強くして読みやすく */
+}
+
+/* スマホ用の微調整 */
 @media (max-width: 768px) {
     #mainvisual img {
-        height: 60vh;
-        object-fit: cover; /* スマホでは画面幅いっぱいにしたいのでcoverに */
-        object-position: center 80%; /* カゴがある下の方を狙い撃ち */
+        height: 60vh; /* スマホでは少し高さを抑える */
+        object-position: center 90%; /* スマホではさらに下（カゴ）を優先 */
+    }
+    .main-copy h2 {
+        font-size: 1.5rem;
     }
 }
-
 
 
