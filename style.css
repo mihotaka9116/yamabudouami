@@ -363,5 +363,12 @@ body {
   line-height: 2.0; /* ゆったりと */
 }
 
+#mainvisual img {
+  width: 100%;
+  height: 100vh;      /* 画面いっぱいの高さにする場合 */
+  object-fit: cover;  /* 画像を歪ませずに枠いっぱいに広げる設定 */
+  object-position: center; /* 画像の中央を表示 */
+}
+
 
 
