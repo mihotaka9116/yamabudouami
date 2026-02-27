@@ -528,3 +528,53 @@ body {
   }
 }
 
+/* --- メインビジュアル：網目クローズアップ版 --- */
+#mainvisual {
+  width: 100%;
+  height: 60vh;      /* PCでの高さを少し抑えて、ボケを防止 */
+  position: relative;
+  overflow: hidden;  /* アップにした画像のはみ出しを隠す（必須） */
+  background-color: #f3f4f1; /* 画像読み込み前のチラつき防止（背景色に合わせる） */
+}
+
+#mainvisual img {
+  width: 100%;
+  height: 100%;      /* 親要素（#mainvisual）の高さに合わせる */
+  object-fit: cover; /* 画面いっぱいに広げ、はみ出し分をカット */
+  
+  /* ▼ ここがポイント：表示位置を「下（網目がある方）」に合わせる ▼ */
+  object-position: center bottom; 
+  
+  display: block;
+  /* 画像のぼやけを最小限にする魔法の1行 */
+  image-rendering: -webkit-optimize-contrast; 
+  
+  /* ▼ 画像を1.3倍に拡大して、網目をさらにアップにする ▼ */
+  transform: scale(1.3); 
+  /* 拡大のアニメーションを少し入れると滑らかになります */
+  transition: transform 0.5s ease;
+}
+
+/* 画像の上に薄い影を落として、文字を浮かび上がらせる */
+#mainvisual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* 下に向かって暗くし、網目と文字を際立たせる */
+  background: linear-gradient(transparent 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none; /* クリックを邪魔しない */
+}
+
+/* スマホ用の設定（スマホでは今の状態を維持） */
+@media (max-width: 768px) {
+  #mainvisual {
+    height: 60vh; /* スマホでは少し高さを抑える */
+  }
+  #mainvisual img {
+    /* スマホではさらに下（網目）を優先 */
+    object-position: center 95%; 
+    transform: scale(1.1); /* スマホでは拡大率を少し下げる */
+  }
+}
+
