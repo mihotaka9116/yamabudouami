@@ -466,3 +466,66 @@ h2 {
     background-position: center 62%;
   }
 }
+
+/* --- 4. Main Visual (「引き」の調整) --- */
+#mainvisual {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* 【調整1】画像を引くために、表示エリアの高さを少し広げます */
+  height: 55vh; /* 40vh から 55vh に拡大 */
+  background-color: #fcfaf5;
+}
+
+/* 画像を背景として配置し、「引き」で表示する */
+.mainvisual-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://mihotaka9116.github.io/yamabudouami/kago.jpg");
+  background-repeat: no-repeat;
+  
+  /* 【調整2】画像を「引き」にします（拡大率を下げます） */
+  background-size: 120%; /* 180% から 120% に縮小 */
+  /* 引いた分、バッグが中央に来るように位置を微調整 */
+  background-position: center 60%; /* 65% から 60% に調整 */
+}
+
+.main-copy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.main-copy h2 {
+  font-size: 2.8rem; /* 高さが広がったので、文字を少し大きく */
+  color: #fff;
+  border: none;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+  margin: 0;
+}
+
+/* --- レスポンシブ対応 (スマホ向け) --- */
+@media (max-width: 768px) {
+  #mainvisual {
+    /* 【調整3】スマホでも高さを少し広げます */
+    height: 45vh; /* 30vh から 45vh に拡大 */
+  }
+  
+  .mainvisual-bg {
+    /* 【調整4】スマホでも画像を「引き」にします */
+    background-size: 180%; /* 300% から 180% に縮小 */
+    background-position: center 60%;
+  }
+  
+  .main-copy h2 {
+    font-size: 1.6rem; /* スマホ用の文字サイズを少し大きく */
+  }
+}
