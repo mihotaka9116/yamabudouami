@@ -437,4 +437,52 @@ body {
     }
 }
 
+/* --- メインビジュアルの最終調整 --- */
+#mainvisual {
+  width: 100%;
+  height: 75vh;      /* 全画面だと拡大しすぎてボケるため、画面の75%に固定 */
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* 画像読み込み前のチラつき防止 */
+}
+
+#mainvisual img {
+  width: 100%;
+  height: 100%;      /* 親要素（#mainvisual）の高さに合わせる */
+  object-fit: cover; /* 横幅いっぱいに広げ、はみ出し分をカット */
+  
+  /* ▼ カゴの位置に合わせて数値を微調整（95%はかなり下寄り） ▼ */
+  object-position: center 95%; 
+  
+  display: block;
+  /* 画像のぼやけを最小限にする魔法の1行 */
+  image-rendering: -webkit-optimize-contrast; 
+  /* 必要に応じて少しだけ拡大して余白を消す */
+  transform: scale(1.05); 
+}
+
+/* 画像の上に薄い影を落として、文字を浮かび上がらせる */
+#mainvisual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+  pointer-events: none; /* クリックを邪魔しない */
+}
+
+.main-copy {
+  z-index: 2; /* 文字を影より前に出す */
+}
+
+/* スマホ用の微調整 */
+@media (max-width: 768px) {
+  #mainvisual {
+    height: 60vh; /* スマホでは高さをさらに抑えてボケを防止 */
+  }
+  #mainvisual img {
+    object-position: center 90%; /* スマホで見え方が違う場合はここを微調整 */
+  }
+}
+
 
