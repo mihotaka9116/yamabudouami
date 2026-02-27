@@ -363,134 +363,12 @@ body {
   line-height: 2.0; /* ゆったりと */
 }
 
-#mainvisual img {
-  width: 100%;
-  height: 100vh;      /* 画面いっぱいの高さにする場合 */
-  object-fit: cover;  /* 画像を歪ませずに枠いっぱいに広げる設定 */
-  object-position: center; /* 画像の中央を表示 */
-}
-
-/* --- もっとアップにしたい場合 --- */
-#mainvisual img {
-  width: 100%;
-  height: 80vh;
-  object-fit: cover;
-  object-position: center 30%; /* ベースの位置 */
-  
-  /* ▼ 画像を1.2倍に拡大する ▼ */
-  transform: scale(1.2); 
-  
-  /* 拡大すると端が切れることがあるので、親要素に overflow: hidden; が必須です */
-}
-
-#mainvisual {
-  overflow: hidden; /* 拡大した画像のはみ出しを隠す（必須） */
-}
-
-#mainvisual img {
-  width: 100%;
-  height: 80vh;      /* または 100vh */
-  object-fit: cover; /* 必須 */
-
-  /* ▼ ここを「bottom」または「％」で調整します ▼ */
-  object-position: center bottom; 
-}
-#mainvisual img {
-  /* 画像のレンダリングを鮮明にする（エッジが立ちます） */
-  image-rendering: -webkit-optimize-contrast; 
-}
-
-#mainvisual::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* 30%の黒を重ねる */
-}
-
-#mainvisual img {
-    width: 100%;       /* 横幅を画面いっぱいに */
-    height: 70vh;      /* 高さを画面の7割に固定（引き伸ばしすぎを防止） */
-    object-fit: cover; /* 横幅いっぱいに広げつつ、はみ出た分を切り抜く */
-    
-    /* ▼ カゴが下の方にあるので、表示基準を「下」にします ▼ */
-    object-position: center bottom; 
-    
-    display: block;
-    image-rendering: -webkit-optimize-contrast; /* ぼやけを軽減する設定 */
-}
-
-/* キャッチコピー（文字）が画像に被って読みづらい場合の調整 */
-.main-copy h2 {
-    font-size: 2.5rem;
-    text-shadow: 0 0 15px rgba(0,0,0,0.7); /* 文字の影を強くして読みやすく */
-}
-
-/* スマホ用の微調整 */
-@media (max-width: 768px) {
-    #mainvisual img {
-        height: 60vh; /* スマホでは少し高さを抑える */
-        object-position: center 90%; /* スマホではさらに下（カゴ）を優先 */
-    }
-    .main-copy h2 {
-        font-size: 1.5rem;
-    }
-}
-
-/* --- メインビジュアルの最終調整 --- */
+/* --- メインビジュアル：網目クローズアップ決定版 --- */
 #mainvisual {
   width: 100%;
-  height: 75vh;      /* 全画面だと拡大しすぎてボケるため、画面の75%に固定 */
+  height: 60vh;      /* PCで見やすく、ボケにくい高さ */
   position: relative;
-  overflow: hidden;
-  background-color: #000; /* 画像読み込み前のチラつき防止 */
-}
-
-#mainvisual img {
-  width: 100%;
-  height: 100%;      /* 親要素（#mainvisual）の高さに合わせる */
-  object-fit: cover; /* 横幅いっぱいに広げ、はみ出し分をカット */
-  
-  /* ▼ カゴの位置に合わせて数値を微調整（95%はかなり下寄り） ▼ */
-  object-position: center 95%; 
-  
-  display: block;
-  /* 画像のぼやけを最小限にする魔法の1行 */
-  image-rendering: -webkit-optimize-contrast; 
-  /* 必要に応じて少しだけ拡大して余白を消す */
-  transform: scale(1.05); 
-}
-
-/* 画像の上に薄い影を落として、文字を浮かび上がらせる */
-#mainvisual::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4));
-  pointer-events: none; /* クリックを邪魔しない */
-}
-
-.main-copy {
-  z-index: 2; /* 文字を影より前に出す */
-}
-
-/* スマホ用の微調整 */
-@media (max-width: 768px) {
-  #mainvisual {
-    height: 60vh; /* スマホでは高さをさらに抑えてボケを防止 */
-  }
-  #mainvisual img {
-    object-position: center 90%; /* スマホで見え方が違う場合はここを微調整 */
-  }
-}
-
-/* --- メインビジュアル：網目クローズアップ統合版 --- */
-#mainvisual {
-  width: 100%;
-  height: 60vh;      /* PCでの高さ。ボケない絶妙なサイズ */
-  position: relative;
-  overflow: hidden;  /* はみ出しをカット */
+  overflow: hidden;  /* 拡大した画像のはみ出しを必ず隠す */
   background-color: #2d4033; /* 読み込み中にモスグリーンを表示 */
 }
 
@@ -499,30 +377,35 @@ body {
   height: 100%;
   object-fit: cover; 
   
-  /* ▼ 表示位置を「真ん中の、かなり下寄り（網目）」に固定 ▼ */
-  object-position: center 90%; 
+  /* ▼ カゴの網目がある「右下寄り」を狙い撃ちします ▼ */
+  object-position: 70% 90%; 
   
-  /* ▼ 拡大率を1.3から1.1に少し下げます。これで「背景」の映り込みを防ぎます ▼ */
+  /* ▼ 拡大率。背景を隠しつつ網目を出す絶妙な1.15倍 ▼ */
   transform: scale(1.15); 
   
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -webkit-optimize-contrast; /* クッキリさせる */
   display: block;
 }
 
-/* 画像の下側に影を入れ、文字を白く浮き立たせる */
+/* 文字を読みやすくするための影（グラデーション） */
 #mainvisual::after {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(transparent 40%, rgba(0,0,0,0.6) 100%);
+  background: linear-gradient(transparent 30%, rgba(0,0,0,0.5) 100%);
+  z-index: 1;
 }
 
-/* スマホ用：画面が細長いので位置を微調整 */
+.main-copy {
+  z-index: 2; /* 文字を影より前に出す */
+}
+
+/* スマホ用：画面が縦長なので位置を微調整 */
 @media (max-width: 768px) {
-  #mainvisual { height: 55vh; }
+  #mainvisual { height: 50vh; } /* スマホは少し低めが綺麗 */
   #mainvisual img {
-    object-position: center 85%;
+    object-position: center 85%; /* スマホは中央の下寄りを狙う */
     transform: scale(1.1);
   }
 }
