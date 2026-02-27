@@ -485,4 +485,46 @@ body {
   }
 }
 
+/* --- メインビジュアルの最終調整 --- */
+#mainvisual {
+  width: 100%;
+  height: 65vh;      /* PCでの高さを少し抑えて、ボケと余白を解消 */
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* 黒い余白が出ないように念のため */
+}
+
+#mainvisual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画面いっぱいに広げ、はみ出し分をカット（黒いボックスを消す） */
+  
+  /* ▼ ここがポイント：上4分の1（25%）を隠し、下75%を基準にする ▼ */
+  object-position: center 75%; 
+  
+  display: block;
+  image-rendering: -webkit-optimize-contrast; /* クッキリさせる */
+}
+
+/* 文字の背景にグラデーションを入れて、写真と馴染ませる */
+#mainvisual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* 下に向かって暗くし、カゴと文字を際立たせる */
+  background: linear-gradient(transparent 50%, rgba(0,0,0,0.5) 100%);
+  pointer-events: none;
+}
+
+/* スマホ用の設定（スマホでは綺麗とのことなので、今の状態を維持） */
+@media (max-width: 768px) {
+  #mainvisual {
+    height: 60vh;
+  }
+  #mainvisual img {
+    /* スマホではカゴが中央に来るように微調整 */
+    object-position: center 85%;
+  }
+}
 
