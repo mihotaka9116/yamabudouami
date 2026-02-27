@@ -1,412 +1,76 @@
 @charset "UTF-8";
 
-/* --- 1. Fonts & Variables --- */
+/* --- 1. Fonts --- */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700&display=swap');
 
 :root {
-  --main-color: #2d4033; /* 深みのあるモスグリーン */
-  --bg-color: #f3f4f1;   /* わずかに緑がかったグレーベージュ */
+  --main-color: #2d4033;
+  --bg-color: #f3f4f1;
   --text-color: #2b2b2b;
 }
 
 /* --- 2. Base --- */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
 body {
   margin: 0;
   font-family: 'Noto Sans JP', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.8;
-  overflow-x: hidden;
 }
 
-/* 共通の見出し設定：中央寄せ */
-h2 {
-  color: var(--main-color);
-  border-bottom: 2px solid var(--main-color);
-  display: block;
-  width: fit-content;
-  margin: 0 auto 30px;
-  padding-bottom: 10px;
-  text-align: center;
-  font-family: 'Noto Serif JP', serif;
-  letter-spacing: 0.15em;
-}
-
-/* --- 3. Header --- */
-#header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: #fcfaf5;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* サイト名＋アイコンの装飾 */
-.site-title h1 { margin: 0; }
-.site-title h1 a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: var(--main-color);
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
-  padding: 5px 12px;
-  border: 1px solid var(--main-color); /* 枠線装飾 */
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-.site-title h1 a:hover {
-  background-color: var(--main-color);
-  color: #fff;
-}
-
-.site-title h1 a i { font-size: 1.1rem; }
-
-/* PC用ナビ */
-.nav ul {
-  display: flex;
-  list-style: none;
-  gap: 30px;
-  margin: 0;
-}
-
-.nav a {
-  text-decoration: none;
-  color: var(--main-color);
-  font-weight: bold;
-  font-size: 1rem;
-  transition: 0.3s;
-}
-
-.nav a:hover { opacity: 0.6; }
-
-/* --- 4. Main Visual --- */
-#mainvisual { width: 100%; position: relative; overflow: hidden; }
-#mainvisual img { width: 100%; height: auto; display: block; }
-.main-copy {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff; text-align: center; width: 100%;
-}
-.main-copy h2 {
-  font-size: 3rem; color: #fff; border: none; /* MV内は線なし */
-  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-}
-
-/* --- 5. Sections Layout --- */
-section { padding: 100px 0; scroll-margin-top: 70px; }
-section:nth-of-type(odd) { background-color: var(--bg-color); }
-section:nth-of-type(even) { background-color: #ffffff; }
-
-.wrapper { max-width: 1100px; margin: 0 auto; padding: 0 4%; }
-.sec-title { font-size: 2.2rem; margin-bottom: 60px; }
-.jp-sub { display: block; font-size: 0.9rem; color: #888; margin-top: 10px; border: none; }
-
-/* --- 6. Contents Detail --- */
-/* About */
-.about-text { background: #fff; padding: 50px; border-radius: 15px; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
-
-/* Quality */
-.quality-container { display: flex; gap: 40px; }
-.quality-item {
-  flex: 1; background: rgba(45, 64, 51, 0.03);
-  padding: 40px; border-left: 4px solid var(--main-color);
-}
-
-/* Process */
-.process-list { display: flex; justify-content: space-between; gap: 20px; }
-.process-item {
-  flex: 1; background: #fff; padding: 30px; border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;
-}
-
-/* Gallery */
-.gallery-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px; list-style: none; padding: 0;
-}
-.gallery-grid li { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.5s; }
-.gallery-grid li:hover img { transform: scale(1.1); }
-.item-info { padding: 15px; text-align: center; }
-
-/* --- 7. Contact & Footer --- */
-#contact form { max-width: 600px; margin: 40px auto; padding: 40px; background: #fff; border-radius: 10px; }
-#contact input, #contact textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; }
-
-.button { text-align: center; }
-.button input[type="submit"] {
-  background: var(--main-color); color: #fff; border: none;
-  padding: 15px 80px; cursor: pointer; border-radius: 5px; transition: 0.3s;
-}
-
-.inst-link {
-  display: inline-block; padding: 12px 30px; border: 2px solid var(--main-color);
-  color: var(--main-color); text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.4s;
-}
-.inst-link:hover { background: var(--main-color); color: #fff; transform: translateY(-3px); }
-
-#footer { background-color: var(--main-color); color: #fff; text-align: center; padding: 40px 0; }
-#footer p { margin: 0; font-size: 0.8rem; }
-.instagram-icon-link { color: #fff; font-size: 2rem; margin-bottom: 10px; display: inline-block; transition: 0.3s; }
-.instagram-icon-link:hover { opacity: 0.7; transform: scale(1.1); }
-
-/* --- 8. Animations --- */
-.js-fadein { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
-.js-fadein.is-show { opacity: 1; transform: translateY(0); }
-
-/* --- 9. Responsive --- */
-.hamburger { display: none; }
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block; z-index: 1001; width: 30px; height: 24px; position: relative;
-  }
-  .hamburger span {
-    display: block; width: 100%; height: 2px; background-color: var(--main-color);
-    position: absolute; transition: 0.4s;
-  }
-  .hamburger span:nth-child(1) { top: 0; }
-  .hamburger span:nth-child(2) { top: 11px; }
-  .hamburger span:nth-child(3) { bottom: 0; }
-  
-  .hamburger.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-  .hamburger.is-active span:nth-child(2) { opacity: 0; }
-  .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-
-  .nav {
-    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-    background: rgba(252, 250, 245, 0.98); transition: 0.5s; z-index: 1000;
-    padding-top: 100px;
-  }
-  .nav.is-active { right: 0; }
-  .nav ul { flex-direction: column; align-items: center; gap: 40px; }
-
-  .main-copy h2 { font-size: 1.8rem; }
-  .quality-container, .process-list { flex-direction: column; }
-  section { padding: 60px 0; }
-}
-
-/* CONTACTセクション全体を中央寄せにする */
-#contact {
-  text-align: center; /* セクション内のテキスト、インライン要素を中央へ */
-  padding: 80px 0;
-}
-
-/* お問い合わせ文言の調整 */
-#contact p {
-  margin-bottom: 30px;
-  line-height: 1.8;
-}
-
-/* Instagramボタンの調整 */
-.insta-btn {
-  display: inline-block; /* 中央寄せが効くようにinline-block化 */
-  margin: 0 auto;        /* 念のための中央配置設定 */
-  padding: 12px 30px;
-  background-color: #5d4037; /* 山ぶどうらしい落ち着いた茶色など */
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: opacity 0.3s;
-}
-
-.insta-btn:hover {
-  opacity: 0.8;
-}
-
-/* もしInstagramアイコン画像を入れている場合 */
-.insta-btn img {
-  vertical-align: middle;
-  margin-right: 8px;
-  width: 20px; /* サイズはお好みで */
-}
-
-/* ご購入の流れスタイル */
-#how-to-order {
-  padding: 80px 20px;
-  background-color: #fdfdfd; /* わずかに色を変えて区切りを明確に */
-}
-
-.order-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.order-step {
-  flex: 1;
-  background: #fff;
-  padding: 40px 25px;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.order-step:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-}
-
-.step-num {
-  font-family: 'Georgia', serif;
-  font-size: 2.2rem;
-  color: #8b4513; /* 山葡萄をイメージした落ち着いた茶色 */
-  display: block;
-  margin-bottom: 15px;
-  font-weight: italic;
-}
-
-.order-step h3 {
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-.order-step p {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  text-align: left;
-  color: #666;
-}
-
-.btn-sm {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 8px 20px;
-  background: #444;
-  color: #fff;
-  text-decoration: none;
-  font-size: 0.8rem;
-  border-radius: 2px;
-  transition: background 0.3s;
-}
-
-.btn-sm:hover {
-  background: #8b4513;
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-  .order-container {
-    flex-direction: column;
-  }
-  .order-step {
-    padding: 30px 20px;
-  }
-}
-
-/* サイト名＋アイコンの装飾（色を反転） */
-.site-title h1 a {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  
-  /* --- ここで色を逆にします --- */
-  background-color: var(--main-color); /* 背景をモスグリーンに */
-  color: #fff;                        /* 文字を白に */
-  
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.4rem;
-  letter-spacing: 0.05em;
-  padding: 5px 15px; /* 少し余白を広げると綺麗です */
-  border: 1px solid var(--main-color);
-  border-radius: 2px;
-  transition: 0.3s;
-}
-
-/* ホバーした時に元のデザイン（白背景）に戻るようにする */
-.site-title h1 a:hover {
-  background-color: transparent;
-  color: var(--main-color);
-}
-
-@media (max-width: 768px) {
-  /* ヘッダーの中身を縦並びにする */
-  #header {
-    flex-direction: column; 
-    gap: 15px;             /* ロゴとボタンの間の余白 */
-    padding: 20px 0;       /* 上下の余白を調整 */
-  }
-
-  /* ハンバーガーメニューの位置調整 */
-  .hamburger {
-    display: block;
-    margin: 0 auto;        /* 中央に配置 */
-    position: relative;    /* 固定位置を解除 */
-    right: auto;
-    top: auto;
-  }
-  
-  /* ナビゲーションが開く位置の調整 */
-  .nav {
-    top: 120px;            /* ロゴ+メニューの高さ分、開始位置を下げる */
-  }
-}
-
-/* 文字サイズと行間の調整 */
-body {
-  font-size: 18px; /* 少し大きく */
-  line-height: 2.0; /* ゆったりと */
-}
-
-/* --- メインビジュアル：網目クローズアップ決定版 --- */
+/* --- 3. Main Visual (ここが重要です) --- */
 #mainvisual {
   width: 100%;
-  height: 60vh;      /* PCで見やすく、ボケにくい高さ */
+  height: 60vh; /* PCでの高さ */
   position: relative;
-  overflow: hidden;  /* 拡大した画像のはみ出しを必ず隠す */
-  background-color: #2d4033; /* 読み込み中にモスグリーンを表示 */
+  overflow: hidden;
+  background-color: var(--main-color);
 }
 
 #mainvisual img {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
-  
-  /* ▼ カゴの網目がある「右下寄り」を狙い撃ちします ▼ */
-  object-position: 70% 90%; 
-  
-  /* ▼ 拡大率。背景を隠しつつ網目を出す絶妙な1.15倍 ▼ */
-  transform: scale(1.15); 
-  
-  image-rendering: -webkit-optimize-contrast; /* クッキリさせる */
+  object-fit: cover;
+  /* 網目のある右下を狙い撃ち */
+  object-position: 70% 95%; 
+  /* 1.2倍に拡大して網目をアップに */
+  transform: scale(1.2); 
   display: block;
+  image-rendering: -webkit-optimize-contrast;
 }
 
-/* 文字を読みやすくするための影（グラデーション） */
+/* 文字を読みやすくする影 */
 #mainvisual::after {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: linear-gradient(transparent 30%, rgba(0,0,0,0.5) 100%);
-  z-index: 1;
+  background: linear-gradient(transparent 40%, rgba(0,0,0,0.6) 100%);
 }
 
 .main-copy {
-  z-index: 2; /* 文字を影より前に出す */
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff; text-align: center; width: 100%;
+  z-index: 10;
 }
 
-/* スマホ用：画面が縦長なので位置を微調整 */
+.main-copy h2 {
+  font-size: 3rem; color: #fff; border: none;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* --- 4. スマホ対応 (ここも重要です) --- */
 @media (max-width: 768px) {
-  #mainvisual { height: 50vh; } /* スマホは少し低めが綺麗 */
+  #mainvisual { height: 50vh; }
   #mainvisual img {
-    object-position: center 85%; /* スマホは中央の下寄りを狙う */
+    object-position: center 90%;
     transform: scale(1.1);
   }
+  .main-copy h2 { font-size: 1.8rem; }
 }
 
+/* 以降、AboutやGalleryなどの既存スタイルをここに続けて貼ってください */
