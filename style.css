@@ -441,6 +441,7 @@ h2 {
 }
 
 /* 画像を背景として配置し、中央だけを表示する */
+/* 画像を背景として配置し、かごバッグを中央にズームする */
 .mainvisual-bg {
   position: absolute;
   top: 0;
@@ -450,41 +451,18 @@ h2 {
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kago.jpg");
   background-repeat: no-repeat;
   
-  /* 【重要】ここがポイントです */
-  background-position: center 60%; /* 中央やや下（かごバッグがある位置）を基準にする */
-  background-size: contain;         /* 画像全体が収まるように縮小し、背景（空）を切る */
-  
-  /* もし「かごバッグを限界まで大きく」したい場合は、下記に差し替えてください */
-  /* background-size: cover; */
-  /* background-position: center 65%; */
+  /* 【ここが重要】 */
+  /* 180%に拡大することで、外側の空や背景を画面外へ追い出します */
+  background-size: 180%; 
+  /* かごバッグが中央に来るように位置を微調整（65%でやや下へ移動） */
+  background-position: center 65%; 
 }
 
-.main-copy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  z-index: 10; /* 画像より前面に */
-}
-
-.main-copy h2 {
-  font-size: 2.5rem; /* 高さが低くなったので、文字も少し小さく */
-  color: #fff;
-  border: none;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.7); /* 文字の可読性を確保 */
-  margin: 0;
-}
-
-/* --- レスポンシブ対応 (スマホ向け) --- */
+/* スマホ用（さらにズームを強めて背景をカット） */
 @media (max-width: 768px) {
-  #mainvisual {
-    height: 30vh; /* スマホではさらに高さを低く */
-  }
-  
-  .main-copy h2 {
-    font-size: 1.5rem; /* スマホ用の文字サイズ */
+  .mainvisual-bg {
+    /* 縦長のスマホ画面では拡大率を上げる（300%前後）とバッグが中央に大きく映ります */
+    background-size: 300%;
+    background-position: center 62%;
   }
 }
