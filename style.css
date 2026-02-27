@@ -356,3 +356,28 @@ section:nth-of-type(even) { background-color: #ffffff; }
     top: 120px;            /* ロゴ+メニューの高さ分、開始位置を下げる */
   }
 }
+
+/* 文字サイズと行間の調整 */
+body {
+  font-size: 18px; /* 少し大きく */
+  line-height: 2.0; /* ゆったりと */
+}
+
+/* 見出しをより上品に */
+h2 {
+  font-size: 2.4rem;
+  letter-spacing: 0.2em; /* 字間を広げて優雅に */
+}
+
+/* 商品情報を見やすく */
+.item-info {
+  padding: 20px;
+  background-color: #fcfaf5; /* 商品説明エリアに薄く色をつけて区切る */
+}
+
+.item-name {
+  font-weight: bold;
+  font-family: 'Noto Serif JP', serif;
+  color: var(--main-color);
+  font-size: 1.2rem;
+}
