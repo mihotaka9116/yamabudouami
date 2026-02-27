@@ -408,5 +408,27 @@ body {
   background: rgba(0, 0, 0, 0.3); /* 30%の黒を重ねる */
 }
 
+#mainvisual img {
+    width: 100%;
+    /* 高さを「画面いっぱい」にせず、自動（auto）にします。これでボケが解消されます */
+    height: auto; 
+    /* PCで見ている時に画像が巨大になりすぎないよう制限をかけます */
+    max-height: 85vh; 
+    /* 画像の表示位置を「下（カゴがある方）」に合わせます */
+    object-position: center bottom;
+    object-fit: contain; /* coverからcontainに変えると、画像全体が収まるようになります */
+    display: block;
+    margin: 0 auto;
+}
+
+/* スマホで見るときは少しだけ高さを出す調整 */
+@media (max-width: 768px) {
+    #mainvisual img {
+        height: 60vh;
+        object-fit: cover; /* スマホでは画面幅いっぱいにしたいのでcoverに */
+        object-position: center 80%; /* カゴがある下の方を狙い撃ち */
+    }
+}
+
 
 
