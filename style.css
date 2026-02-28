@@ -430,112 +430,12 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual (大幅修正) --- */
+/* --- 4. Main Visual (修正：PC・スマホ両対応) --- */
 #mainvisual {
   width: 100%;
   position: relative;
   overflow: hidden;
-  /* 画像全体の高さを低く設定 (PC・タブレット向け) */
-  height: 40vh; /* 画面の高さの40%に固定。適宜調整してください */
-  background-color: #fcfaf5; /* 画像の背景色（ヘッダーと同じ）にして余白を目立たなくする */
-}
-
-/* 画像を背景として配置し、中央だけを表示する */
-/* 画像を背景として配置し、かごバッグを中央にズームする */
-.mainvisual-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kago.jpg");
-  background-repeat: no-repeat;
-  
-  /* 【ここが重要】 */
-  /* 180%に拡大することで、外側の空や背景を画面外へ追い出します */
-  background-size: 180%; 
-  /* かごバッグが中央に来るように位置を微調整（65%でやや下へ移動） */
-  background-position: center 65%; 
-}
-
-/* スマホ用（さらにズームを強めて背景をカット） */
-@media (max-width: 768px) {
-  .mainvisual-bg {
-    /* 縦長のスマホ画面では拡大率を上げる（300%前後）とバッグが中央に大きく映ります */
-    background-size: 300%;
-    background-position: center 62%;
-  }
-}
-
-/* --- 4. Main Visual (「引き」の調整) --- */
-#mainvisual {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  /* 【調整1】画像を引くために、表示エリアの高さを少し広げます */
-  height: 55vh; /* 40vh から 55vh に拡大 */
-  background-color: #fcfaf5;
-}
-
-/* 画像を背景として配置し、「引き」で表示する */
-.mainvisual-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-  background-repeat: no-repeat;
-  
-  /* 【調整2】画像を「引き」にします（拡大率を下げます） */
-  background-size: 120%; /* 180% から 120% に縮小 */
-  /* 引いた分、バッグが中央に来るように位置を微調整 */
-  background-position: center 60%; /* 65% から 60% に調整 */
-}
-
-.main-copy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  z-index: 10;
-}
-
-.main-copy h2 {
-  font-size: 2.8rem; /* 高さが広がったので、文字を少し大きく */
-  color: #fff;
-  border: none;
-  text-shadow: 0 2px 15px rgba(0,0,0,0.6);
-  margin: 0;
-}
-
-/* --- レスポンシブ対応 (スマホ向け) --- */
-@media (max-width: 768px) {
-  #mainvisual {
-    /* 【調整3】スマホでも高さを少し広げます */
-    height: 45vh; /* 30vh から 45vh に拡大 */
-  }
-  
-  .mainvisual-bg {
-    /* 【調整4】スマホでも画像を「引き」にします */
-    background-size: 180%; /* 300% から 180% に縮小 */
-    background-position: center 60%;
-  }
-  
-  .main-copy h2 {
-    font-size: 1.6rem; /* スマホ用の文字サイズを少し大きく */
-  }
-}
-
-/* --- 4. Main Visual (PC・タブレット・スマホ共通のベース) --- */
-#mainvisual {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  height: 60vh; /* 画面の高さの60%を表示領域にする */
+  height: 60vh; /* 画面高さの60%を表示領域にする */
   background-color: #fcfaf5;
 }
 
@@ -549,58 +449,43 @@ h2 {
   background-repeat: no-repeat;
   
   /* 【ここが解決のポイント】 */
-  /* PCなど横長画面で「持ち手だけ」にならないよう、画像全体を収める設定 */
+  /* coverにすることで、隙間なく、かつ「持ち手だけ」にならない適切な比率で表示します */
   background-size: cover; 
-  /* 画像の上部（背景やカゴの上半分）を優先して表示 */
-  background-position: center 20%; 
-}
-
-/* --- 【追加】PCなど大きな画面（横幅1024px以上）専用の微調整 --- */
-@media (min-width: 1025px) {
-  .mainvisual-bg {
-    /* 画像が横に広がりすぎないよう、拡大率を抑える（100%にする） */
-    background-size: 100% auto; 
-    /* 画像を一番上に固定して、背景の余白を見せる */
-    background-position: center top; 
-  }
   
+  /* 画像の「上端」を基準にする。これで持ち手より上の背景がしっかり映ります */
+  background-position: center top; 
+}
+
+/* PC（横幅1025px以上）での微調整 */
+@media (min-width: 1025px) {
   #mainvisual {
-    /* PCでは高さを少し抑えるときれいに見えます（お好みで調整） */
-    height: 500px; 
+    height: 550px; /* PCでは高さを固定するとより安定します */
+  }
+  .mainvisual-bg {
+    /* 画像の上部20%くらいを基準に表示（お好みでtop〜20%で調整） */
+    background-position: center 20%; 
   }
 }
 
-/* --- スマホ用調整（現状のまま） --- */
+/* スマホ（横幅768px以下）での調整 */
 @media (max-width: 768px) {
   #mainvisual {
-    height: 45vh;
+    height: 50vh;
   }
   .mainvisual-bg {
-    background-size: cover;
+    /* スマホは縦長なので、中央付近を見せるのが綺麗です */
     background-position: center center;
   }
 }
 
-/* 既存の記述を上書きするために、一番下に配置してください */
-
-@media (min-width: 1025px) {
-  #mainvisual {
-    height: 500px !important; /* 高さを固定 */
-    background-color: #fcfaf5;
-  }
-
-  .mainvisual-bg {
-    /* 画像をズームさせず、横幅いっぱいに収める設定 */
-    background-size: contain !important; 
-    
-    /* 画像を中央の一番上に配置 */
-    background-position: center top !important;
-    
-    /* 繰り返しを防ぐ */
-    background-repeat: no-repeat !important;
-    
-    /* 念のため高さを100%に */
-    height: 100% !important;
-    width: 100% !important;
-  }
+/* メインコピー（もし文字を入れるなら） */
+.main-copy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
 }
