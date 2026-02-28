@@ -529,3 +529,19 @@ h2 {
     font-size: 1.6rem; /* スマホ用の文字サイズを少し大きく */
   }
 }
+
+/* --- 4. Main Visual 修正案A --- */
+.mainvisual-bg {
+  /* ...他の設定はそのまま... */
+  
+  /* 画像の拡大率をさらに下げて（引き）、上端を基準にする */
+  background-size: 100%; /* 120% から 100% にして全体を見せる */
+  background-position: center top; /* これで画像の上端がMVの上端に合います */
+}
+
+@media (max-width: 768px) {
+  .mainvisual-bg {
+    background-size: cover; /* スマホでは隙間が出ないよう自動調整 */
+    background-position: center top;
+  }
+}
