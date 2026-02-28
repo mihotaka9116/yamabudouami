@@ -430,13 +430,14 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual --- */
+/* --- 4. Main Visual 修正案A（高さを低くして引きにする） --- */
 #mainvisual {
   width: 100%;
   position: relative;
   overflow: hidden;
-  /* PCでの表示高さ（お好みで 500px〜600px で調整してください） */
-  height: 550px; 
+  /* 【ここを修正】高さを 550px から 400px に縮めます */
+  /* これで、画像の下側（かごの底）まで画面に入りやすくなります */
+  height: 400px; 
   background-color: #fcfaf5;
 }
 
@@ -449,22 +450,10 @@ h2 {
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
   background-repeat: no-repeat;
   
-  /* 【重要】coverにすることで、どんな画面幅でも必ず横いっぱいに表示されます */
+  /* 横幅いっぱいを維持 */
   background-size: cover; 
   
-  /* 【重要】画像の「上の方」を基準に表示します */
-  /* 0%に近づくほど画像の上側が表示されます。10%〜20%がおすすめです */
-  background-position: center 15%; 
-}
-
-/* スマホ用（横幅768px以下）の微調整 */
-@media (max-width: 768px) {
-  #mainvisual {
-    height: 50vh; /* スマホでは画面の高さの半分にする */
-  }
-  
-  .mainvisual-bg {
-    /* スマホは縦長なので、画像の中央が見えるように調整 */
-    background-position: center center;
-  }
+  /* 【ここを修正】上端を基準にする（0%） */
+  /* これでかごの持ち手より上の背景がしっかり映ります */
+  background-position: center top; 
 }
