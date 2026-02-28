@@ -430,39 +430,12 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual 修正案A（高さを低くして引きにする） --- */
+/* --- 4. Main Visual --- */
 #mainvisual {
   width: 100%;
   position: relative;
   overflow: hidden;
-  /* 【ここを修正】高さを 550px から 400px に縮めます */
-  /* これで、画像の下側（かごの底）まで画面に入りやすくなります */
-  height: 300px; 
-  background-color: #fcfaf5;
-}
-
-.mainvisual-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-  background-repeat: no-repeat;
-  
-  /* 横幅いっぱいを維持 */
-  background-size: cover; 
-  
-  /* 【ここを修正】上端を基準にする（0%） */
-  /* これでかごの持ち手より上の背景がしっかり映ります */
-  background-position: center top; 
-
-  /* --- 4. Main Visual 最終調整案 --- */
-#mainvisual {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  /* PCでは高さを350px〜400px程度にすると、かごの底まで入りやすくなります */
+  /* PCでの表示高さ。かご全体を見せるために少し低めの400pxに設定 */
   height: 400px; 
   background-color: #fcfaf5;
 }
@@ -476,26 +449,24 @@ h2 {
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
   background-repeat: no-repeat;
   
-  /* 【ここがポイント】 */
-  /* coverではなく、100% auto にすることで、横幅を画面にピッタリ合わせ、 */
-  /* 画像の高さが足りない分は背景色の余白（#fcfaf5）として表示させます */
-  background-size: 100% auto; 
+  /* 【ここがアップを解消するポイント】 */
+  /* coverを避け、100% autoにすることで、画像を横幅いっぱいの「引き」の状態に固定します */
+  background-size: 100% auto;
   
-  /* 画像を中央の一番上に配置 */
+  /* 画像の上端（持ち手の上）を基準に表示 */
   background-position: center top; 
 }
 
-/* スマホ用（768px以下）：スマホは今のまま「全体を埋める」設定に！ */
+/* スマホ用（横幅768px以下）の設定 */
 @media (max-width: 768px) {
   #mainvisual {
-    height: 50vh; /* スマホでは画面高さの半分を確保 */
+    height: 50vh; /* スマホでは少し高さを出す */
   }
   .mainvisual-bg {
-    background-size: cover; /* スマホは隙間なく埋めるほうが綺麗です */
+    /* スマホは画面が細長いので、隙間が出ないようにcover（自動拡大）を使います */
+    background-size: cover;
     background-position: center center;
   }
 }
-}
-
  
 
