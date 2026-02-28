@@ -437,7 +437,7 @@ h2 {
   overflow: hidden;
   /* 【ここを修正】高さを 550px から 400px に縮めます */
   /* これで、画像の下側（かごの底）まで画面に入りやすくなります */
-  height: 400px; 
+  height: 300px; 
   background-color: #fcfaf5;
 }
 
@@ -482,3 +482,5 @@ h2 {
   /* 中央の一番上に配置 */
   background-position: center top; 
 }
+
+
