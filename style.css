@@ -530,18 +530,64 @@ h2 {
   }
 }
 
-/* --- 4. Main Visual 修正案A --- */
-.mainvisual-bg {
-  /* ...他の設定はそのまま... */
-  
-  /* 画像の拡大率をさらに下げて（引き）、上端を基準にする */
-  background-size: 100%; /* 120% から 100% にして全体を見せる */
-  background-position: center top; /* これで画像の上端がMVの上端に合います */
+/* --- 4. Main Visual (修正版：全体が映るように調整) --- */
+#mainvisual {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  /* 表示エリアの高さを少し広めに確保します */
+  height: 60vh; 
+  background-color: #fcfaf5;
 }
 
+.mainvisual-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 使用する画像 */
+  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
+  background-repeat: no-repeat;
+  
+  /* 【ここを修正】 */
+  /* contain: 画像が切れないように枠内に収めます */
+  /* cover: 枠いっぱいに広げつつ、比率を保ちます（こちらがおすすめ） */
+  background-size: cover; 
+  
+  /* 【ここを修正】 */
+  /* center top にすることで、持ち手より上の「背景」や「上部」を優先して表示します */
+  background-position: center top; 
+}
+
+/* スマホ用調整 */
 @media (max-width: 768px) {
+  #mainvisual {
+    height: 50vh; /* スマホで見やすい高さに */
+  }
+  
   .mainvisual-bg {
-    background-size: cover; /* スマホでは隙間が出ないよう自動調整 */
+    /* スマホでもズームしすぎず、中央上部を表示 */
+    background-size: cover;
     background-position: center top;
   }
+}
+
+.main-copy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+.main-copy h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  border: none;
+  text-shadow: 0 2px 15px rgba(0,0,0,0.6);
+  margin: 0;
 }
