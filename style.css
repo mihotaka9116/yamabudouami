@@ -457,3 +457,28 @@ h2 {
   /* これでかごの持ち手より上の背景がしっかり映ります */
   background-position: center top; 
 }
+
+/* --- 4. Main Visual 修正案B（画像を絶対に切らない） --- */
+#mainvisual {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 550px; /* 高さは元のままでOK */
+  background-color: #fcfaf5; /* 余白の色（ヘッダーと同じ） */
+}
+
+.mainvisual-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
+  background-repeat: no-repeat;
+  
+  /* 【ここを修正】contain にすることで、画像全体が枠内に収まります */
+  background-size: contain; 
+  
+  /* 中央の一番上に配置 */
+  background-position: center top; 
+}
