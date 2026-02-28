@@ -530,13 +530,12 @@ h2 {
   }
 }
 
-/* --- 4. Main Visual (修正版：全体が映るように調整) --- */
+/* --- 4. Main Visual (PC・タブレット・スマホ共通のベース) --- */
 #mainvisual {
   width: 100%;
   position: relative;
   overflow: hidden;
-  /* 表示エリアの高さを少し広めに確保します */
-  height: 60vh; 
+  height: 60vh; /* 画面の高さの60%を表示領域にする */
   background-color: #fcfaf5;
 }
 
@@ -546,48 +545,38 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  /* 使用する画像 */
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
   background-repeat: no-repeat;
   
-  /* 【ここを修正】 */
-  /* contain: 画像が切れないように枠内に収めます */
-  /* cover: 枠いっぱいに広げつつ、比率を保ちます（こちらがおすすめ） */
+  /* 【ここが解決のポイント】 */
+  /* PCなど横長画面で「持ち手だけ」にならないよう、画像全体を収める設定 */
   background-size: cover; 
-  
-  /* 【ここを修正】 */
-  /* center top にすることで、持ち手より上の「背景」や「上部」を優先して表示します */
-  background-position: center top; 
+  /* 画像の上部（背景やカゴの上半分）を優先して表示 */
+  background-position: center 20%; 
 }
 
-/* スマホ用調整 */
+/* --- 【追加】PCなど大きな画面（横幅1024px以上）専用の微調整 --- */
+@media (min-width: 1025px) {
+  .mainvisual-bg {
+    /* 画像が横に広がりすぎないよう、拡大率を抑える（100%にする） */
+    background-size: 100% auto; 
+    /* 画像を一番上に固定して、背景の余白を見せる */
+    background-position: center top; 
+  }
+  
+  #mainvisual {
+    /* PCでは高さを少し抑えるときれいに見えます（お好みで調整） */
+    height: 500px; 
+  }
+}
+
+/* --- スマホ用調整（現状のまま） --- */
 @media (max-width: 768px) {
   #mainvisual {
-    height: 50vh; /* スマホで見やすい高さに */
+    height: 45vh;
   }
-  
   .mainvisual-bg {
-    /* スマホでもズームしすぎず、中央上部を表示 */
     background-size: cover;
-    background-position: center top;
+    background-position: center center;
   }
-}
-
-.main-copy {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  text-align: center;
-  width: 100%;
-  z-index: 10;
-}
-
-.main-copy h2 {
-  font-size: 2.5rem;
-  color: #fff;
-  border: none;
-  text-shadow: 0 2px 15px rgba(0,0,0,0.6);
-  margin: 0;
 }
