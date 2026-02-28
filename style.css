@@ -580,3 +580,27 @@ h2 {
     background-position: center center;
   }
 }
+
+/* 既存の記述を上書きするために、一番下に配置してください */
+
+@media (min-width: 1025px) {
+  #mainvisual {
+    height: 500px !important; /* 高さを固定 */
+    background-color: #fcfaf5;
+  }
+
+  .mainvisual-bg {
+    /* 画像をズームさせず、横幅いっぱいに収める設定 */
+    background-size: contain !important; 
+    
+    /* 画像を中央の一番上に配置 */
+    background-position: center top !important;
+    
+    /* 繰り返しを防ぐ */
+    background-repeat: no-repeat !important;
+    
+    /* 念のため高さを100%に */
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
