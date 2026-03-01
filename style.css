@@ -430,89 +430,60 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual 修正：写真全体を収める設定 --- */
+/* --- 4. Main Visual (3枚並びスタイル) --- */
 #mainvisual {
   width: 100%;
-  position: relative;
-  overflow: hidden;
-  
-  /* 【ポイント1】
-     PCでの高さを少し高めの 550px〜600px に広げます。
-     これでデザートが入るための「スペース」を確保します。
-  */
-  height: 600px; 
-  background-color: #fcfaf5; /* 写真の外側の色 */
-}
-
-.mainvisual-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-  background-repeat: no-repeat;
-  
-  /* 【ポイント2】
-     contain にすることで、画像が切れることなく「全体」が収まります。
-  */
-  background-size: contain; 
-  
-  /* 中央に配置 */
-  background-position: center center; 
-}
-
-/* スマホ・タブレット用（現状で問題ないとのことなのでそのまま維持） */
-@media (max-width: 768px) {
-  #mainvisual {
-    height: 50vh; 
-  }
-  .mainvisual-bg {
-    background-size: cover;
-    background-position: center center;
-  }
-}
-
-/* --- 4. Main Visual (3枚並びデザイン) --- */
-#mainvisual {
-  width: 100%;
-  height: 450px; /* PCでの高さ */
-  overflow: hidden;
+  height: 500px; /* PCでの表示高さ */
   background-color: #fcfaf5;
+  overflow: hidden;
 }
 
-.mainvisual-gallery {
-  display: flex; /* 横に並べる */
+.mainvisual-inner {
+  display: flex; /* 写真を横に並べる */
   width: 100%;
   height: 100%;
 }
 
-.mv-item {
-  flex: 1; /* 3つの要素を均等に分ける */
+.mv-panel {
+  flex: 1; /* 3枚を均等な幅にする */
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; /* 枠いっぱいに表示 */
   background-position: center;
-  border-right: 4px solid #fcfaf5; /* 写真の間の白い区切り線（お好みで） */
-  transition: transform 0.6s ease;
+  border-right: 2px solid #fcfaf5; /* 写真の境界線 */
+  transition: transform 0.4s ease;
 }
 
-.mv-item:last-child { border-right: none; }
+.mv-panel:last-child {
+  border-right: none;
+}
 
-/* 各写真のパスを指定してください */
-.item1 { background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg"); }
-/* 2枚目、3枚目は現在ある別の写真を指定してください（例：kago.jpgなど） */
-.item2 { background-image: url("https://i.imgur.com/1S8wVrC.jpeg"); }
-.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
+/* 各パネルに使用する画像を指定（Galleryにある画像を活用） */
+.item1 {
+  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
+  background-position: center bottom; /* かごの底とデザートを優先 */
+}
+.item2 {
+  background-image: url("https://i.imgur.com/1S8wVrC.jpeg");
+}
+.item3 {
+  background-image: url("https://i.imgur.com/REzif58.jpeg");
+}
 
 /* ホバー時に少しズームする演出（任意） */
-.mv-item:hover { transform: scale(1.02); z-index: 10; }
+.mv-panel:hover {
+  transform: scale(1.03);
+  z-index: 10;
+}
 
-/* スマホ用（スマホは縦に長いため、1枚だけ見せるか、高さを調整します） */
-@media (max-width: 768px) {
+/* スマホ用レスポンシブ */
+@media screen and (max-width: 768px) {
   #mainvisual {
-    height: 50vh;
+    height: 60vh; /* スマホは画面の6割の高さ */
   }
+  .mv-panel:not(:first-child) {
+    display: none; /* スマホでは2枚目・3枚目を隠してスッキリさせる */
+  }
+}
   .mainvisual-gallery {
     /* スマホで3枚並ぶと細すぎる場合は、1枚目だけ見せる設定 */
   }
