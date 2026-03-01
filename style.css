@@ -430,14 +430,14 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual 最終調整版 --- */
+/* --- 4. Main Visual 修正：さらに「引き」にする設定 --- */
 #mainvisual {
   width: 100%;
   position: relative;
   overflow: hidden;
-  /* 高さを少し高めの500px程度にすると、解像度を保ちつつ「引き」が維持されます */
-  height: 500px; 
-  background-color: #fcfaf5;
+  /* PCでの高さを少し下げて 450px に設定（これ以上高いとアップになります） */
+  height: 450px; 
+  background-color: #fcfaf5; /* 画像の背景色と合わせる */
 }
 
 .mainvisual-bg {
@@ -446,28 +446,24 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  /* 画像のパス：HTMLと同じ階層にあるなら "kagocafe.jpg"
-     imgフォルダ内なら "img/kagocafe.jpg" に書き換えてください 
-  */
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
   background-repeat: no-repeat;
+
+  /* 【ここが重要】 */
+  /* 100%より小さい数値（例: 85%）にすることで、画像を強制的に「引き」にします */
+  background-size: 85% auto; 
   
-  /* 【解決策】
-     100% auto だと画面の横幅が広い時に下が切れるため、
-     cover のまま「表示位置」を調整するのが最も安定します。
-  */
-  background-size: cover; 
-  /* 20%に設定することで、写真の上部（かごの持ち手と空気感）を優先して表示します */
-  background-position: center 20%; 
+  /* 画像を中央に配置。少し上を多めに見せるために 30% に設定 */
+  background-position: center 30%; 
 }
 
-/* スマホ用設定（変更なしでOK） */
+/* スマホ用（スマホは画面いっぱいでOKなので設定を分けます） */
 @media (max-width: 768px) {
   #mainvisual {
-    height: 55vh; /* スマホで見栄えが良い高さ */
+    height: 50vh;
   }
   .mainvisual-bg {
-    background-size: cover;
+    background-size: cover; /* スマホは隙間が出ないようにcover */
     background-position: center center;
   }
 }
