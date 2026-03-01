@@ -430,28 +430,33 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* --- 4. Main Visual (4枚並びスタイル) --- */
+/* --- 4. Main Visual (整理版：ホバーなし・全体表示) --- */
 #mainvisual {
   width: 100%;
-  /* 4枚並ぶと1枚が細くなるため、高さを少し出す（550px）とデザートまで映りやすくなります */
-  height: 550px; 
-  background-color: #fcfaf5;
+  position: relative;
   overflow: hidden;
+  /* 【ポイント1：高さを出す】
+     4枚並ぶと1枚が細くなるため、高さをしっかり出す（600px）と
+     1枚目のかごバッグ全体（持ち手から底まで）が収まりやすくなります。
+  */
+  height: 600px; 
+  background-color: #fcfaf5;
 }
 
 .mainvisual-inner {
-  display: flex;
+  display: flex; /* 写真を横に並べる */
   width: 100%;
   height: 100%;
 }
 
 .mv-panel {
-  flex: 1; /* 4枚を均等に25%ずつの幅にします */
+  flex: 1; /* 4枚を均等に25%ずつの幅にする */
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-right: 2px solid #fcfaf5;
-  transition: flex 0.5s ease, transform 0.5s ease; /* 動きに滑らかさを出す */
+  background-size: cover; /* 枠いっぱいに表示 */
+  /* 【ポイント2：ホバー効果を削除】
+     以前あった flex や transform のアニメーション記述を削除しました。
+  */
+  border-right: 2px solid #fcfaf5; /* 写真の境界線 */
 }
 
 .mv-panel:last-child {
@@ -459,34 +464,38 @@ h2 {
 }
 
 /* 各パネルの画像指定 */
+
+/* 【ポイント3：1枚目のかごを全体表示】
+   1枚目（item1）は横長の写真なので、横幅いっぱいにすると上下が切れます。
+   「contain」にすることで、写真全体（かご全体〜デザート）が
+   枠の中に綺麗に収まります（左右にベージュの余白が出ますが、それが引きになります）。
+*/
 .item1 {
   background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-  background-position: center 80%; /* デザート（下の方）を優先的に映す */
+  background-size: contain; 
+  background-position: center bottom; /* かごの底とデザートを優先 */
+  background-repeat: no-repeat;
 }
+
+/* 他の写真はcover（拡大して埋める）のまま維持 */
 .item2 {
   background-image: url("https://i.imgur.com/1S8wVrC.jpeg");
+  background-position: center;
 }
 .item3 {
   background-image: url("https://i.imgur.com/REzif58.jpeg");
+  background-position: center;
 }
 .item4 {
-  /* 4枚目：別の作品や遠野の風景写真などを指定してください */
   background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); 
+  background-position: center;
 }
 
-/* 【演出】マウスを乗せたパネルを少し広げる（4枚並びで窮屈に見えない工夫） */
-.mv-panel:hover {
-  flex: 1.5; 
-  transform: scale(1.02);
-  z-index: 10;
-}
-
-/* スマホ用レスポンシブ */
+/* スマホ用レスポンシブ（変更なし：1枚目だけ見せる） */
 @media screen and (max-width: 768px) {
   #mainvisual {
     height: 60vh;
   }
-  /* スマホは横幅が狭いので、2枚だけ見せるか、1枚に絞ると綺麗です */
   .mv-panel:nth-child(n+2) {
     display: none; 
   }
