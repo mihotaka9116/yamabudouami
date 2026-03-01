@@ -451,10 +451,10 @@ h2 {
 
   /* 【ここが重要】 */
   /* 100%より小さい数値（例: 85%）にすることで、画像を強制的に「引き」にします */
-  background-size: 60% auto; 
+  background-size: 50% auto; 
   
   /* 画像を中央に配置。少し上を多めに見せるために 30% に設定 */
-  background-position: center; 
+  background-position: center　45%; 
 }
 
 /* スマホ用（スマホは画面いっぱいでOKなので設定を分けます） */
