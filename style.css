@@ -500,3 +500,19 @@ h2 {
     display: none; 
   }
 }
+
+/* 1枚目（item1）を他の3枚とサイズを揃える修正 */
+.item1 {
+  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
+  
+  /* containを削除してcoverにします。これで横幅が他の3枚と揃います */
+  background-size: cover; 
+  
+  /* 【ここがポイント】
+     centerだと画像が拡大されすぎてしまいますが、
+     top（上端）を基準にすることで、かごの持ち手から全体が
+     スッキリと枠内に収まるようになります。
+  */
+  background-position: center top; 
+  background-repeat: no-repeat;
+}
