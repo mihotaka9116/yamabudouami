@@ -1,1411 +1,286 @@
 @charset "UTF-8";
 
-
-
 /* --- 1. Fonts & Variables --- */
-
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700&display=swap');
 
-
-
 :root {
-
-  /* メイン：深く、わずかに紫を含んだ紺（勝色） */
-
-  --main-color: #1a2c4e; 
-
-  /* 背景：温かみのある生成り色（和紙のような質感） */
-
-  --bg-color: #fcfaf5;   
-
-  /* アクセント：派手すぎない、落ち着いた真鍮のような金 */
-
-  --accent-color: #c9a96e; 
-
-  /* テキスト：真っ黒ではない、墨のような黒 */
-
+  --main-color: #1a2c4e;   /* 紺（勝色） */
+  --accent-color: #c9a96e; /* 金（真鍮色） */
+  --bg-color: #fcfaf5;     /* 生成り色 */
   --text-color: #2b2b2b;
-
 }
-
-
 
 /* --- 2. Base --- */
-
 * { box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
 
-
-
 body {
-
   margin: 0;
-
   font-family: 'Noto Sans JP', sans-serif;
-
   background-color: var(--bg-color);
-
   color: var(--text-color);
-
-  line-height: 1.8;
-
+  /* 文字を大きく、行間をゆったりと設定 */
+  font-size: 19px; 
+  line-height: 2.1;
   overflow-x: hidden;
-
 }
 
-
-
-/* 共通の見出し設定：中央寄せ */
-
+/* 共通の見出し */
 h2 {
-
   color: var(--main-color);
-
-  border-bottom: 2px solid var(--main-color);
-
+  border-bottom: 2px solid var(--accent-color);
   display: block;
-
   width: fit-content;
-
-  margin: 0 auto 30px;
-
-  padding-bottom: 10px;
-
+  /* 見出し下の余白を広げて開放感を出す */
+  margin: 0 auto 70px;
+  padding-bottom: 15px;
   text-align: center;
-
   font-family: 'Noto Serif JP', serif;
-
-  letter-spacing: 0.15em;
-
+  font-size: 2.4rem;
+  letter-spacing: 0.2em;
 }
 
-
+.jp-sub {
+  display: block;
+  font-size: 1rem;
+  color: #888;
+  margin-top: 12px;
+  letter-spacing: 0.1em;
+  border: none;
+}
 
 /* --- 3. Header --- */
-
 #header {
-
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
-  padding: 15px 5%;
-
-  background-color: #fcfaf5;
-
+  padding: 20px 5%;
+  background-color: #fff;
   position: sticky;
-
   top: 0;
-
   z-index: 1000;
-
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
-
-
-
-/* サイト名＋アイコンの装飾 */
-
-.site-title h1 { margin: 0; }
 
 .site-title h1 a {
-
   display: flex;
-
   align-items: center;
-
   gap: 12px;
-
   text-decoration: none;
-
-  color: var(--main-color);
-
+  background-color: var(--main-color);
+  color: #fff;
   font-family: 'Noto Serif JP', serif;
-
-  font-size: 1.4rem;
-
+  font-size: 1.3rem;
   letter-spacing: 0.05em;
-
-  padding: 5px 12px;
-
-  border: 1px solid var(--main-color); /* 枠線装飾 */
-
+  padding: 10px 22px;
+  border: 1px solid var(--accent-color);
   border-radius: 2px;
-
   transition: 0.3s;
-
 }
-
-
 
 .site-title h1 a:hover {
-
-  background-color: var(--main-color);
-
-  color: #fff;
-
-}
-
-
-
-.site-title h1 a i { font-size: 1.1rem; }
-
-
-
-/* PC用ナビ */
-
-.nav ul {
-
-  display: flex;
-
-  list-style: none;
-
-  gap: 30px;
-
-  margin: 0;
-
-}
-
-
-
-.nav a {
-
-  text-decoration: none;
-
+  background-color: transparent;
   color: var(--main-color);
-
-  font-weight: bold;
-
-  font-size: 1rem;
-
-  transition: 0.3s;
-
+  border-color: var(--main-color);
 }
 
-
-
-.nav a:hover { opacity: 0.6; }
-
-
+.nav ul { display: flex; list-style: none; gap: 35px; margin: 0; }
+.nav a {
+  text-decoration: none;
+  color: var(--main-color);
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+.nav a:hover { color: var(--accent-color); }
 
 /* --- 4. Main Visual --- */
-
-#mainvisual { width: 100%; position: relative; overflow: hidden; }
-
-#mainvisual img { width: 100%; height: auto; display: block; }
-
-.main-copy {
-
-  position: absolute; top: 50%; left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  color: #fff; text-align: center; width: 100%;
-
-}
-
-.main-copy h2 {
-
-  font-size: 3rem; color: #fff; border: none; /* MV内は線なし */
-
-  text-shadow: 0 2px 15px rgba(0,0,0,0.5);
-
-}
-
-
-
-/* --- 5. Sections Layout --- */
-
-section { padding: 100px 0; scroll-margin-top: 70px; }
-
-section:nth-of-type(odd) { background-color: var(--bg-color); }
-
-section:nth-of-type(even) { background-color: #ffffff; }
-
-
-
-.wrapper { max-width: 1100px; margin: 0 auto; padding: 0 4%; }
-
-.sec-title { font-size: 2.2rem; margin-bottom: 60px; }
-
-.jp-sub { display: block; font-size: 0.9rem; color: #888; margin-top: 10px; border: none; }
-
-
-
-/* --- 6. Contents Detail --- */
-
-/* About */
-
-.about-text { background: #fff; padding: 50px; border-radius: 15px; text-align: center; border: 1px solid rgba(0,0,0,0.05); }
-
-
-
-/* Quality */
-
-.quality-container { display: flex; gap: 40px; }
-
-.quality-item {
-
-  flex: 1; background: rgba(45, 64, 51, 0.03);
-
-  padding: 40px; border-left: 4px solid var(--main-color);
-
-}
-
-
-
-/* Process */
-
-.process-list { display: flex; justify-content: space-between; gap: 20px; }
-
-.process-item {
-
-  flex: 1; background: #fff; padding: 30px; border-radius: 10px;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center;
-
-}
-
-
-
-/* Gallery */
-
-.gallery-grid {
-
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-  gap: 30px; list-style: none; padding: 0;
-
-}
-
-.gallery-grid li { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-
-.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.5s; }
-
-.gallery-grid li:hover img { transform: scale(1.1); }
-
-.item-info { padding: 15px; text-align: center; }
-
-
-
-/* --- 7. Contact & Footer --- */
-
-#contact form { max-width: 600px; margin: 40px auto; padding: 40px; background: #fff; border-radius: 10px; }
-
-#contact input, #contact textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ddd; }
-
-
-
-.button { text-align: center; }
-
-.button input[type="submit"] {
-
-  background: var(--main-color); color: #fff; border: none;
-
-  padding: 15px 80px; cursor: pointer; border-radius: 5px; transition: 0.3s;
-
-}
-
-
-
-.inst-link {
-
-  display: inline-block; padding: 12px 30px; border: 2px solid var(--main-color);
-
-  color: var(--main-color); text-decoration: none; border-radius: 30px; font-weight: bold; transition: 0.4s;
-
-}
-
-.inst-link:hover { background: var(--main-color); color: #fff; transform: translateY(-3px); }
-
-
-
-#footer { background-color: var(--main-color); color: #fff; text-align: center; padding: 40px 0; }
-
-#footer p { margin: 0; font-size: 0.8rem; }
-
-.instagram-icon-link { color: #fff; font-size: 2rem; margin-bottom: 10px; display: inline-block; transition: 0.3s; }
-
-.instagram-icon-link:hover { opacity: 0.7; transform: scale(1.1); }
-
-
-
-/* --- 8. Animations --- */
-
-.js-fadein { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
-
-.js-fadein.is-show { opacity: 1; transform: translateY(0); }
-
-
-
-/* --- 9. Responsive --- */
-
-.hamburger { display: none; }
-
-
-
-@media (max-width: 768px) {
-
-  .hamburger {
-
-    display: block; z-index: 1001; width: 30px; height: 24px; position: relative;
-
-  }
-
-  .hamburger span {
-
-    display: block; width: 100%; height: 2px; background-color: var(--main-color);
-
-    position: absolute; transition: 0.4s;
-
-  }
-
-  .hamburger span:nth-child(1) { top: 0; }
-
-  .hamburger span:nth-child(2) { top: 11px; }
-
-  .hamburger span:nth-child(3) { bottom: 0; }
-
-  
-
-  .hamburger.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-
-  .hamburger.is-active span:nth-child(2) { opacity: 0; }
-
-  .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-
-
-
-  .nav {
-
-    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-
-    background: rgba(252, 250, 245, 0.98); transition: 0.5s; z-index: 1000;
-
-    padding-top: 100px;
-
-  }
-
-  .nav.is-active { right: 0; }
-
-  .nav ul { flex-direction: column; align-items: center; gap: 40px; }
-
-
-
-  .main-copy h2 { font-size: 1.8rem; }
-
-  .quality-container, .process-list { flex-direction: column; }
-
-  section { padding: 60px 0; }
-
-}
-
-
-
-/* CONTACTセクション全体を中央寄せにする */
-
-#contact {
-
-  text-align: center; /* セクション内のテキスト、インライン要素を中央へ */
-
-  padding: 80px 0;
-
-}
-
-
-
-/* お問い合わせ文言の調整 */
-
-#contact p {
-
-  margin-bottom: 30px;
-
-  line-height: 1.8;
-
-}
-
-
-
-/* Instagramボタンの調整 */
-
-.insta-btn {
-
-  display: inline-block; /* 中央寄せが効くようにinline-block化 */
-
-  margin: 0 auto;        /* 念のための中央配置設定 */
-
-  padding: 12px 30px;
-
-  background-color: #5d4037; /* 山ぶどうらしい落ち着いた茶色など */
-
-  color: #fff;
-
-  text-decoration: none;
-
-  border-radius: 5px;
-
-  transition: opacity 0.3s;
-
-}
-
-
-
-.insta-btn:hover {
-
-  opacity: 0.8;
-
-}
-
-
-
-/* もしInstagramアイコン画像を入れている場合 */
-
-.insta-btn img {
-
-  vertical-align: middle;
-
-  margin-right: 8px;
-
-  width: 20px; /* サイズはお好みで */
-
-}
-
-
-
-/* ご購入の流れスタイル */
-
-#how-to-order {
-
-  padding: 80px 20px;
-
-  background-color: #fdfdfd; /* わずかに色を変えて区切りを明確に */
-
-}
-
-
-
-.order-container {
-
-  display: flex;
-
-  justify-content: space-between;
-
-  gap: 30px;
-
-  margin-top: 40px;
-
-}
-
-
-
-.order-step {
-
-  flex: 1;
-
-  background: #fff;
-
-  padding: 40px 25px;
-
-  border: 1px solid #eee;
-
-  border-radius: 4px;
-
-  text-align: center;
-
-  transition: transform 0.3s;
-
-}
-
-
-
-.order-step:hover {
-
-  transform: translateY(-5px);
-
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-
-}
-
-
-
-.step-num {
-
-  font-family: 'Georgia', serif;
-
-  font-size: 2.2rem;
-
-  color: #8b4513; /* 山葡萄をイメージした落ち着いた茶色 */
-
-  display: block;
-
-  margin-bottom: 15px;
-
-  font-weight: italic;
-
-}
-
-
-
-.order-step h3 {
-
-  font-size: 1.1rem;
-
-  margin-bottom: 15px;
-
-  color: #333;
-
-}
-
-
-
-.order-step p {
-
-  font-size: 0.9rem;
-
-  line-height: 1.8;
-
-  text-align: left;
-
-  color: #666;
-
-}
-
-
-
-.btn-sm {
-
-  display: inline-block;
-
-  margin-top: 20px;
-
-  padding: 8px 20px;
-
-  background: #444;
-
-  color: #fff;
-
-  text-decoration: none;
-
-  font-size: 0.8rem;
-
-  border-radius: 2px;
-
-  transition: background 0.3s;
-
-}
-
-
-
-.btn-sm:hover {
-
-  background: #8b4513;
-
-}
-
-
-
-/* スマホ対応 */
-
-@media (max-width: 768px) {
-
-  .order-container {
-
-    flex-direction: column;
-
-  }
-
-  .order-step {
-
-    padding: 30px 20px;
-
-  }
-
-}
-
-
-
-/* サイト名＋アイコンの装飾（色を反転） */
-
-.site-title h1 a {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  text-decoration: none;
-
-  
-
-  /* --- ここで色を逆にします --- */
-
-  background-color: var(--main-color); /* 背景をモスグリーンに */
-
-  color: #fff;                        /* 文字を白に */
-
-  
-
-  font-family: 'Noto Serif JP', serif;
-
-  font-size: 1.4rem;
-
-  letter-spacing: 0.05em;
-
-  padding: 5px 15px; /* 少し余白を広げると綺麗です */
-
-  border: 1px solid var(--main-color);
-
-  border-radius: 2px;
-
-  transition: 0.3s;
-
-}
-
-
-
-/* ホバーした時に元のデザイン（白背景）に戻るようにする */
-
-.site-title h1 a:hover {
-
-  background-color: transparent;
-
-  color: var(--main-color);
-
-}
-
-
-
-@media (max-width: 768px) {
-
-  /* ヘッダーの中身を縦並びにする */
-
-  #header {
-
-    flex-direction: column; 
-
-    gap: 15px;             /* ロゴとボタンの間の余白 */
-
-    padding: 20px 0;       /* 上下の余白を調整 */
-
-  }
-
-
-
-  /* ハンバーガーメニューの位置調整 */
-
-  .hamburger {
-
-    display: block;
-
-    margin: 0 auto;        /* 中央に配置 */
-
-    position: relative;    /* 固定位置を解除 */
-
-    right: auto;
-
-    top: auto;
-
-  }
-
-  
-
-  /* ナビゲーションが開く位置の調整 */
-
-  .nav {
-
-    top: 120px;            /* ロゴ+メニューの高さ分、開始位置を下げる */
-
-  }
-
-}
-
-
-
-/* 文字サイズと行間の調整 */
-
-body {
-
-  font-size: 18px; /* 少し大きく */
-
-  line-height: 2.0; /* ゆったりと */
-
-}
-
-
-
-/* 見出しをより上品に */
-
-h2 {
-
-  font-size: 2.4rem;
-
-  letter-spacing: 0.2em; /* 字間を広げて優雅に */
-
-}
-
-
-
-/* 商品情報を見やすく */
-
-.item-info {
-
-  padding: 20px;
-
-  background-color: #fcfaf5; /* 商品説明エリアに薄く色をつけて区切る */
-
-}
-
-
-
-.item-name {
-
-  font-weight: bold;
-
-  font-family: 'Noto Serif JP', serif;
-
-  color: var(--main-color);
-
-  font-size: 1.2rem;
-
-}
-
-
-
-/* Galleryのホバー演出を強化 */
-
-.gallery-grid li {
-
-  overflow: hidden;
-
-  border: 1px solid #e0e0e0; /* 薄い枠線で輪郭をはっきりさせる */
-
-}
-
-
-
-.gallery-grid li:hover img {
-
-  transform: scale(1.05);
-
-  filter: brightness(1.1); /* 少し明るくして高級感を出す */
-
-}
-
-
-
-/* PCサイズでの工程の間に矢印のような装飾（擬似要素）を加える例 */
-
-@media (min-width: 769px) {
-
-  .process-item {
-
-    position: relative;
-
-  }
-
-  .process-item:not(:last-child)::after {
-
-    content: "▶";
-
-    position: absolute;
-
-    top: 50%;
-
-    right: -15px;
-
-    transform: translateY(-50%);
-
-    color: var(--main-color);
-
-    font-size: 1rem;
-
-    opacity: 0.3;
-
-  }
-
-}
-
-
-
-@media (max-width: 768px) {
-
-  #header {
-
-    padding: 10px 0; /* 上下を少し詰め、圧迫感を減らす */
-
-  }
-
-  .site-title h1 a {
-
-    font-size: 1.1rem; /* スマホでは少しだけ小さくして1行に収まりやすく */
-
-    padding: 4px 10px;
-
-  }
-
-}
-
-
-
-/* 数字や英字に高級感を出す */
-
-.item-detail, .item-price, .step-num {
-
-  font-family: 'Georgia', 'Times New Roman', serif;
-
-}
-
-
-
-.button input[type="submit"]:hover {
-
-  background-color: #3e5947; /* メインカラーより少し明るく、または暗く */
-
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-
-}
-
-
-
-/* --- 4. Main Visual (整理版：ホバーなし・全体表示) --- */
-
 #mainvisual {
-
   width: 100%;
-
+  height: 650px;
   position: relative;
-
   overflow: hidden;
-
-  /* 【ポイント1：高さを出す】
-
-     4枚並ぶと1枚が細くなるため、高さをしっかり出す（600px）と
-
-     1枚目のかごバッグ全体（持ち手から底まで）が収まりやすくなります。
-
-  */
-
-  height: 600px; 
-
-  background-color: #fcfaf5;
-
 }
 
-
-
-.mainvisual-inner {
-
-  display: flex; /* 写真を横に並べる */
-
-  width: 100%;
-
-  height: 100%;
-
-}
-
-
+.mainvisual-inner { display: flex; width: 100%; height: 100%; }
 
 .mv-panel {
-
-  flex: 1; /* 4枚を均等に25%ずつの幅にする */
-
+  flex: 1;
   height: 100%;
-
-  background-size: cover; /* 枠いっぱいに表示 */
-
-  /* 【ポイント2：ホバー効果を削除】
-
-     以前あった flex や transform のアニメーション記述を削除しました。
-
-  */
-
-  border-right: 2px solid #fcfaf5; /* 写真の境界線 */
-
-}
-
-
-
-.mv-panel:last-child {
-
-  border-right: none;
-
-}
-
-
-
-/* 各パネルの画像指定 */
-
-
-
-/* 【ポイント3：1枚目のかごを全体表示】
-
-   1枚目（item1）は横長の写真なので、横幅いっぱいにすると上下が切れます。
-
-   「contain」にすることで、写真全体（かご全体〜デザート）が
-
-   枠の中に綺麗に収まります（左右にベージュの余白が出ますが、それが引きになります）。
-
-*/
-
-.item1 {
-
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-
-  background-size: contain; 
-
-  background-position: center bottom; /* かごの底とデザートを優先 */
-
-  background-repeat: no-repeat;
-
-}
-
-
-
-/* 他の写真はcover（拡大して埋める）のまま維持 */
-
-.item2 {
-
-  background-image: url("https://i.imgur.com/1S8wVrC.jpeg");
-
+  background-size: cover;
   background-position: center;
-
+  border-right: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  animation: zoomUp 20s ease-out forwards;
 }
-
-.item3 {
-
-  background-image: url("https://i.imgur.com/REzif58.jpeg");
-
-  background-position: center;
-
-}
-
-.item4 {
-
-  background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); 
-
-  background-position: center;
-
-}
-
-
-
-/* スマホ用レスポンシブ（変更なし：1枚目だけ見せる） */
-
-@media screen and (max-width: 768px) {
-
-  #mainvisual {
-
-    height: 60vh;
-
-  }
-
-  .mv-panel:nth-child(n+2) {
-
-    display: none; 
-
-  }
-
-}
-
-
-
-/* 1枚目（item1）を他の3枚とサイズを揃える修正 */
-
-.item1 {
-
-  background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg");
-
-  
-
-  /* containを削除してcoverにします。これで横幅が他の3枚と揃います */
-
-  background-size: cover; 
-
-  
-
-  /* 【ここがポイント】
-
-     centerだと画像が拡大されすぎてしまいますが、
-
-     top（上端）を基準にすることで、かごの持ち手から全体が
-
-     スッキリと枠内に収まるようになります。
-
-  */
-
-  background-position: center top; 
-
-  background-repeat: no-repeat;
-
-}
-
-
-
-/* 縦書きコピーのスタイル */
-
-.mv-copy-vertical {
-
-  position: absolute;
-
-  top: 10%;
-
-  left: 5%; /* 左側に配置 */
-
-  writing-mode: vertical-rl; /* 縦書き */
-
-  color: #fff;
-
-  text-shadow: 0 0 10px rgba(0,0,0,0.3); /* 文字の視認性確保 */
-
-  z-index: 10;
-
-  font-family: 'Noto Serif JP', serif;
-
-}
-
-
-
-.main-phrase {
-
-  font-size: 2.8rem;
-
-  letter-spacing: 0.5em;
-
-  font-weight: 700;
-
-  margin-bottom: 20px;
-
-}
-
-
-
-.sub-phrase {
-
-  font-size: 1.1rem;
-
-  letter-spacing: 0.3em;
-
-  border-right: 1px solid #fff; /* 縦書きなので右側に線 */
-
-  padding-right: 10px;
-
-}
-
-
-
-/* スマホでは縦書きを解除するか、サイズを調整 */
-
-@media screen and (max-width: 768px) {
-
-  .mv-copy-vertical {
-
-    writing-mode: horizontal-tb;
-
-    top: 50%;
-
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 100%;
-
-    text-align: center;
-
-  }
-
-  .main-phrase { font-size: 1.8rem; letter-spacing: 0.2em; }
-
-}
-
-
-
-.mv-panel {
-
-  position: relative; /* 擬似要素用 */
-
-}
-
-
-
-/* 写真の上に薄いグラデーションを重ねる */
 
 .mv-panel::after {
-
   content: "";
-
   position: absolute;
-
-  top: 0; left: 0;
-
-  width: 100%; height: 100%;
-
-  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.2) 100%);
-
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(26,44,78,0.3) 0%, rgba(0,0,0,0) 50%, rgba(26,44,78,0.3) 100%);
 }
 
-
+.item1 { background-image: url("https://mihotaka9116.github.io/yamabudouami/kagocafe.jpg"); background-position: center top; }
+.item2 { background-image: url("https://i.imgur.com/1S8wVrC.jpeg"); }
+.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
+.item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
 
 @keyframes zoomUp {
-
   0% { transform: scale(1); }
-
-  100% { transform: scale(1.05); }
-
+  100% { transform: scale(1.1); }
 }
 
-
-
-.mv-panel {
-
-  animation: zoomUp 10s forwards; /* 10秒かけてゆっくり拡大 */
-
+.mv-copy-vertical {
+  position: absolute;
+  top: 12%;
+  left: 6%;
+  writing-mode: vertical-rl;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(0,0,0,0.5);
+  z-index: 10;
+  font-family: 'Noto Serif JP', serif;
 }
 
+.main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
+.sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
 
-
-@keyframes zoomUp {
-
-  0% { transform: scale(1); }
-
-  100% { transform: scale(1.05); }
-
+/* --- 5. Sections Layout --- */
+section { 
+  /* セクション間の余白を広げて上質感を出す */
+  padding: 140px 0; 
+  scroll-margin-top: 80px; 
 }
+section:nth-of-type(even) { background-color: #ffffff; }
 
+.wrapper { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
 
-
-.mv-panel {
-
-  animation: zoomUp 10s forwards; /* 10秒かけてゆっくり拡大 */
-
-}
-
-
-
-/* Aboutセクション全体のレイアウト */
-
-.about-container {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 60px;
-
-  max-width: 900px;
-
-  margin: 0 auto;
-
-}
-
-
-
-/* 写真部分の装飾 */
-
-.about-image {
-
-  flex: 1;
-
-  position: relative;
-
-}
-
-
-
+/* --- 6. About --- */
+.about-container { display: flex; align-items: center; gap: 80px; margin-top: 60px; }
+.about-image { flex: 1; position: relative; }
 .about-image img {
-
-  width: 100%;
-
-  height: 400px;
-
-  object-fit: cover;
-
-  border-radius: 2px;
-
-  filter: sepia(20%) contrast(90%); /* わずかに古写真のような温かみ */
-
-  box-shadow: 20px 20px 0 rgba(45, 64, 51, 0.05); /* メインカラーの薄い影 */
-
+  width: 100%; height: 500px; object-fit: cover; border-radius: 2px;
+  filter: sepia(15%) contrast(95%);
+  box-shadow: 25px 25px 0 rgba(201, 169, 110, 0.1);
 }
 
-
-
-/* 文章部分の装飾 */
-
-.about-text-box {
-
-  flex: 1.2;
-
-  position: relative;
-
-  padding: 40px 0;
-
-}
-
-
-
-.about-text-box p {
-
-  font-size: 1.1rem;
-
-  line-height: 2.2;
-
-  color: #444;
-
-}
-
-
-
-/* 引用符の装飾（気配の演出） */
-
+.about-text-box { flex: 1.2; position: relative; }
 .quote-mark, .quote-mark-end {
-
   font-family: 'Georgia', serif;
-
-  font-size: 4rem;
-
-  color: var(--main-color);
-
-  opacity: 0.1;
-
+  font-size: 6rem;
+  color: var(--accent-color);
+  opacity: 0.25;
   position: absolute;
+}
+.quote-mark { top: -50px; left: -30px; }
+.quote-mark-end { bottom: -50px; right: 0; }
 
+/* --- 7. Quality & Process --- */
+.quality-container { display: flex; gap: 50px; }
+.quality-item {
+  flex: 1; background: #fff; padding: 50px;
+  border-left: 5px solid var(--accent-color);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+.quality-item h3 { font-size: 1.4rem; color: var(--main-color); margin-bottom: 25px; }
+
+.process-list { display: flex; justify-content: space-between; gap: 30px; }
+.process-item {
+  flex: 1; background: #fff; padding: 40px 30px; border-radius: 4px;
+  text-align: center; border: 1px solid #eee; position: relative;
+}
+.process-item h3 { font-size: 1.3rem; margin-bottom: 20px; }
+
+@media (min-width: 769px) {
+  .process-item:not(:last-child)::after {
+    content: "▶"; position: absolute; top: 50%; right: -15px;
+    transform: translateY(-50%); color: var(--accent-color); opacity: 0.4;
+  }
 }
 
+/* --- 8. Gallery --- */
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px; list-style: none; padding: 0;
+}
+.gallery-grid li { background: #fff; overflow: hidden; border: 1px solid #e0e0e0; transition: 0.3s; }
+.gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; transition: 0.6s; }
+.gallery-grid li:hover img { transform: scale(1.05); filter: brightness(1.1); }
 
+.item-info { padding: 25px; text-align: center; }
+.item-name { font-weight: bold; font-family: 'Noto Serif JP', serif; color: var(--main-color); font-size: 1.2rem; margin-bottom: 10px; }
+.item-price { font-family: 'Georgia', serif; color: var(--accent-color); font-weight: bold; font-size: 1rem; }
 
-.quote-mark { top: -10px; left: -20px; }
+/* --- 9. How to Order --- */
+.order-container { display: flex; gap: 30px; margin-top: 50px; }
+.order-step { flex: 1; background: #fff; padding: 50px 30px; border: 1px solid #eee; text-align: center; transition: 0.3s; }
+.order-step:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.step-num { font-family: 'Georgia', serif; font-size: 3rem; color: var(--accent-color); display: block; margin-bottom: 15px; font-weight: bold; opacity: 0.7; }
+.order-step h3 { font-size: 1.3rem; margin-bottom: 20px; color: var(--text-color); }
 
-.quote-mark-end { bottom: -10px; right: 0; }
+.btn-sm {
+  display: inline-block; margin-top: 20px; padding: 10px 25px;
+  background: var(--main-color); color: #fff; text-decoration: none;
+  font-size: 0.9rem; border-radius: 2px; transition: 0.3s;
+}
+.btn-sm:hover { background: var(--accent-color); }
 
+/* --- 10. Contact --- */
+#contact { text-align: center; }
+.inst-link {
+  display: inline-block; padding: 15px 50px; border: 2px solid var(--main-color);
+  color: var(--main-color); text-decoration: none; border-radius: 30px; 
+  font-weight: bold; font-size: 1.1rem; transition: 0.4s; margin-bottom: 60px;
+}
+.inst-link:hover { background: var(--main-color); color: #fff; }
 
+#contact form { max-width: 800px; margin: 0 auto; padding: 60px; background: #fff; border: 1px solid #eee; text-align: left; }
+#contact dl dt { font-weight: bold; color: var(--main-color); margin-bottom: 12px; font-size: 1.1rem; }
+#contact input, #contact textarea { width: 100%; padding: 18px; margin-bottom: 35px; border: 1px solid #ddd; background: #fafafa; font-size: 1rem; }
 
-/* スマホ対応 */
+.button { text-align: center; }
+.button input[type="submit"] {
+  background: var(--main-color); color: #fff; border: 1px solid var(--accent-color);
+  padding: 20px 120px; cursor: pointer; transition: 0.3s; letter-spacing: 0.2em; font-size: 1.2rem;
+}
+.button input[type="submit"]:hover { background: var(--accent-color); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+/* --- 11. Footer --- */
+#footer { background-color: var(--main-color); color: #fff; text-align: center; padding: 80px 0; border-top: 4px solid var(--accent-color); }
+.instagram-icon-link { color: #fff; font-size: 2.5rem; margin-bottom: 20px; display: inline-block; transition: 0.3s; }
+.instagram-icon-link:hover { color: var(--accent-color); transform: scale(1.1); }
+
+/* --- Animations --- */
+.js-fadein { opacity: 0; transform: translateY(50px); transition: 1.4s ease-out; }
+.js-fadein.is-show { opacity: 1; transform: translateY(0); }
+
+/* --- Responsive --- */
+.hamburger { display: none; cursor: pointer; position: relative; width: 30px; height: 24px; }
 
 @media (max-width: 768px) {
-
-  .about-container {
-
-    flex-direction: column;
-
-    gap: 30px;
-
-  }
-
-  .about-image img {
-
-    height: 300px;
-
-  }
-
-  .about-text-box {
-
-    text-align: left;
-
-    padding: 20px;
-
-  }
-
-}
-
-
-
-/* --- 見出しの装飾（金色のアクセント） --- */
-
-h2 {
-
-  color: var(--main-color);
-
-  border-bottom: 2px solid var(--accent-color); /* 下線を紺から金へ */
-
-}
-
-
-
-/* --- ヘッダー（サイトタイトル） --- */
-
-.site-title h1 a {
-
-  background-color: var(--main-color);
-
-  color: #fff;
-
-  border: 1px solid var(--accent-color); /* 枠線を金に */
-
-}
-
-
-
-.site-title h1 a:hover {
-
-  background-color: #fff;
-
-  color: var(--main-color);
-
-  border: 1px solid var(--main-color);
-
-}
-
-
-
-/* --- Aboutセクションの引用符 --- */
-
-.quote-mark, .quote-mark-end {
-
-  color: var(--accent-color); /* 引用符を金にすることで工芸品らしさを強調 */
-
-  opacity: 0.3; /* 少し濃くして気品を出す */
-
-}
-
-
-
-/* --- ご購入の流れ（数字部分） --- */
-
-.step-num {
-
-  color: var(--accent-color); /* 数字を金色に */
-
-}
-
-
-
-/* --- お問い合わせボタン --- */
-
-.button input[type="submit"] {
-
-  background: var(--main-color);
-
-  border: 1px solid var(--accent-color); /* 紺に金の縁取り */
-
-  color: #fff;
-
-  letter-spacing: 0.2em;
-
-}
-
-
-
-.button input[type="submit"]:hover {
-
-  background: var(--accent-color);
-
-  color: #fff;
-
-}
-
-
-
-/* --- フッター --- */
-
-#footer {
-
-  background-color: var(--main-color);
-
-  border-top: 3px solid var(--accent-color); /* フッター上部に金のライン */
-
-}
+  body { font-size: 18px; }
+  #header { flex-direction: column; gap: 15px; padding: 20px 0; }
+  .hamburger { display: block; margin: 0 auto; }
+  .hamburger span { display: block; width: 100%; height: 2px; background-color: var(--main-color); position: absolute; transition: 0.4s; }
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 11px; }
+  .hamburger span:nth-child(3) { bottom: 0; }
+  
+  .hamburger.is-active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .hamburger.is-active span:nth-child(2) { opacity: 0; }
+  .hamburger.is-active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+  .nav { position: fixed; top: 120px; right: -100%; width: 100%; height: 100vh; background: rgba(255,255,255,0.98); transition: 0.5s; z-index: 1000; padding-top: 50px; }
+  .nav.is-active { right: 0; }
+  .nav ul { flex-direction: column; align-items: center; gap: 40px; padding: 0; }
+
+  #mainvisual { height: 500px; }
+  .mv-panel:nth-child(n+2) { display: none; }
+  .mv-copy-vertical { writing-mode: horizontal-tb; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; }
+  .main-phrase { font-size: 2.2rem; }
+  .sub-phrase { border-right: none; border-bottom: 1px solid var(--accent-color); padding: 0 10px 5px; display: inline-block; }
+
+  .about-container, .quality-container, .process-list, .order-container { flex-direction: column; gap: 40px; }
+  .about-image img { height: 350px; }
+  #contact form { padding: 40px 25px; }
+  .button input[type="submit"] { width:
