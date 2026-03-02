@@ -577,3 +577,12 @@ h2 {
 .mv-panel {
   animation: zoomUp 10s forwards; /* 10秒かけてゆっくり拡大 */
 }
+
+@keyframes zoomUp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.mv-panel {
+  animation: zoomUp 10s forwards; /* 10秒かけてゆっくり拡大 */
+}
