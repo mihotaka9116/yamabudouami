@@ -586,3 +586,67 @@ h2 {
 .mv-panel {
   animation: zoomUp 10s forwards; /* 10秒かけてゆっくり拡大 */
 }
+
+/* Aboutセクション全体のレイアウト */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 写真部分の装飾 */
+.about-image {
+  flex: 1;
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 2px;
+  filter: sepia(20%) contrast(90%); /* わずかに古写真のような温かみ */
+  box-shadow: 20px 20px 0 rgba(45, 64, 51, 0.05); /* メインカラーの薄い影 */
+}
+
+/* 文章部分の装飾 */
+.about-text-box {
+  flex: 1.2;
+  position: relative;
+  padding: 40px 0;
+}
+
+.about-text-box p {
+  font-size: 1.1rem;
+  line-height: 2.2;
+  color: #444;
+}
+
+/* 引用符の装飾（気配の演出） */
+.quote-mark, .quote-mark-end {
+  font-family: 'Georgia', serif;
+  font-size: 4rem;
+  color: var(--main-color);
+  opacity: 0.1;
+  position: absolute;
+}
+
+.quote-mark { top: -10px; left: -20px; }
+.quote-mark-end { bottom: -10px; right: 0; }
+
+/* スマホ対応 */
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .about-image img {
+    height: 300px;
+  }
+  .about-text-box {
+    text-align: left;
+    padding: 20px;
+  }
+}
