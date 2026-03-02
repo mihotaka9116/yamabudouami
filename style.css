@@ -4,8 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700&display=swap');
 
 :root {
-  --main-color: #2d4033; /* 深みのあるモスグリーン */
-  --bg-color: #f3f4f1;   /* わずかに緑がかったグレーベージュ */
+  /* メイン：深く、わずかに紫を含んだ紺（勝色） */
+  --main-color: #1a2c4e; 
+  /* 背景：温かみのある生成り色（和紙のような質感） */
+  --bg-color: #fcfaf5;   
+  /* アクセント：派手すぎない、落ち着いた真鍮のような金 */
+  --accent-color: #c9a96e; 
+  /* テキスト：真っ黒ではない、墨のような黒 */
   --text-color: #2b2b2b;
 }
 
@@ -649,4 +654,53 @@ h2 {
     text-align: left;
     padding: 20px;
   }
+}
+
+/* --- 見出しの装飾（金色のアクセント） --- */
+h2 {
+  color: var(--main-color);
+  border-bottom: 2px solid var(--accent-color); /* 下線を紺から金へ */
+}
+
+/* --- ヘッダー（サイトタイトル） --- */
+.site-title h1 a {
+  background-color: var(--main-color);
+  color: #fff;
+  border: 1px solid var(--accent-color); /* 枠線を金に */
+}
+
+.site-title h1 a:hover {
+  background-color: #fff;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+/* --- Aboutセクションの引用符 --- */
+.quote-mark, .quote-mark-end {
+  color: var(--accent-color); /* 引用符を金にすることで工芸品らしさを強調 */
+  opacity: 0.3; /* 少し濃くして気品を出す */
+}
+
+/* --- ご購入の流れ（数字部分） --- */
+.step-num {
+  color: var(--accent-color); /* 数字を金色に */
+}
+
+/* --- お問い合わせボタン --- */
+.button input[type="submit"] {
+  background: var(--main-color);
+  border: 1px solid var(--accent-color); /* 紺に金の縁取り */
+  color: #fff;
+  letter-spacing: 0.2em;
+}
+
+.button input[type="submit"]:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+/* --- フッター --- */
+#footer {
+  background-color: var(--main-color);
+  border-top: 3px solid var(--accent-color); /* フッター上部に金のライン */
 }
