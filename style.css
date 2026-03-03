@@ -375,3 +375,9 @@ section {
   /* 0.3 を 0.4 や 0.5 に上げると、背景が暗くなり、文字がパキッと見えます */
   background: rgba(0, 0, 0, 0.4); 
 }
+
+                                .mainvisual-inner {
+  display: flex;
+  width: 100.5%; /* ほんの少しだけ親要素を大きくする */
+  margin-left: -0.25%; /* その分左に寄せて中央に合わせる */
+}
