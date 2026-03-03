@@ -160,30 +160,17 @@ section:nth-of-type(even) { background-color: #ffffff; }
 .about-container { display: flex; align-items: center; gap: 80px; margin-top: 60px; }
 .about-image { flex: 1; position: relative; }
 
-/* 背景画像指定ではなく、imgタグそのもののサイズを整えます */
+/* 整理後：imgタグの設定を1つにまとめます */
 .about-image img {
   width: 100%; 
   height: 500px; 
-  object-fit: cover; /* 画像を枠いっぱいに綺麗に収める */
+  object-fit: cover;
   border-radius: 2px;
-  filter: sepia(15%) contrast(95%); /* 雰囲気を出すフィルター（お好みで） */
-  box-shadow: 25px 25px 0 rgba(201, 169, 110, 0.1); /* 金色の飾り枠 */
-}
-  width: 100%; height: 500px; object-fit: cover; border-radius: 2px;
   filter: sepia(15%) contrast(95%);
   box-shadow: 25px 25px 0 rgba(201, 169, 110, 0.1);
-}
+} /* ここでしっかり閉じる */
 
 .about-text-box { flex: 1.2; position: relative; }
-.quote-mark, .quote-mark-end {
-  font-family: 'Georgia', serif;
-  font-size: 6rem;
-  color: var(--accent-color);
-  opacity: 0.25;
-  position: absolute;
-}
-.quote-mark { top: -50px; left: -30px; }
-.quote-mark-end { bottom: -50px; right: 0; }
 
 /* --- 7. Quality & Process --- */
 .quality-container { display: flex; gap: 50px; }
