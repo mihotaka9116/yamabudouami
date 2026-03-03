@@ -327,7 +327,7 @@ section:nth-of-type(even) { background-color: #ffffff; }
 
 .about-text-box { 
   flex: 1;         /* 残りのスペースを文章が使う */
-  min-width: 0;    /* 文章がはみ出さないようにするおまじない */
+  min-width: 0;    /* 文章がはみ出さないようにする */
 }
 
 .mv-panel {
@@ -345,4 +345,17 @@ section:nth-of-type(even) { background-color: #ffffff; }
 /* 最後のパネルだけ右線を消す */
 .mv-panel:last-child {
   border-right: none;
+}
+/* --- 5. Sections Layout --- */
+section { 
+  /* 上下の余白（padding）を 140px から 200px 程度に広げます */
+  padding: 200px 0; 
+  
+  /* スクロールした時に見出しが隠れないよう調整 */
+  scroll-margin-top: 80px; 
+}
+
+/* 最後のセクション（Contact）だけは少し余白を抑える */
+#contact {
+  padding-bottom: 250px;
 }
