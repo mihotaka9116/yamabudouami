@@ -109,9 +109,23 @@ h2 {
   height: 100%;
   background-size: cover;
   background-position: center;
-  border-right: 1px solid rgba(255,255,255,0.1);
   position: relative;
-  animation: zoomUp 20s ease-out forwards;
+  overflow: hidden;
+
+  @keyframes zoomUp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); } /* 1.1より少し抑えると計算誤差が減ります */
+}
+  
+  /* --- 重要：隙間対策 --- */
+  margin-right: -1px;      /* パネル同士を1px重ねて隙間を消す */
+  transform: translateZ(0); /* ブラウザのレンダリングを安定させる */
+  will-change: transform;   /* アニメーションの計算を滑らかにする */
+}
+
+/* 4枚目だけは重ねる必要がないのでリセット */
+.mv-panel:last-child {
+  margin-right: 0;
 }
 
 .mv-panel::after {
