@@ -299,3 +299,33 @@ section:nth-of-type(even) { background-color: #ffffff; }
   object-fit: cover;  /* 枠に合わせて画像を切り抜く */
   object-position: center; /* 画像の中央を表示 */
 }
+
+  /* --- 6. About --- */
+.about-container { 
+  display: flex; 
+  align-items: center; 
+  gap: 60px; 
+  margin-top: 60px; 
+  width: 100%; 
+}
+
+.about-image { 
+  /* ここが魔法の1行です */
+  flex: 0 0 45%;   /* 「伸びない、縮まない、全体の45%の幅を持つ」という指定 */
+  max-width: 500px; /* あまりに大きくなりすぎないように制限 */
+  min-width: 320px; /* ここが「1センチ」化を防ぐ砦です */
+  position: relative; 
+}
+
+.about-image img {
+  width: 100%;     /* 親要素（.about-image）の幅に合わせる */
+  height: 450px; 
+  object-fit: cover; 
+  border-radius: 2px;
+  box-shadow: 20px 20px 0 rgba(201, 169, 110, 0.1); 
+}
+
+.about-text-box { 
+  flex: 1;         /* 残りのスペースを文章が使う */
+  min-width: 0;    /* 文章がはみ出さないようにするおまじない */
+}
