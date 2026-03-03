@@ -395,3 +395,31 @@ section {
   width: 100.5%; /* ほんの少しだけ親要素を大きくする */
   margin-left: -0.25%; /* その分左に寄せて中央に合わせる */
 }
+
+.mainvisual-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* 隙間を物理的に詰め、背景色を画像に合わせる */
+  background-color: #1a2c4e; /* 紺色（隙間が出ても目立たなくする） */
+  letter-spacing: -1em; /* 文字の隙間を消す古い手法ですが、意外と効きます */
+}
+
+.mv-panel {
+  flex: 1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  
+  /* 隙間を絶対に出さないための3点セット */
+  margin-right: -0.5px; /* 1pxだと重なりすぎる場合は0.5pxに */
+  transform: translateZ(0); /* iPadなどのGPUレンダリングを強制 */
+  backface-visibility: hidden; /* ちらつき防止 */
+}
+
+/* 4枚目（最後）だけは右端を揃える */
+.mv-panel:last-child {
+  margin-right: 0;
+}
