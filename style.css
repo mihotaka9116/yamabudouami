@@ -287,3 +287,14 @@ section:nth-of-type(even) { background-color: #ffffff; }
   .about-image img { height: 350px; }
   #contact form { padding: 40px 25px; }
   .button input[type="submit"] { width:
+
+  .mv-panel {
+  flex: 1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-color: #e0e0e0; /* 画像が出るまでの代わりの色 */
+  position: relative;
+  overflow: hidden; /* ズームした時のはみ出し防止 */
+  animation: zoomUp 20s ease-out forwards;
+}
