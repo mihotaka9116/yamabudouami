@@ -359,3 +359,11 @@ section {
 #contact {
   padding-bottom: 250px;
 }
+
+.mv-copy-vertical {
+  /* ...既存の設定... */
+  /* 影を2段階重ねると、より文字の輪郭がはっきりします */
+  text-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.8), 
+    0 0 10px rgba(0, 0, 0, 0.5);
+}
