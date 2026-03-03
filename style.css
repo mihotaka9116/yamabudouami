@@ -329,3 +329,20 @@ section:nth-of-type(even) { background-color: #ffffff; }
   flex: 1;         /* 残りのスペースを文章が使う */
   min-width: 0;    /* 文章がはみ出さないようにするおまじない */
 }
+
+.mv-panel {
+  flex: 1 0 25%; /* 伸びる比率1、縮まない0、初期幅25%（4枚なので） */
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; /* 繰り返しを防止 */
+  border-right: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden; /* 画像のはみ出しを確実にカット */
+  animation: zoomUp 20s ease-out forwards;
+}
+
+/* 最後のパネルだけ右線を消す */
+.mv-panel:last-child {
+  border-right: none;
+}
