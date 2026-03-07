@@ -94,46 +94,7 @@ h2 {
 }
 .nav a:hover { color: var(--accent-color); }
 
-/* --- 4. Main Visual --- */
-#mainvisual {
-  width: 100%;
-  height: 650px;
-  position: relative;
-  overflow: hidden;
-}
 
-.mainvisual-inner { display: flex; width: 100%; height: 100%; }
-
-.mv-panel {
-  flex: 1;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-
-  @keyframes zoomUp {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.08); } /* 1.1より少し抑えると計算誤差が減ります */
-}
-  
-  /* --- 重要：隙間対策 --- */
-  margin-right: -1px;      /* パネル同士を1px重ねて隙間を消す */
-  transform: translateZ(0); /* ブラウザのレンダリングを安定させる */
-  will-change: transform;   /* アニメーションの計算を滑らかにする */
-}
-
-/* 4枚目だけは重ねる必要がないのでリセット */
-.mv-panel:last-child {
-  margin-right: 0;
-}
-
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(26,44,78,0.3) 0%, rgba(0,0,0,0) 50%, rgba(26,44,78,0.3) 100%);
-}
 
 /* ../ を消して ./ にするか、ファイル名だけにします */
 .item1 { background-image: url("./kagoami.jpg"); }
@@ -146,19 +107,6 @@ h2 {
   100% { transform: scale(1.1); }
 }
 
-.mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  writing-mode: vertical-rl;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
-}
-
-.main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
-.sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
 
 /* --- 5. Sections Layout --- */
 section { 
@@ -296,17 +244,7 @@ section:nth-of-type(even) { background-color: #ffffff; }
   #contact form { padding: 40px 25px; }
   .button input[type="submit"] { width:
 
-  .mv-panel {
-  flex: 1;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-color: #e0e0e0; /* 画像が出るまでの代わりの色 */
-  position: relative;
-  overflow: hidden; /* ズームした時のはみ出し防止 */
-  animation: zoomUp 20s ease-out forwards;
-}
-
+ 
 .about-image img {
   width: 100%;
   height: 500px;     /* 高さを固定して縦長に */
@@ -344,22 +282,9 @@ section:nth-of-type(even) { background-color: #ffffff; }
   min-width: 0;    /* 文章がはみ出さないようにする */
 }
 
-.mv-panel {
-  flex: 1 0 25%; /* 伸びる比率1、縮まない0、初期幅25%（4枚なので） */
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; /* 繰り返しを防止 */
-  border-right: 1px solid rgba(255,255,255,0.1);
-  position: relative;
-  overflow: hidden; /* 画像のはみ出しを確実にカット */
-  animation: zoomUp 20s ease-out forwards;
-}
 
-/* 最後のパネルだけ右線を消す */
-.mv-panel:last-child {
-  border-right: none;
-}
+
+
 /* --- 5. Sections Layout --- */
 section { 
   /* 上下の余白（padding）を 140px から 200px 程度に広げます */
@@ -374,35 +299,19 @@ section {
   padding-bottom: 250px;
 }
 
-.mv-copy-vertical {
-  /* ...既存の設定... */
-  /* 影を2段階重ねると、より文字の輪郭がはっきりします */
-  text-shadow: 
-    0 0 20px rgba(0, 0, 0, 0.8), 
-    0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  /* 0.3 を 0.4 や 0.5 に上げると、背景が暗くなり、文字がパキッと見えます */
-  background: rgba(0, 0, 0, 0.4); 
-}
-
-                                .mainvisual-inner {
-  display: flex;
-  width: 100.5%; /* ほんの少しだけ親要素を大きくする */
-  margin-left: -0.25%; /* その分左に寄せて中央に合わせる */
+/* --- 4. Main Visual --- */
+#mainvisual {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-color); /* 隙間対策の背景色 */
 }
 
 .mainvisual-inner {
   display: flex;
   width: 100%;
   height: 100%;
-  /* 隙間を物理的に詰め、背景色を画像に合わせる */
-  background-color: #1a2c4e; /* 紺色（隙間が出ても目立たなくする） */
-  letter-spacing: -1em; /* 文字の隙間を消す古い手法ですが、意外と効きます */
 }
 
 .mv-panel {
@@ -411,15 +320,37 @@ section {
   background-size: cover;
   background-position: center;
   position: relative;
-  overflow: hidden;
-  
-  /* 隙間を絶対に出さないための3点セット */
-  margin-right: -0.5px; /* 1pxだと重なりすぎる場合は0.5pxに */
-  transform: translateZ(0); /* iPadなどのGPUレンダリングを強制 */
-  backface-visibility: hidden; /* ちらつき防止 */
+  /* アニメーション関連（animation, transform, will-change）をすべて削除 */
 }
 
-/* 4枚目（最後）だけは右端を揃える */
-.mv-panel:last-child {
-  margin-right: 0;
+/* 画像の指定（そのまま維持） */
+.item1 { background-image: url("./kagoami.jpg"); }
+.item2 { background-image: url("./rose.jpg"); }
+.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
+.item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
+
+/* 暗くするフィルターを解除 */
+.mv-panel::after {
+  content: none; /* フィルター（疑似要素）を消す */
 }
+
+/* 文字（コピー）の設定 */
+.mv-copy-vertical {
+  position: absolute;
+  top: 12%;
+  left: 6%;
+  writing-mode: vertical-rl;
+  /* 写真が明るくなるので、文字に少し強い影をつけて読みやすくします */
+  color: #fff;
+  text-shadow: 
+    2px 2px 10px rgba(0,0,0,0.8),
+    0 0 20px rgba(0,0,0,0.5);
+  z-index: 10;
+  font-family: 'Noto Serif JP', serif;
+}
+
+.main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
+.sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
+
+
+
