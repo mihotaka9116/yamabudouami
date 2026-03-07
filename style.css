@@ -324,8 +324,8 @@ section {
 }
 
 /* 画像の指定（そのまま維持） */
-.item1 { background-image: url("./kagoami.jpg"); }
-.item2 { background-image: url("./rose.jpg"); }
+.item1 { background-image: url("kagoami.jpg"); }
+.item2 { background-image: url(rose.jpg); }
 .item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
 .item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
 
