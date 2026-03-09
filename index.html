@@ -193,23 +193,7 @@
 // すべてのスクリプトをここにまとめます
 document.addEventListener('DOMContentLoaded', function() {
   
-  // --- フェードインアニメーション ---
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-show');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  const fadeElements = document.querySelectorAll('.js-fadein');
-  fadeElements.forEach((el) => {
-    observer.observe(el);
-  });
-
+ 
   // --- ハンバーガーメニュー ---
   const hamburger = document.getElementById('hamburger');
   const nav = document.getElementById('nav');
