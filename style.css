@@ -94,71 +94,6 @@ h2 {
 }
 .nav a:hover { color: var(--accent-color); }
 
-/* --- 4. Main Visual --- */
-#mainvisual {
-  width: 100%;
-  height: 650px;
-  position: relative;
-  overflow: hidden;
-}
-
-.mainvisual-inner { display: flex; width: 100%; height: 100%; }
-
-.mv-panel {
-  flex: 1;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-
-  @keyframes zoomUp {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.08); } /* 1.1より少し抑えると計算誤差が減ります */
-}
-  
-  /* --- 重要：隙間対策 --- */
-  margin-right: -1px;      /* パネル同士を1px重ねて隙間を消す */
-  transform: translateZ(0); /* ブラウザのレンダリングを安定させる */
-  will-change: transform;   /* アニメーションの計算を滑らかにする */
-}
-
-/* 4枚目だけは重ねる必要がないのでリセット */
-.mv-panel:last-child {
-  margin-right: 0;
-}
-
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(26,44,78,0.3) 0%, rgba(0,0,0,0) 50%, rgba(26,44,78,0.3) 100%);
-}
-
-/* ../ を消して ./ にするか、ファイル名だけにします */
-.item1 { background-image: url("./kagoami.jpg"); }
-.item2 { background-image: url("./rose.jpg"); }
-.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
-.item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
-
-@keyframes zoomUp {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-}
-
-.mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  writing-mode: vertical-rl;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
-}
-
-.main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
-.sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
 
 /* --- 5. Sections Layout --- */
 section { 
@@ -261,9 +196,6 @@ section:nth-of-type(even) { background-color: #ffffff; }
 .instagram-icon-link { color: #fff; font-size: 1.5rem; margin-bottom: 20px; display: inline-block; transition: 0.3s; }
 .instagram-icon-link:hover { color: var(--accent-color); transform: scale(1.1); }
 
-/* --- Animations --- */
-.js-fadein { opacity: 0; transform: translateY(50px); transition: 1.4s ease-out; }
-.js-fadein.is-show { opacity: 1; transform: translateY(0); }
 
 /* --- Responsive --- */
 .hamburger { display: none; cursor: pointer; position: relative; width: 30px; height: 24px; }
@@ -285,35 +217,13 @@ section:nth-of-type(even) { background-color: #ffffff; }
   .nav.is-active { right: 0; }
   .nav ul { flex-direction: column; align-items: center; gap: 40px; padding: 0; }
 
-  #mainvisual { height: 500px; }
-  .mv-panel:nth-child(n+2) { display: none; }
-  .mv-copy-vertical { writing-mode: horizontal-tb; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; }
-  .main-phrase { font-size: 2.2rem; }
-  .sub-phrase { border-right: none; border-bottom: 1px solid var(--accent-color); padding: 0 10px 5px; display: inline-block; }
-
+  
   .about-container, .quality-container, .process-list, .order-container { flex-direction: column; gap: 40px; }
   .about-image img { height: 350px; }
   #contact form { padding: 40px 25px; }
   .button input[type="submit"] { width:
 
-  .mv-panel {
-  flex: 1;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-color: #e0e0e0; /* 画像が出るまでの代わりの色 */
-  position: relative;
-  overflow: hidden; /* ズームした時のはみ出し防止 */
-  animation: zoomUp 20s ease-out forwards;
-}
-
-.about-image img {
-  width: 100%;
-  height: 500px;     /* 高さを固定して縦長に */
-  object-fit: cover;  /* 枠に合わせて画像を切り抜く */
-  object-position: center; /* 画像の中央を表示 */
-}
-
+ 
   /* --- 6. About --- */
 .about-container { 
   display: flex; 
@@ -343,26 +253,7 @@ section:nth-of-type(even) { background-color: #ffffff; }
   min-width: 0;    /* 文章がはみ出さないようにする */
 }
 
-.mv-panel {
-  flex: 1 0 25%; /* 伸びる比率1、縮まない0、初期幅25%（4枚なので） */
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; /* 繰り返しを防止 */
-  border-right: 1px solid rgba(255,255,255,0.1);
-  position: relative;
-  overflow: hidden; /* 画像のはみ出しを確実にカット */
-  animation: zoomUp 20s ease-out forwards;
-}
 
-/* 最後のパネルだけ右線を消す */
-.mv-panel:last-child {
-  border-right: none;
-}
-/* --- 5. Sections Layout --- */
-section { 
-  /* 上下の余白（padding）を 140px から 200px 程度に広げます */
-  padding: 200px 0; 
   
   /* スクロールした時に見出しが隠れないよう調整 */
   scroll-margin-top: 80px; 
@@ -373,35 +264,19 @@ section {
   padding-bottom: 250px;
 }
 
-.mv-copy-vertical {
-  /* ...既存の設定... */
-  /* 影を2段階重ねると、より文字の輪郭がはっきりします */
-  text-shadow: 
-    0 0 20px rgba(0, 0, 0, 0.8), 
-    0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  /* 0.3 を 0.4 や 0.5 に上げると、背景が暗くなり、文字がパキッと見える */
-  background: rgba(0, 0, 0, 0.4); 
-}
-
-                                .mainvisual-inner {
-  display: flex;
-  width: 100.5%; /* ほんの少しだけ親要素を大きくする */
-  margin-left: -0.25%; /* その分左に寄せて中央に合わせる */
+/* --- 4. Main Visual --- */
+#mainvisual {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--main-color); /* 万が一の隙間対策 */
 }
 
 .mainvisual-inner {
   display: flex;
   width: 100%;
   height: 100%;
-  /* 隙間を物理的に詰め、背景色を画像に合わせる */
-  background-color: #1a2c4e; /* 紺色（隙間が出ても目立たなくする） */
-  letter-spacing: -1em; /* 文字の隙間を消す古い手法ですが、意外と効きます */
 }
 
 .mv-panel {
@@ -410,15 +285,58 @@ section {
   background-size: cover;
   background-position: center;
   position: relative;
-  overflow: hidden;
+  /* アニメーション関連はすべて削除 */
   
-  /* 隙間を絶対に出さないための3点セット */
-  margin-right: -0.5px; /* 1pxだと重なりすぎる場合は0.5pxに */
-  transform: translateZ(0); /* iPadなどのGPUレンダリングを強制 */
-  backface-visibility: hidden; /* ちらつき防止 */
+  /* パネル同士をわずかに重ねて隙間（白い線）を防止 */
+  margin-right: -1px; 
+  transform: translateZ(0); 
 }
 
-/* 4枚目（最後）だけは右端を揃える */
 .mv-panel:last-child {
   margin-right: 0;
 }
+
+/* 文字の視認性を高めるためのオーバーレイ */
+.mv-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 画像を少し暗くして文字を見やすく */
+}
+
+.item1 { background-image: url("./kagoami.jpg"); }
+.item2 { background-image: url("./rose.jpg"); }
+.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
+.item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
+
+/* 縦書きコピーの調整 */
+.mv-copy-vertical {
+  position: absolute;
+  top: 12%;
+  left: 6%;
+  writing-mode: vertical-rl;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8); /* 影を強くして視認性アップ */
+  z-index: 10;
+  font-family: 'Noto Serif JP', serif;
+}
+
+@media (max-width: 768px) {
+  #mainvisual { height: 500px; }
+  /* スマホでは1枚目だけを表示して、しっかり見せる */
+  .mv-panel:nth-child(n+2) { display: none; }
+  
+  .mv-copy-vertical {
+    writing-mode: horizontal-tb;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
