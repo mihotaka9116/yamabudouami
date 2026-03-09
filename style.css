@@ -176,3 +176,10 @@ section:nth-of-type(even) { background-color: #ffffff; }
   }
   .nav.is-active { right: 0; }
   .nav ul { flex-direction: column; padding: 40
+
+.mv-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.15); /* 0.3 から 0.15 に変更 */
+}
