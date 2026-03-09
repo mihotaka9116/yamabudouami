@@ -258,7 +258,7 @@ section:nth-of-type(even) { background-color: #ffffff; }
 
 /* --- 11. Footer --- */
 #footer { background-color: var(--main-color); color: #fff; text-align: center; padding: 50px 0; border-top: 4px solid var(--accent-color); }
-.instagram-icon-link { color: #fff; font-size: 2.5rem; margin-bottom: 20px; display: inline-block; transition: 0.3s; }
+.instagram-icon-link { color: #fff; font-size: 1.5rem; margin-bottom: 20px; display: inline-block; transition: 0.3s; }
 .instagram-icon-link:hover { color: var(--accent-color); transform: scale(1.1); }
 
 /* --- Animations --- */
@@ -324,7 +324,6 @@ section:nth-of-type(even) { background-color: #ffffff; }
 }
 
 .about-image { 
-  /* ここが魔法の1行です */
   flex: 0 0 45%;   /* 「伸びない、縮まない、全体の45%の幅を持つ」という指定 */
   max-width: 500px; /* あまりに大きくなりすぎないように制限 */
   min-width: 320px; /* ここが「1センチ」化を防ぐ砦です */
