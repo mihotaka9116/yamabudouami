@@ -386,7 +386,7 @@ section {
   content: "";
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  /* 0.3 を 0.4 や 0.5 に上げると、背景が暗くなり、文字がパキッと見える */
+  /* 0.3 を 0.4 や 0.5 に上げると、背景が暗くなり、文字がパキッと見えます */
   background: rgba(0, 0, 0, 0.4); 
 }
 
