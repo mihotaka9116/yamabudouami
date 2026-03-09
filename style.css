@@ -170,6 +170,3 @@ section:nth-of-type(even) { background-color: #ffffff; }
   .nav.is-active { right: 0; }
   .nav ul { flex-direction: column; padding: 40
 
-.mv-panel::after {
-  display: none; /* フィルターを無効化 */
-}
