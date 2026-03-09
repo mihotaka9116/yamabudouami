@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>山葡萄編みのかごバッグ 遠野</title>
+  <title>山葡萄のかごバッグ 遠野</title>
   <meta name="description" content="岩手県遠野市でぶどう編みのかごバッグを制作しています。">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="img/favicon.ico">
@@ -31,6 +31,7 @@
       <li><a href="#mainvisual">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#quality">Quality</a></li>
+      <li><a href="#process">Process</a></li>
       <li><a href="#works">Gallery</a></li>
       <li><a href="#contact">Order</a></li>
     </ul>
@@ -193,7 +194,23 @@
 // すべてのスクリプトをここにまとめます
 document.addEventListener('DOMContentLoaded', function() {
   
- 
+  // --- フェードインアニメーション ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  const fadeElements = document.querySelectorAll('.js-fadein');
+  fadeElements.forEach((el) => {
+    observer.observe(el);
+  });
+
   // --- ハンバーガーメニュー ---
   const hamburger = document.getElementById('hamburger');
   const nav = document.getElementById('nav');
