@@ -146,16 +146,6 @@ h2 {
   100% { transform: scale(1.1); }
 }
 
-.mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  writing-mode: vertical-rl;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(0,0,0,0.5);
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
-}
 
 .main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
 .sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
@@ -453,31 +443,6 @@ section {
   background: rgba(252, 250, 245, 0.4); 
 }
 
-.mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  writing-mode: vertical-rl;
-  
-  /* 文字色を確実に「紺」に指定 */
-  color: var(--main-color) !important; 
-  
-  /* 白い光彩（影）で視認性を確保 */
-  text-shadow: 
-    0 0 15px rgba(255, 255, 255, 1),
-    0 0 10px rgba(255, 255, 255, 0.8);
-    
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
-}
-
-/* サブコピーの横線も紺に合わせる */
-.sub-phrase {
-  font-size: 1.2rem;
-  letter-spacing: 0.3em;
-  border-right: 1px solid var(--main-color); 
-  padding-right: 12px;
-}
 
 /* --- 4. Main Visual (決定版) --- */
 
