@@ -1,120 +1,221 @@
-@charset "UTF-8";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>山葡萄のかごバッグ 遠野</title>
+  <meta name="description" content="岩手県遠野市でぶどう編みのかごバッグを制作しています。">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<header id="header">
+  <div class="site-title">
+    <h1>
+      <a href="#mainvisual">
+        <i class="fa-solid fa-leaf"></i> 山葡萄のかごバッグ 遠野
+      </a>
+    </h1>
+  </div>
 
-/* --- 1. Fonts & Variables --- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;700&display=swap');
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-:root {
-  --main-color: #1a2c4e;   /* 紺（勝色） */
-  --accent-color: #c9a96e; /* 金（真鍮色） */
-  --bg-color: #fcfaf5;     /* 生成り色 */
-  --text-color: #2b2b2b;
-}
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="#mainvisual">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#quality">Quality</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#works">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section id="mainvisual">
+  <div class="mainvisual-inner">
+    <div class="mv-panel item1"></div>
+    <div class="mv-panel item2"></div>
+    <div class="mv-panel item3"></div>
+    <div class="mv-panel item4"></div>
+  </div>
+  <div class="mv-copy-vertical">
+    <p class="main-phrase">時を編み、<br>暮らしを育む。</p>
+    <p class="sub-phrase">岩手県産山葡萄編みのかごバッグ</p>
+  </div>
+</section>
+<section id="about" class="wrapper js-fadein">
+  <h2 class="sec-title">About<span class="jp-sub">作り手について</span></h2>
+  
+  <div class="about-container">
+    <div class="about-image">
+      <img src="aozasa.jpg" alt="遠野・荒神神社の風景">
+      <div class="image-deco"></div>
+    </div>
 
-/* --- 2. Base & 共通設定 --- */
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+    <div class="about-text-box">
+      <div class="quote-mark">“</div>
+      <p>岩手県遠野市在住。定年退職後、ぶどう編みのかごバッグの制作を始めました。<br>
+      地元の講座で基礎を学び、一編みずつ丁寧に、心を込めて形にする手仕事に魅了されています。<br><br>
+      趣味は野菜や花を育てること。遠野の自然と共に歩む暮らしの中から、長く愛される作品をお届けします。</p>
+      <div class="quote-mark-end">”</div>
+    </div>
+  </div>
+</section>
+  </section>
+  
+  <section id="quality" class="wrapper js-fadein">
+  <h2 class="sec-title">Quality<span class="jp-sub">選ばれる理由</span></h2>
+  <div class="quality-container">
+    <div class="quality-item">
+      <h3>遠野の山が育む「強さ」</h3>
+      <p>岩手県遠野市の厳しい冬を越える山葡萄の皮は、他の地域に比べても繊維が緻密で非常に丈夫です。使い込むほどに、深く美しい飴色へと変化していきます。</p>
+    </div>
+    <div class="quality-item">
+      <h3>純国産・手仕事の誇り</h3>
+      <p>現在、市場に出回る多くの山葡萄バッグが海外産の素材を使用していますが、当工房では100%岩手産の素材にこだわっています。採集からなめし、編み上げまでを一貫して一人の手で行うことで、細部まで目の行き届いた品質を保証します。</p>
+    </div>
+  </div>
+</section>
 
-body {
-  margin: 0;
-  font-family: 'Noto Sans JP', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-size: 19px; 
-  line-height: 2.1;
-  overflow-x: hidden;
-}
+  <section id="process" class="wrapper js-fadein">
+    <h2 class="sec-title">Process<span class="jp-sub">工程</span></h2>
+    <div class="process-list">
+      <div class="process-item">
+        <h3>1. 採集</h3>
+        <p>初夏のわずかな期間に、奥深い山へ入り、良質なぶどうの皮を採取します。</p>
+      </div>
+      <div class="process-item">
+        <h3>2. なめし</h3>
+        <p>乾燥させた皮を水に浸し、丁寧に削って厚みを揃え、編みやすい状態に整えます。</p>
+      </div>
+      <div class="process-item">
+        <h3>3. 編み上げ</h3>
+        <p>網代編みや花結びなど、伝統的な技法で、一編みずつ力を込めて形にしていきます。</p>
+      </div>
+    </div>
+  </section>
 
-h2 {
-  color: var(--main-color);
-  border-bottom: 2px solid var(--accent-color);
-  display: block;
-  width: fit-content;
-  margin: 0 auto 70px;
-  padding-bottom: 15px;
-  text-align: center;
-  font-family: 'Noto Serif JP', serif;
-  font-size: 2.4rem;
-  letter-spacing: 0.2em;
-}
+  <section id="works" class="wrapper js-fadein">
+    <h2 class="sec-title">Gallery<span class="jp-sub">作品一覧</span></h2>
+    <ul class="gallery-grid">
+      <li class="js-fadein">
+        <img src="https://i.imgur.com/1S8wVrC.jpeg" alt="作品1">
+        <div class="item-info">
+          <p class="item-name">山葡萄網みのかごバッグ</p>
+          <p class="item-price">価格：お問い合わせください</p>
+        </div>
+      </li>
+      <li class="js-fadein">
+        <img src="https://i.imgur.com/REzif58.jpeg" alt="作品2">
+        <div class="item-info">
+          <p class="item-name">山葡萄編みのかごバッグ</p>
+          <p class="item-price">価格：お問い合わせください</p>
+        </div>
+      </li>
+      <li class="js-fadein">
+        <img src="https://i.imgur.com/7Xeudqk.jpeg" alt="作品3">
+        <div class="item-info">
+          <p class="item-name">眼鏡橋を走る釜石線の列車</p>
+         </div>
+      </li>
+       <li class="js-fadein">
+        <img src="kagocafe.jpg" alt="作品3">
+        <div class="item-info">
+          <p class="item-name">カフェとかご</p>
+         </div>
+      </li>
+      <li class="js-fadein">
+        <img src="https://i.imgur.com/4Q2gdI5.jpeg" alt="作品4">
+        <div class="item-info">
+          <p class="item-name">遠野の荒神神社</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section id="how-to-order" class="wrapper js-fadein">
+  <h2 class="sec-title">How to Order<span class="jp-sub">ご購入までの流れ</span></h2>
+  <div class="order-container">
+    <div class="order-step">
+      <span class="step-num">01</span>
+      <h3>最新作をチェック</h3>
+      <p>Instagramにて最新の完成作品や制作風景を公開しています。まずは作品の雰囲気や編み目をご覧ください。</p>
+      <a href="https://www.instagram.com/takahashimamoru1961/" class="btn-sm" target="_blank" rel="noopener noreferrer">Instagramを見る</a>
+    </div>
 
-.jp-sub {
-  display: block;
-  font-size: 1rem;
-  color: #888;
-  margin-top: 12px;
-  letter-spacing: 0.1em;
-}
+    <div class="order-step">
+      <span class="step-num">02</span>
+      <h3>お問い合わせ</h3>
+      <p>気になる作品やオーダーのご相談は、<strong>InstagramのDM</strong>よりご連絡ください。</p>
+    </div>
 
-.wrapper { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+    <div class="order-step">
+      <span class="step-num">03</span>
+      <h3>詳細のご相談</h3>
+      <p>サイズ感、現在の納期、お支払い方法などを丁寧にお打ち合わせさせていただきます。納得いただいた上で制作・お届けいたします。</p>
+    </div>
+  </div>
+</section>
 
-section { padding: 140px 0; scroll-margin-top: 80px; }
-section:nth-of-type(even) { background-color: #ffffff; }
+<section id="contact" class="wrapper js-fadein">
+  <h2 class="sec-title">Order / Contact<span class="jp-sub">お問い合わせ</span></h2>
+  <div class="contact-intro">
+    <p>作品の購入希望の場合はInstagramのDMよりお気軽にご連絡ください。</p>
+    <a href="https://www.instagram.com/takahashimamoru1961/" class="inst-link" target="_blank" rel="noopener noreferrer">Instagramへ移動する</a>
+  </div> </section> <footer id="footer">
+  <div class="footer-content">
+    <p style="letter-spacing: 0.2em; margin-bottom: 20px;">岩手県遠野の自然と共に歩む手仕事</p>
+    <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" rel="noopener noreferrer" class="instagram-icon-link">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <p>© 2026 山葡萄編みのかごバッグ 遠野</p>
+  </div>
+</footer>
 
-/* --- 4. Main Visual (ここを一つに統合しました) --- */
-#mainvisual {
-  width: 100%;
-  height: 650px;
-  position: relative;
-  overflow: hidden;
-}
+<script>
+// すべてのスクリプトをここにまとめます
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // --- フェードインアニメーション ---
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
 
-.mainvisual-inner {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  background-color: var(--main-color); /* 隙間対策 */
-}
+  const fadeElements = document.querySelectorAll('.js-fadein');
+  fadeElements.forEach((el) => {
+    observer.observe(el);
+  });
 
-.mv-panel {
-  flex: 1;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-  margin-right: -0.5px;
-  transform: translateZ(0);
-  animation: zoomUp 20s ease-out forwards;
-}
+  // --- ハンバーガーメニュー ---
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
 
-.mv-panel:last-child { margin-right: 0; }
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('is-active');
+    nav.classList.toggle('is-active');
+  });
 
-/* 紺色の文字を見やすくするため、明るいオーバーレイを被せる */
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(252, 250, 245, 0.4); 
-}
+  const navLinks = document.querySelectorAll('.nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('is-active');
+      nav.classList.remove('is-active');
+    });
+  });
+});
+</script>
 
-/* コピーの設定：紺色に変更 */
-.mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
-  writing-mode: vertical-rl;
-  color: var(--main-color) !important; /* 強制的に紺色を適用 */
-  text-shadow: 
-    0 0 15px rgba(255, 255, 255, 1),
-    0 0 10px rgba(255, 255, 255, 0.8);
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
-}
-
-.main-phrase { 
-  font-size: 3.2rem; 
-  letter-spacing: 0.5em; 
-  font-weight: 700; 
-  margin-bottom: 25px; 
-}
-
-.sub-phrase { 
-  font-size: 1.2rem; 
-  letter-spacing: 0.3em; 
-  border-right: 1px solid var(--main-color); /* 線も紺色に */
-  padding-right: 12px; 
-}
-
-@keyframes zoomUp {
-  0% { transform: scale(1); }
-  100% { transform: scale(1
+</body>
+</html>
