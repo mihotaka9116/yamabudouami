@@ -423,3 +423,30 @@ section {
 .mv-panel:last-child {
   margin-right: 0;
 }
+
+                                .mv-copy-vertical {
+  position: absolute;
+  top: 12%;
+  left: 6%;
+  writing-mode: vertical-rl;
+  
+  /* 文字色を紺（変数）に変更 */
+  color: var(--main-color); 
+  
+  /* 白い影（光彩）を入れて、文字の周りを明るくする */
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 0.9),
+    0 0 5px rgba(255, 255, 255, 0.5);
+    
+  z-index: 10;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* パネル自体の重なり（オーバーレイ）を白系に変更するとさらに見やすい */
+.mv-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* 黒ではなく、薄い生成り色などを重ねる */
+  background: rgba(252, 250, 245, 0.3); 
+}
