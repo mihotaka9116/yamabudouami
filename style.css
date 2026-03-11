@@ -369,18 +369,6 @@ section {
   scroll-margin-top: 80px; 
 }
 
-/* 最後のセクション（Contact）だけは少し余白を抑える */
-#contact {
-  padding-bottom: 250px;
-}
-
-.mv-copy-vertical {
-  /* ...既存の設定... */
-  /* 影を2段階重ねると、より文字の輪郭がはっきりします */
-  text-shadow: 
-    0 0 20px rgba(0, 0, 0, 0.8), 
-    0 0 10px rgba(0, 0, 0, 0.5);
-}
 
 .mv-panel::after {
   content: "";
@@ -449,4 +437,44 @@ section {
   top: 0; left: 0; width: 100%; height: 100%;
   /* 黒ではなく、薄い生成り色などを重ねる */
   background: rgba(252, 250, 245, 0.3); 
+}
+
+/* --- 4. Main Visual 修正版 --- */
+
+/* パネルの重なり：紺文字を見やすくするために白を薄く被せる */
+.mv-panel::after {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  /* 黒背景（rgba(0,0,0,...)）の記述を消して、こちらに統一 */
+  background: rgba(252, 250, 245, 0.4); 
+}
+
+.mv-copy-vertical {
+  position: absolute;
+  top: 12%;
+  left: 6%;
+  writing-mode: vertical-rl;
+  
+  /* 文字色を確実に「紺」に指定 */
+  color: var(--main-color) !important; 
+  
+  /* 白い光彩（影）で視認性を確保 */
+  text-shadow: 
+    0 0 15px rgba(255, 255, 255, 1),
+    0 0 10px rgba(255, 255, 255, 0.8);
+    
+  z-index: 10;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* サブコピーの横線も紺に合わせる */
+.sub-phrase {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  border-right: 1px solid var(--main-color); 
+  padding-right: 12px;
 }
