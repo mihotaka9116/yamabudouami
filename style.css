@@ -429,46 +429,55 @@ section {
   background: rgba(252, 250, 245, 0.3); 
 }
 
-/* --- 4. Main Visual 修正版 --- */
-
-/* パネルの重なり：紺文字を見やすくするために白を薄く被せる */
-.mv-panel::after {
-  content: "";
-  position: absolute;
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%;
-  /* 黒背景（rgba(0,0,0,...)）の記述を消して、こちらに統一 */
-  background: rgba(252, 250, 245, 0.4); 
+/* --- 4. Main Visual (統合・最終版) --- */
+#mainvisual {
+  width: 100%;
+  height: 650px;
+  position: relative;
+  overflow: hidden;
 }
 
+.mainvisual-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color); /* 隙間対策の背景色 */
+}
 
-/* --- 4. Main Visual (決定版) --- */
+.mv-panel {
+  flex: 1;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  margin-right: -0.5px; /* 隙間対策 */
+  transform: translateZ(0);
+  animation: zoomUp 20s ease-out forwards;
+}
 
-/* 写真の上に薄い「生成り色」を重ねて文字を浮き立たせる */
+.mv-panel:last-child {
+  margin-right: 0;
+}
+
+/* 写真の上に生成り色を重ねて紺文字を浮かせる */
 .mv-panel::after {
   content: "";
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  /* rgbaの最後を 0.3 〜 0.4 にすると、写真の質感も残ります */
   background: rgba(252, 250, 245, 0.4); 
 }
 
+/* メインコピーの設定（紺色・縦書き） */
 .mv-copy-vertical {
   position: absolute;
   top: 12%;
   left: 6%;
   writing-mode: vertical-rl;
-  
-  /* 文字色を「紺」に固定 */
   color: var(--main-color) !important; 
-  
-  /* 文字の周りに白い光を当ててパキッと見せる */
   text-shadow: 
     0 0 15px rgba(255, 255, 255, 1),
-    0 0 5px rgba(255, 255, 255, 0.8);
-    
+    0 0 10px rgba(255, 255, 255, 0.8);
   z-index: 10;
   font-family: 'Noto Serif JP', serif;
 }
@@ -483,7 +492,18 @@ section {
 .sub-phrase { 
   font-size: 1.2rem; 
   letter-spacing: 0.3em; 
-  /* 横線も紺に統一 */
   border-right: 1px solid var(--main-color); 
   padding-right: 12px; 
 }
+
+/* アニメーション定義 */
+@keyframes zoomUp {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* 画像指定（パスはご自身の環境に合わせてください） */
+.item1 { background-image: url("./kagoami.jpg"); }
+.item2 { background-image: url("./rose.jpg"); }
+.item3 { background-image: url("https://i.imgur.com/REzif58.jpeg"); }
+.item4 { background-image: url("https://i.imgur.com/7Xeudqk.jpeg"); }
