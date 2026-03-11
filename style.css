@@ -428,12 +428,11 @@ section {
   /* 黒ではなく、薄い生成り色などを重ねる */
   background: rgba(252, 250, 245, 0.3); 
 }
-
-/* --- 4. Main Visual (統合・最終版) --- */
+/* --- 4. Main Visual (位置と縦書きの完全修正) --- */
 #mainvisual {
   width: 100%;
-  height: 650px;
-  position: relative;
+  height: 650px; /* MVの高さを固定 */
+  position: relative; /* 子要素（コピー）の基準点になります */
   overflow: hidden;
 }
 
@@ -441,7 +440,6 @@ section {
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: var(--main-color); /* 隙間対策の背景色 */
 }
 
 .mv-panel {
@@ -450,17 +448,9 @@ section {
   background-size: cover;
   background-position: center;
   position: relative;
-  overflow: hidden;
-  margin-right: -0.5px; /* 隙間対策 */
-  transform: translateZ(0);
-  animation: zoomUp 20s ease-out forwards;
 }
 
-.mv-panel:last-child {
-  margin-right: 0;
-}
-
-/* 写真の上に生成り色を重ねて紺文字を浮かせる */
+/* 紺文字を見やすくするための明るい膜 */
 .mv-panel::after {
   content: "";
   position: absolute;
@@ -468,32 +458,39 @@ section {
   background: rgba(252, 250, 245, 0.4); 
 }
 
-/* メインコピーの設定（紺色・縦書き） */
+/* コピーをMV内の決まった位置に固定 */
 .mv-copy-vertical {
-  position: absolute;
-  top: 12%;
-  left: 6%;
+  position: absolute; /* 親要素(#mainvisual)を基準に配置 */
+  top: 12%;           /* 上から12%の位置 */
+  left: 6%;           /* 左から6%の位置 */
+  z-index: 10;        /* 写真より前に出す */
+  
+  /* 縦書き設定 */
   writing-mode: vertical-rl;
-  color: var(--main-color) !important; 
+  -ms-writing-mode: tb-rl;
+  
+  /* 文字色と装飾 */
+  color: var(--main-color) !important;
+  font-family: 'Noto Serif JP', serif;
   text-shadow: 
     0 0 15px rgba(255, 255, 255, 1),
-    0 0 10px rgba(255, 255, 255, 0.8);
-  z-index: 10;
-  font-family: 'Noto Serif JP', serif;
+    0 0 5px rgba(255, 255, 255, 0.8);
 }
 
 .main-phrase { 
   font-size: 3.2rem; 
   letter-spacing: 0.5em; 
   font-weight: 700; 
-  margin-bottom: 25px; 
+  margin: 0 0 25px 0; /* 余白のリセット */
+  line-height: 1.5;
 }
 
 .sub-phrase { 
   font-size: 1.2rem; 
   letter-spacing: 0.3em; 
-  border-right: 1px solid var(--main-color); 
-  padding-right: 12px; 
+  border-right: 2px solid var(--main-color); 
+  padding-right: 12px;
+  line-height: 1.8;
 }
 
 /* アニメーション定義 */
