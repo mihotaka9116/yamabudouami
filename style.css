@@ -1,12 +1,5 @@
 @charset "UTF-8";
 
-/* 1. ブラウザ独自の余白をゼロにする（これが最大の原因です） */
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* 横揺れ防止 */
-}
-
 /* 2. フーター自体の幅を確定させる */
 #footer {
   width: 100%;           /* 明示的に100%を指定 */
