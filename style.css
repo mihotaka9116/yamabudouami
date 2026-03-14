@@ -155,12 +155,16 @@ h2 {
 section {
   padding: 140px 0;
   scroll-margin-top: 80px;
+  width: 100%;
 }
 
-#about { background-color: #ffffff; }
-#quality { background-color: #ffffff; }
-
-#contact { padding-bottom: 200px; }
+/* セクションごとに背景色を切り替え */
+#about        { background-color: #ffffff; }
+#quality      { background-color: #f5f0e8; }
+#process      { background-color: #ffffff; }
+#works        { background-color: #f5f0e8; }
+#how-to-order { background-color: #ffffff; }
+#contact      { background-color: #f5f0e8; padding-bottom: 200px; }
 
 .wrapper { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
 
