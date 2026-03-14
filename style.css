@@ -313,6 +313,68 @@ section:nth-of-type(even) { background-color: #ffffff; }
 .hamburger { display: none; cursor: pointer; position: relative; width: 30px; height: 24px; }
 
 /* --- 15. Responsive --- */
+
+/* タブレット (769px ~ 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body { font-size: 17px; }
+
+  #header { padding: 16px 4%; }
+
+  .site-title h1 a {
+    font-size: 1.1rem;
+    padding: 9px 16px;
+  }
+
+  .nav ul { gap: 20px; }
+  .nav a { font-size: 0.9rem; }
+
+  #mainvisual { height: 550px; }
+
+  .mv-copy-vertical { left: 4%; }
+  .main-phrase { font-size: 2.6rem; }
+
+  .wrapper { padding: 0 4%; }
+
+  section { padding: 100px 0; }
+
+  /* About: 縦並びに変更 */
+  .about-container {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .about-image {
+    flex: none;
+    max-width: 100%;
+    min-width: unset;
+  }
+  .about-image img { height: 400px; }
+
+  /* Quality: 縦並びに変更 */
+  .quality-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Process: 縦並びに変更 */
+  .process-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .process-item:not(:last-child)::after { display: none; }
+
+  /* Gallery: 2列に変更 */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  /* How to Order: 縦並びに変更 */
+  .order-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
 @media (max-width: 768px) {
   body { font-size: 18px; }
 
