@@ -149,7 +149,16 @@ h2 {
 }
 
 .main-phrase { font-size: 3.2rem; letter-spacing: 0.5em; font-weight: 700; margin-bottom: 25px; }
-.sub-phrase { font-size: 1.2rem; letter-spacing: 0.3em; border-right: 1px solid var(--accent-color); padding-right: 12px; }
+.sub-phrase {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  border-right: 2px solid var(--accent-color);
+  padding-right: 14px;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.25);
+  padding: 8px 16px 8px 4px;
+}
 
 /* --- 5. Sections Layout --- */
 section {
