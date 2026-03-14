@@ -86,7 +86,7 @@ h2 {
 }
 
 .site-title h1 a:hover .fa-leaf {
-  transform: rotate(360deg);
+  transform: rotate(30deg);
 }
 
 .nav ul { display: flex; list-style: none; gap: 35px; margin: 0; }
