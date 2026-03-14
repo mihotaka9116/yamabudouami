@@ -372,8 +372,13 @@ section {
 
   #mainvisual { height: 550px; }
 
-  .mv-copy-vertical { left: 4%; }
-  .main-phrase { font-size: 2.6rem; }
+  /* タブレット：縦書きのまま、位置とサイズを調整 */
+  .mv-copy-vertical {
+    top: 8%;
+    left: 4%;
+  }
+  .main-phrase { font-size: 2.4rem; }
+  .sub-phrase { font-size: 1.1rem; }
 
   .wrapper { padding: 0 4%; }
 
@@ -460,23 +465,33 @@ section {
   .nav.is-active { right: 0; }
   .nav ul { flex-direction: column; align-items: center; gap: 40px; padding: 0; }
 
-  #mainvisual { height: 500px; }
+  #mainvisual { height: 400px; }
   .mv-panel:nth-child(n+3) { display: none; }
   .mv-panel { flex: 1 0 50%; }
+
+  /* スマホ：コピーを横書きで中央表示 */
   .mv-copy-vertical {
     writing-mode: horizontal-tb;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
+    width: 90%;
     text-align: center;
   }
-  .main-phrase { font-size: 2.2rem; }
+  .main-phrase {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 16px;
+  }
   .sub-phrase {
-    border-right: none;
-    border-bottom: 1px solid var(--accent-color);
-    padding: 0 10px 5px;
+    writing-mode: horizontal-tb;
     display: inline-block;
+    font-size: 0.95rem;
+    letter-spacing: 0.15em;
+    border-right: none;
+    border-bottom: 2px solid var(--accent-color);
+    background: rgba(0,0,0,0.25);
+    padding: 6px 12px;
   }
 
   .about-container,
