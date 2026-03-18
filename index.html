@@ -50,22 +50,54 @@
 <body class="bg-brand-cream text-brand-text font-sans">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#" class="flex flex-col">
-                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.2em] text-brand-navy leading-none">Yamabudouami</span>
-                <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1">Tono Iwate Japan</span>
+<nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
+        <!-- Logo -->
+        <a href="#home" class="flex flex-col items-start">
+            <span class="font-display font-bold text-xl md:text-2xl tracking-[0.2em] uppercase text-brand-navy leading-none">
+                Yamabudouami
+            </span>
+            <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1 font-sans">
+                Tono Iwate Japan
+            </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy">
+            <a href="#about" class="hover:text-brand-gold transition-colors">About</a>
+            <a href="#quality" class="hover:text-brand-gold transition-colors">Quality</a>
+            <a href="#gallery" class="hover:text-brand-gold transition-colors">Gallery</a>
+            <a href="#order" class="hover:text-brand-gold transition-colors">Order</a>
+        </div>
+
+        <!-- Hamburger Menu Button (JS用ID: menu-toggle) -->
+        <button id="menu-toggle" class="md:hidden relative z-[1000] text-brand-navy p-2 focus:outline-none transition-all duration-300">
+            <i data-lucide="menu" id="menu-icon" size="36"></i>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay (JS用ID: mobile-menu) -->
+<div id="mobile-menu" class="fixed inset-0 z-[850] bg-brand-navy/95 backdrop-blur-md translate-x-full transition-transform duration-500 hidden flex flex-col justify-center items-center">
+    <div class="flex flex-col items-center space-y-10">
+        <a href="#about" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif hover:text-brand-gold transition-colors">About</a>
+        <a href="#quality" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif hover:text-brand-gold transition-colors">Quality</a>
+        <a href="#gallery" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif hover:text-brand-gold transition-colors">Gallery</a>
+        <a href="#order" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif hover:text-brand-gold transition-colors">Order</a>
+        
+        <!-- SNS Link in Mobile Menu -->
+        <div class="pt-10">
+            <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" class="text-brand-gold border border-brand-gold px-6 py-2 text-xs tracking-widest uppercase font-bold">
+                Instagram
             </a>
-            <div class="hidden md:flex space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy">
-                <a href="#about" class="hover:text-brand-gold">About</a>
-                <a href="#quality" class="hover:text-brand-gold">Quality</a>
-                <a href="#gallery" class="hover:text-brand-gold">Gallery</a>
-                <a href="#order" class="hover:text-brand-gold">Order</a>
-            </div>
-            <!-- Mobile Menu Toggle (JavaScriptで制御) -->
-            <button id="menu-toggle" class="md:hidden text-brand-navy focus:outline-none">
-                <i data-lucide="menu" size="32"></i>
-            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Back to Top Button (JS用ID: back-to-top) -->
+<button id="back-to-top" class="fixed bottom-8 right-8 z-[900] bg-brand-gold text-brand-navy w-12 h-12 rounded-full hidden items-center justify-center shadow-2xl hover:bg-brand-navy hover:text-brand-gold transition-all duration-300">
+    <i data-lucide="chevron-up"></i>
+</button>
         </div>
     </nav>
 
