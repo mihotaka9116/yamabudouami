@@ -81,3 +81,23 @@ body {
     writing-mode: vertical-rl;
     text-orientation: mixed;
 }
+
+/* 写真と文字が被る際、文字の可読性を上げるための設定 */
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Aboutセクションの上の余白を調整して、重なったコピーがAboutのタイトルを隠さないようにする */
+#about {
+    position: relative;
+    z-index: 10;
+}
+
+/* 縦書きの装飾線が必要な場合 */
+.scroll-line {
+    width: 1px;
+    height: 100px;
+    background: linear-gradient(to bottom, var(--color-gold), transparent);
+    margin: 0 auto;
+}
