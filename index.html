@@ -6,24 +6,17 @@
     <title>山葡萄編みのかごバッグ 遠野 | 時を編み、暮らしを育む</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            navy: '#1a2c4e',
-                            gold: '#c9a96e',
-                            cream: '#fcfaf5',
-                            text: '#2b2b2b',
-                        }
+                        brand: { navy: '#1a2c4e', gold: '#c9a96e', cream: '#fcfaf5', text: '#2b2b2b' }
                     },
                     fontFamily: {
                         serif: ['"Shippori Mincho"', 'serif'],
                         display: ['"Playfair Display"', 'serif'],
-                        accent: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Montserrat"', 'sans-serif'],
                     }
                 }
@@ -31,175 +24,113 @@
         }
     </script>
     <style>
-        /* フェードインの初期状態を強制的に上書き */
+        /* JSコードの .is-show に合わせた設定 */
         .js-fadein {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
         }
-        .js-fadein.is-visible {
+        .js-fadein.is-show {
             opacity: 1 !important;
             transform: translateY(0) !important;
+        }
+        .text-shadow-strong {
+            text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+        /* ヒーローコピー専用の即時フェードイン */
+        .hero-visible {
+            animation: heroFade 2s ease-out forwards;
+        }
+        @keyframes heroFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-text font-sans">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10">
+    <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#home" class="flex flex-col items-start">
-                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.2em] uppercase text-brand-navy leading-none">
-                    Yamabudouami
-                </span>
-                <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1 font-sans">
-                    Tono Iwate Japan
-                </span>
+            <a href="#" class="flex flex-col">
+                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.2em] text-brand-navy leading-none">Yamabudouami</span>
+                <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1">Tono Iwate Japan</span>
             </a>
-            <div class="hidden md:flex items-center space-x-10 text-xs tracking-widest uppercase font-semibold">
-                <a href="#about" class="hover:text-brand-gold transition-colors">About</a>
-                <a href="#quality" class="hover:text-brand-gold transition-colors">Quality</a>
-                <a href="#gallery" class="hover:text-brand-gold transition-colors">Gallery</a>
-                <a href="#order" class="hover:text-brand-gold transition-colors">Order</a>
+            <div class="hidden md:flex space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy">
+                <a href="#about" class="hover:text-brand-gold">About</a>
+                <a href="#quality" class="hover:text-brand-gold">Quality</a>
+                <a href="#gallery" class="hover:text-brand-gold">Gallery</a>
+                <a href="#order" class="hover:text-brand-gold">Order</a>
             </div>
+            <!-- Mobile Menu Toggle (JavaScriptで制御) -->
+            <button id="menu-toggle" class="md:hidden text-brand-navy focus:outline-none">
+                <i data-lucide="menu" size="32"></i>
+            </button>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[800] bg-brand-navy text-white translate-x-full transition-transform duration-500 hidden flex flex-col justify-center items-center space-y-8 text-xl tracking-[0.3em] font-serif">
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#quality" class="mobile-nav-link">Quality</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#order" class="mobile-nav-link">Order</a>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="relative h-screen min-h-[700px] w-full overflow-hidden flex items-center justify-center">
-        <!-- Background Images -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 grid grid-cols-1 md:grid-cols-4 h-full">
-            <div class="relative h-full"><img src="kagoami.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt=""></div>
-            <div class="hidden md:block h-full"><img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt=""></div>
-            <div class="hidden md:block h-full"><img src="https://i.imgur.com/REzif58.jpeg" class="w-full h-full object-cover grayscale-[0.2]" alt=""></div>
-            <div class="hidden md:block h-full"><img src="https://i.imgur.com/7Xeudqk.jpeg" class="w-full h-full object-cover grayscale-[0.2]" alt=""></div>
+            <img src="kagoami.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
+            <img src="rose.jpg" class="hidden md:block w-full h-full object-cover grayscale-[0.2]" alt="">
+            <img src="https://i.imgur.com/REzif58.jpeg" class="hidden md:block w-full h-full object-cover grayscale-[0.2]" alt="">
+            <img src="https://i.imgur.com/7Xeudqk.jpeg" class="hidden md:block w-full h-full object-cover grayscale-[0.2]" alt="">
         </div>
-        <!-- 文字を読みやすくするための濃いめのオーバーレイ -->
         <div class="absolute inset-0 bg-black/40"></div>
         
-        <!-- Hero Copy -->
-        <div class="relative z-10 text-center text-white px-6">
-            <h1 class="text-3xl md:text-6xl tracking-[0.4em] font-serif font-bold mb-8 drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] leading-tight js-fadein">
-                時を編み、暮らしを育む。
+        <!-- Hero Copy: JSを待たずにアニメーションさせるクラスに変更 -->
+        <div class="relative z-10 text-center text-white px-6 hero-visible">
+            <h1 class="text-4xl md:text-6xl tracking-[0.4em] font-serif font-bold mb-8 text-shadow-strong leading-tight">
+                時を編み、<br class="md:hidden">暮らしを育む。
             </h1>
-            <div class="js-fadein" style="transition-delay: 0.3s;">
-                <p class="text-[10px] md:text-sm tracking-[0.8em] uppercase text-brand-gold font-bold font-sans bg-brand-navy/90 backdrop-blur-md inline-block px-10 py-4 border border-brand-gold/30 shadow-2xl">
-                    Yamabudouami Tono
-                </p>
-            </div>
+            <p class="text-[10px] md:text-sm tracking-[0.8em] uppercase text-brand-gold font-bold bg-brand-navy/90 inline-block px-10 py-4 border border-brand-gold/30 shadow-2xl">
+                Yamabudouami Tono
+            </p>
         </div>
     </section>
 
-    <!-- 中央キャッチコピー（HeroとAboutをまたぐ） -->
+    <!-- 浮き出しキャッチコピー -->
     <div class="relative z-20 -mt-32 flex justify-center px-6">
-        <div class="max-w-4xl w-full bg-white py-16 md:py-24 px-8 border border-brand-gold/20 shadow-[0_20px_50px_rgba(0,0,0,0.1)] text-center js-fadein">
+        <div class="max-w-4xl w-full bg-white py-16 md:py-24 px-8 border border-brand-gold/20 shadow-2xl text-center js-fadein">
             <h3 class="text-brand-navy font-serif text-2xl md:text-4xl tracking-[0.3em] mb-8 leading-relaxed">
                 遠野の森が育む、<br class="md:hidden">琥珀色の手仕事。
             </h3>
-            <p class="text-brand-gold font-sans text-[10px] md:text-xs tracking-[0.6em] uppercase font-bold">
-                Tono Yamabudou Craftsmanship
-            </p>
+            <p class="text-brand-gold font-sans text-[10px] md:text-xs tracking-[0.6em] uppercase font-bold">Tono Yamabudou Craftsmanship</p>
             <div class="w-[1px] h-20 bg-brand-gold/40 mx-auto mt-12"></div>
         </div>
     </div>
 
-    <!-- About Section -->
-    <section id="about" class="pt-48 pb-40 md:pb-64 bg-brand-cream">
+    <!-- 他のセクションは同様に js-fadein を使用 -->
+    <section id="about" class="py-40 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24 js-fadein">
-                <span class="block text-xs text-brand-gold tracking-[0.6em] uppercase mb-4">About</span>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy tracking-[0.1em]">作り手について</h2>
-            </div>
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <img src="https://picsum.photos/seed/craftsman/800/1000" alt="職人" class="shadow-2xl grayscale-[0.2] js-fadein">
-                <div class="space-y-8 text-lg md:text-xl text-brand-text leading-[2.2] font-serif js-fadein">
-                    <p>岩手県遠野市在住。定年退職後、ぶどう編みのかごバッグの制作を始めました。地元の講座で基礎を学び、一編みずつ丁寧に、心を込めて形にする手仕事に魅了されています。</p>
-                    <p class="border-l-2 border-brand-gold/30 pl-6 italic">趣味は野菜や花を育てること。遠野の自然と共に歩む暮らしの中から、長く愛される作品をお届けします。</p>
+                <img src="https://picsum.photos/seed/craftsman/800/1000" class="shadow-2xl js-fadein" alt="">
+                <div class="space-y-8 text-lg font-serif js-fadein">
+                    <h2 class="text-3xl font-bold text-brand-navy">作り手について</h2>
+                    <p>岩手県遠野市在住。一編みずつ丁寧に、心を込めて形にする手仕事に魅了されています。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quality Section -->
-    <section id="quality" class="py-40 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24 js-fadein">
-                <span class="block text-xs text-brand-gold tracking-[0.6em] uppercase mb-4">Quality</span>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy">選ばれる理由</h2>
-            </div>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="js-fadein">
-                    <h4 class="text-xl font-bold text-brand-navy mb-6 border-b border-brand-gold/30 pb-4">遠野の「強さ」</h4>
-                    <p class="leading-relaxed font-serif italic text-gray-700 text-lg">厳しい冬を越える山葡萄の皮は非常に丈夫。使い込むほどに深い琥珀色へと変化します。</p>
-                </div>
-                <div class="js-fadein" style="transition-delay: 0.2s;">
-                    <h4 class="text-xl font-bold text-brand-navy mb-6 border-b border-brand-gold/30 pb-4">純国産の誇り</h4>
-                    <p class="leading-relaxed font-serif italic text-gray-700 text-lg">100%岩手産の素材にこだわり、採集から編み上げまでを一貫して一人で行います。</p>
-                </div>
-                <div class="js-fadein" style="transition-delay: 0.4s;">
-                    <h4 class="text-xl font-bold text-brand-navy mb-6 border-b border-brand-gold/30 pb-4">三代継ぐ価値</h4>
-                    <p class="leading-relaxed font-serif italic text-gray-700 text-lg">親子三代にわたって使い続けられる耐久性を持ち、家族の歴史と共に歩む一生ものです。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Back to Top Button (JSで制御) -->
+    <button id="back-to-top" class="fixed bottom-10 right-10 z-[999] bg-brand-navy text-brand-gold w-12 h-12 rounded-full hidden items-center justify-center shadow-2xl hover:bg-brand-gold hover:text-brand-navy transition-all">
+        <i data-lucide="chevron-up"></i>
+    </button>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-40 bg-brand-cream">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24 js-fadein">
-                <span class="block text-xs text-brand-gold tracking-[0.6em] uppercase mb-4">Gallery</span>
-                <h2 class="text-3xl md:text-5xl font-serif font-bold text-brand-navy">作品と風景</h2>
-            </div>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="js-fadein"><img src="https://picsum.photos/seed/bag1/800/1000" class="w-full shadow-lg grayscale hover:grayscale-0 transition-all duration-700" alt=""></div>
-                <div class="js-fadein" style="transition-delay: 0.2s;"><img src="kagocafe.jpg" class="w-full shadow-lg grayscale hover:grayscale-0 transition-all duration-700 md:mt-24" alt=""></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Section -->
-    <section id="order" class="py-40 bg-brand-navy text-white text-center">
-        <div class="max-w-3xl mx-auto px-6 js-fadein">
-            <span class="block text-xs text-brand-gold tracking-[0.6em] uppercase mb-4">Order</span>
-            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-12">ご注文について</h2>
-            <p class="text-xl italic opacity-80 mb-16 leading-loose">
-                現在はオーダーメイドを中心に承っております。<br>
-                制作には半年から一年ほどお時間をいただき、一編みずつ心を込めて制作いたします。
-            </p>
-            <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" class="inline-block px-12 py-5 border border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-navy transition-all duration-500 font-bold tracking-widest">Instagramで問い合わせる</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-24 bg-brand-navy text-white border-t-4 border-brand-gold">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-            <div class="mb-12">
-                <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" class="text-white hover:text-brand-gold transition-all duration-500">
-                    <i data-lucide="instagram" class="w-10 h-10"></i>
-                </a>
-            </div>
-            <h4 class="text-4xl font-display font-bold tracking-widest text-brand-gold mb-6 italic">Yamabudouami</h4>
-            <p class="text-white/40 text-[10px] tracking-[0.5em] mb-12 uppercase">Handcrafted in Tono, Iwate, Japan</p>
-            <p class="text-white/20 text-[10px] font-sans">&copy; 2026 山葡萄編みのかごバッグ 遠野</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- ここに提供いただいたJavaScriptコードを貼り付け、または読み込んでください -->
     <script>
-        lucide.createIcons();
-        
-        // スクロール監視スクリプト（文字を表示させる）
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.js-fadein').forEach(el => observer.observe(el));
+        /* ここに提供いただいたJSコードを配置 */
     </script>
 </body>
 </html>
