@@ -29,8 +29,8 @@
             transition: opacity 1.5s ease-out, transform 1.5s ease-out;
         }
         .js-fadein.is-show {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         .text-shadow-strong {
             text-shadow: 0 4px 15px rgba(0,0,0,0.8);
@@ -50,11 +50,11 @@
     <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
             <a href="#home" class="flex flex-col items-start">
-                <!-- ロゴをYamabudouamiに変更 -->
-                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-brand-navy leading-none">Yamabudouami</span>
+                <!-- ロゴをYAMABUDOUAMI(大文字)に変更 -->
+                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.3em] uppercase text-brand-navy leading-none">YAMABUDOUAMI</span>
                 <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1 font-sans">Tono Iwate Japan</span>
             </a>
-            <div class="hidden md:flex items-center space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy text-sm font-sans">
+            <div class="hidden md:flex items-center space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy font-sans">
                 <a href="#about" class="hover:text-brand-gold transition-colors">About</a>
                 <a href="#quality" class="hover:text-brand-gold transition-colors">Quality</a>
                 <a href="#gallery" class="hover:text-brand-gold transition-colors">Gallery</a>
@@ -187,8 +187,8 @@
                     <span class="text-[10px] tracking-widest font-bold opacity-50 uppercase">Follow Us</span>
                 </a>
             </div>
-           
-            <h4 class="text-4xl md:text-5xl font-display font-bold tracking-[0.2em] text-brand-gold mb-8">Yamabudouami</h4>
+            <!-- フッターもYAMABUDOUAMI(大文字)に変更 -->
+            <h4 class="text-4xl md:text-5xl font-display font-bold tracking-[0.4em] text-brand-gold mb-8 uppercase">YAMABUDOUAMI</h4>
             <div class="w-16 h-[1px] bg-brand-gold/30 mb-12"></div>
             <p class="text-white/40 text-[10px] tracking-[0.6em] mb-12 uppercase">Handcrafted in Tono, Iwate, Japan</p>
             <p class="text-white/20 text-[8px] font-sans tracking-[0.2em]">&copy; 2026 山葡萄編みのかごバッグ 遠野. ALL RIGHTS RESERVED.</p>
