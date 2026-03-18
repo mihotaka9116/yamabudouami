@@ -29,8 +29,8 @@
             transition: opacity 1.5s ease-out, transform 1.5s ease-out;
         }
         .js-fadein.is-show {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 1;
+            transform: translateY(0);
         }
         .text-shadow-strong {
             text-shadow: 0 4px 15px rgba(0,0,0,0.8);
@@ -46,6 +46,7 @@
 </head>
 <body class="bg-brand-cream text-brand-text font-sans overflow-x-hidden">
 
+    <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
             <a href="#home" class="flex flex-col items-start">
@@ -64,6 +65,7 @@
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 z-[850] bg-brand-navy/95 backdrop-blur-md translate-x-full transition-transform duration-500 hidden flex flex-col justify-center items-center font-sans uppercase text-sm tracking-widest">
         <div class="flex flex-col items-center space-y-10">
             <a href="#about" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif capitalize">About</a>
@@ -73,6 +75,7 @@
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 h-full w-full">
             <div class="grid grid-cols-1 grid-rows-2 h-full w-full block md:hidden">
@@ -101,6 +104,7 @@
         </div>
     </section>
 
+    <!-- Floating Catch Copy -->
     <div class="relative z-20 -mt-32 flex justify-center px-6">
         <div class="max-w-4xl w-full bg-white py-16 md:py-24 px-8 border border-brand-gold/20 shadow-2xl text-center js-fadein">
             <h3 class="text-brand-navy font-serif text-2xl md:text-4xl tracking-[0.3em] mb-8 leading-relaxed">
@@ -111,6 +115,7 @@
         </div>
     </div>
 
+    <!-- About Section -->
     <section id="about" class="pt-48 pb-40 md:pb-64 bg-brand-cream overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-20 items-center">
@@ -127,6 +132,7 @@
         </div>
     </section>
 
+    <!-- Quality Section (Long Text Version) -->
     <section id="quality" class="py-40 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-3 gap-16">
@@ -136,7 +142,7 @@
                         <h4 class="text-xl font-bold text-brand-navy tracking-widest font-serif">遠野の「強さ」</h4>
                     </div>
                     <p class="font-serif text-gray-700 leading-relaxed text-lg">
-                        厳しい冬を越える遠野の山葡萄。その皮は驚くほど丈夫で、使うほどに艶を増し、深みのある琥珀色へと変化していきます。森の力強さをそのまま持ち歩くような、確かな手応え。
+                        厳しい冬を越える遠野의 山葡萄。その皮は驚くほど丈夫で、使うほどに艶を増し、深みのある琥珀色へと変化していきます。森の力強さをそのまま持ち歩くような、確かな手応え。
                     </p>
                     <div class="mt-8 w-12 h-[1px] bg-brand-gold group-hover:w-full transition-all duration-700"></div>
                 </div>
@@ -166,6 +172,7 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="py-40 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16">
@@ -175,10 +182,12 @@
         </div>
     </section>
 
+    <!-- Order Section -->
     <section id="order" class="py-40 bg-brand-navy text-white text-center relative overflow-hidden font-sans">
         <div class="max-w-4xl mx-auto px-6 relative z-10 js-fadein">
             <span class="block text-[10px] text-brand-gold tracking-[0.8em] uppercase mb-6 font-bold">Order</span>
-            <h2 class="text-4xl md:text-6xl font-serif font-bold mb-16 tracking-widest">ご注文について</h2>
+            <!-- タイトルを一回り小さく調整 -->
+            <h2 class="text-3xl md:text-5xl font-serif font-bold mb-16 tracking-widest">ご注文について</h2>
             <p class="text-xl md:text-2xl italic text-brand-gold/80 mb-20 leading-loose font-serif">
                 現在はオーダーメイドを中心に承っております。<br>
                 半年から一年、時間をかけて<br class="md:hidden">一編みずつ心を込めて制作いたします。
@@ -187,6 +196,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="py-24 bg-brand-navy text-white text-center border-t border-brand-gold/20 font-sans">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
             <div class="mb-14">
@@ -195,8 +205,9 @@
                     <span class="text-[10px] tracking-widest font-bold opacity-50 uppercase">Follow Us</span>
                 </a>
             </div>
-            <h4 class="text-4xl md:text-5xl font-display font-bold tracking-[0.4em] text-brand-gold mb-8 uppercase">YAMABUDOUAMI</h4>
-            <div class="w-16 h-[1px] bg-brand-gold/30 mb-12"></div>
+            <!-- YAMABUDOUAMIを一回り小さく、下の棒を削除 -->
+            <h4 class="text-3xl md:text-4xl font-display font-bold tracking-[0.4em] text-brand-gold mb-10 uppercase">YAMABUDOUAMI</h4>
+            
             <p class="text-white/40 text-[10px] tracking-[0.6em] mb-12 uppercase">Handcrafted in Tono, Iwate, Japan</p>
             <p class="text-white/20 text-[8px] font-sans tracking-[0.2em]">&copy; 2026 山葡萄編みのかごバッグ 遠野. ALL RIGHTS RESERVED.</p>
         </div>
