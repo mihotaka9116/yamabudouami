@@ -23,20 +23,18 @@
         }
     </script>
     <style>
-        /* JSの .is-show に合わせたフェードイン設定 */
         .js-fadein {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1.5s ease-out, transform 1.5s ease-out;
         }
         .js-fadein.is-show {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 1;
+            transform: translateY(0);
         }
         .text-shadow-strong {
             text-shadow: 0 4px 15px rgba(0,0,0,0.8);
         }
-        /* ヒーローコピー専用（即時表示） */
         .hero-animate {
             animation: heroFade 2s ease-out forwards;
         }
@@ -48,13 +46,15 @@
 </head>
 <body class="bg-brand-cream text-brand-text font-sans overflow-x-hidden">
 
+    <!-- Navigation -->
     <nav id="navbar" class="fixed w-full z-[900] bg-white/90 py-6 border-b border-brand-gold/10 transition-all duration-500">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
             <a href="#home" class="flex flex-col items-start">
-                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.2em] uppercase text-brand-navy leading-none">Yamabudouami</span>
+                <!-- ロゴをYamabudouamiに変更 -->
+                <span class="font-display font-bold text-xl md:text-2xl tracking-[0.15em] text-brand-navy leading-none">Yamabudouami</span>
                 <span class="text-[8px] uppercase tracking-[0.5em] text-brand-gold font-semibold mt-1 font-sans">Tono Iwate Japan</span>
             </a>
-            <div class="hidden md:flex items-center space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy">
+            <div class="hidden md:flex items-center space-x-10 text-[10px] tracking-widest uppercase font-bold text-brand-navy text-sm font-sans">
                 <a href="#about" class="hover:text-brand-gold transition-colors">About</a>
                 <a href="#quality" class="hover:text-brand-gold transition-colors">Quality</a>
                 <a href="#gallery" class="hover:text-brand-gold transition-colors">Gallery</a>
@@ -66,19 +66,20 @@
         </div>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[850] bg-brand-navy/95 backdrop-blur-md translate-x-full transition-transform duration-500 hidden flex flex-col justify-center items-center">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[850] bg-brand-navy/95 backdrop-blur-md translate-x-full transition-transform duration-500 hidden flex flex-col justify-center items-center font-sans uppercase text-sm tracking-widest">
         <div class="flex flex-col items-center space-y-10">
-            <a href="#about" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif">About</a>
-            <a href="#quality" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif">Quality</a>
-            <a href="#gallery" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif">Gallery</a>
-            <a href="#order" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif">Order</a>
+            <a href="#about" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif capitalize">About</a>
+            <a href="#quality" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif capitalize">Quality</a>
+            <a href="#gallery" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif capitalize">Gallery</a>
+            <a href="#order" class="mobile-nav-link text-white text-2xl tracking-[0.3em] font-serif capitalize">Order</a>
         </div>
     </div>
 
+    <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        
         <div class="absolute inset-0 h-full w-full">
-            
+            <!-- Mobile: 2段並び -->
             <div class="grid grid-cols-1 grid-rows-2 h-full w-full block md:hidden">
                 <div class="relative overflow-hidden h-full">
                     <img src="kagooutdoor.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="山葡萄かご アウトドア">
@@ -87,7 +88,7 @@
                     <img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="薔薇と山葡萄">
                 </div>
             </div>
-            
+            <!-- Desktop: 4カラム -->
             <div class="hidden md:grid grid-cols-4 h-full w-full">
                 <img src="kagoami.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
                 <img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
@@ -95,9 +96,7 @@
                 <img src="https://i.imgur.com/7Xeudqk.jpeg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
             </div>
         </div>
-        
         <div class="absolute inset-0 bg-black/40"></div>
-        
         <div class="relative z-10 text-center text-white px-6 hero-animate">
             <h1 class="text-4xl md:text-6xl tracking-[0.4em] font-serif font-bold mb-8 text-shadow-strong leading-tight">
                 時を編み、<br class="md:hidden">暮らしを育む。
@@ -108,7 +107,8 @@
         </div>
     </section>
 
-    <div class="relative z-20 -mt-32 flex justify-center px-6 relative">
+    <!-- Floating Catch Copy -->
+    <div class="relative z-20 -mt-32 flex justify-center px-6">
         <div class="max-w-4xl w-full bg-white py-16 md:py-24 px-8 border border-brand-gold/20 shadow-2xl text-center js-fadein">
             <h3 class="text-brand-navy font-serif text-2xl md:text-4xl tracking-[0.3em] mb-8 leading-relaxed">
                 遠野の森が育む、<br class="md:hidden">琥珀色の手仕事。
@@ -118,6 +118,7 @@
         </div>
     </div>
 
+    <!-- About Section -->
     <section id="about" class="pt-48 pb-40 md:pb-64 bg-brand-cream overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-20 items-center">
@@ -134,25 +135,27 @@
         </div>
     </section>
 
+    <!-- Quality Section -->
     <section id="quality" class="py-40 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
                 <div class="js-fadein group">
-                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500">遠野の「強さ」</h4>
-                    <p class="font-serif italic text-gray-700 text-lg">厳しい冬を越える山葡萄の皮は非常に丈夫。使い込むほどに深い琥珀色へと変化します。</p>
+                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500 font-serif">遠野の「強さ」</h4>
+                    <p class="font-serif italic text-gray-700 text-lg leading-relaxed">厳しい冬を越える山葡萄の皮は非常に丈夫。使い込むほどに深い琥珀色へと変化します。</p>
                 </div>
                 <div class="js-fadein group" style="transition-delay: 0.2s;">
-                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500">純国産の誇り</h4>
-                    <p class="font-serif italic text-gray-700 text-lg">100%岩手産の素材にこだわ、採集から編み上げまでを一貫して一人で行います。</p>
+                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500 font-serif">純国産の誇り</h4>
+                    <p class="font-serif italic text-gray-700 text-lg leading-relaxed">100%岩手産の素材にこだわり、採集から編み上げまでを一貫して一人で行います。</p>
                 </div>
                 <div class="js-fadein group" style="transition-delay: 0.4s;">
-                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500">三代継ぐ価値</h4>
-                    <p class="font-serif italic text-gray-700 text-lg">親子三代にわたって使い続けられる耐久性を持ち、家族の歴史と共に歩む一生ものです。</p>
+                    <h4 class="text-xl font-bold text-brand-navy mb-8 border-b border-brand-gold/30 pb-6 group-hover:border-brand-gold transition-colors duration-500 font-serif">三代継ぐ価値</h4>
+                    <p class="font-serif italic text-gray-700 text-lg leading-relaxed">親子三代にわたって使い続けられる耐久性を持ち、家族の歴史と共に歩む一生ものです。</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Gallery Section -->
     <section id="gallery" class="py-40 bg-brand-cream">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16">
@@ -162,12 +165,8 @@
         </div>
     </section>
 
-    <section id="order" class="py-40 bg-brand-navy text-white text-center relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <div class="grid grid-cols-6 h-full w-full">
-                <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div></div>
-            </div>
-        </div>
+    <!-- Order Section -->
+    <section id="order" class="py-40 bg-brand-navy text-white text-center relative overflow-hidden font-sans">
         <div class="max-w-4xl mx-auto px-6 relative z-10 js-fadein">
             <span class="block text-[10px] text-brand-gold tracking-[0.8em] uppercase mb-6 font-bold">Order</span>
             <h2 class="text-4xl md:text-6xl font-serif font-bold mb-16 tracking-widest">ご注文について</h2>
@@ -179,15 +178,17 @@
         </div>
     </section>
 
-    <footer class="py-24 bg-brand-navy text-white text-center border-t border-brand-gold/20">
+    <!-- Footer -->
+    <footer class="py-24 bg-brand-navy text-white text-center border-t border-brand-gold/20 font-sans">
         <div class="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
             <div class="mb-14">
                 <a href="https://www.instagram.com/takahashimamoru1961/" target="_blank" class="text-white hover:text-brand-gold transition-all duration-500 flex flex-col items-center group">
                     <i data-lucide="instagram" class="w-12 h-12 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <span class="text-[10px] tracking-widest font-bold opacity-50">Follow Us</span>
+                    <span class="text-[10px] tracking-widest font-bold opacity-50 uppercase">Follow Us</span>
                 </a>
             </div>
-            <h4 class="text-4xl md:text-5xl font-display font-bold tracking-[0.3em] text-brand-gold mb-8 italic">Yamabudouami</h4>
+           
+            <h4 class="text-4xl md:text-5xl font-display font-bold tracking-[0.2em] text-brand-gold mb-8">Yamabudouami</h4>
             <div class="w-16 h-[1px] bg-brand-gold/30 mb-12"></div>
             <p class="text-white/40 text-[10px] tracking-[0.6em] mb-12 uppercase">Handcrafted in Tono, Iwate, Japan</p>
             <p class="text-white/20 text-[8px] font-sans tracking-[0.2em]">&copy; 2026 山葡萄編みのかごバッグ 遠野. ALL RIGHTS RESERVED.</p>
