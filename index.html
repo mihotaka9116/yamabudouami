@@ -73,39 +73,40 @@
         </div>
     </div>
 
-  <!-- Hero Section -->
+<!-- Hero Section -->
 <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 h-full w-full">
         
-        <!-- 1. スマホ用 (1列2段) - 768px未満 -->
+        <!-- 1. スマホ用 (768px未満) -->
         <div class="grid grid-cols-1 grid-rows-2 h-full w-full md:hidden">
-            <div class="relative overflow-hidden h-full">
-                <img src="kagooutdoor.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
-            </div>
             <div class="relative overflow-hidden h-full">
                 <img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
             </div>
+            <div class="relative overflow-hidden h-full">
+                <img src="kagooutdoor.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
+            </div>
         </div>
         
-        <!-- 2. タブレット用 (中央の2枚を表示) - 768px以上 1024px未満 -->
-        <div class="hidden md:grid lg:hidden grid-cols-2 h-full w-full">
-            <img src="kagooutdoor.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="かごバッグ">
+        <!-- 2. タブレット & iPad Pro用 (1280px未満まで2枚表示) -->
+        <!-- 左に rose.jpg / 右に kagooutdoor.jpg -->
+        <div class="hidden md:grid xl:hidden grid-cols-2 h-full w-full">
             <img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="薔薇">
+            <img src="kagooutdoor.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="かごバッグ">
         </div>
 
-        <!-- 3. PC用 (4枚並列) - 1024px以上 -->
-        <div class="hidden lg:grid grid-cols-4 h-full w-full">
+        <!-- 3. PC大型モニター用 (1280px以上で4枚並列) -->
+        <div class="hidden xl:grid grid-cols-4 h-full w-full">
             <img src="kagoami.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
             <img src="rose.jpg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
             <img src="https://i.imgur.com/REzif58.jpeg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
             <img src="https://i.imgur.com/7Xeudqk.jpeg" class="w-full h-full object-cover grayscale-[0.2]" alt="">
         </div>
         
-        <!-- 背景のオーバーレイ (文字を読みやすくする) -->
+   
         <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
-    <!-- キャッチコピーエリア -->
+    
     <div class="relative z-10 text-center text-white px-6 hero-animate">
         <h1 class="text-4xl md:text-6xl tracking-[0.4em] font-serif font-bold mb-8 text-shadow-strong leading-tight">
             時を編み、<br class="md:hidden">暮らしを育む。
