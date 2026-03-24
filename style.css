@@ -94,10 +94,29 @@ body {
     z-index: 10;
 }
 
-/* スマホ版（画面幅768px以下）のみサイズを調整 */
+/* フッターのブランド名調整 */
+footer h4 {
+    /* デフォルト（PC）の設定 */
+    display: block;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+/* スマホ・タブレット向けのレスポンシブ対応 */
 @media screen and (max-width: 768px) {
-    footer .brand-name {
-        font-size: 0.8rem; 
-        letter-spacing: 0.1em; /* レタースペーシングを少し詰めると収まりが良くなる */
+    footer h4 {
+        /* 文字サイズを少し下げ、文字間隔をスマホ用に最適化 */
+        font-size: 1.5rem;
+        tracking: 0.2em;   
+        letter-spacing: 0.2em; 
+        
+        /* 1行に収めたい場合は以下を有効に */
+        /* font-size: 6vw; */ 
+    }
+
+    /* 下の「Handcrafted in...」の文字間隔も調整 */
+    footer p.tracking-\[0\.6em\] {
+        tracking: 0.3em;
+        letter-spacing: 0.3em;
     }
 }
