@@ -94,10 +94,10 @@ body {
     z-index: 10;
 }
 
-/* 縦書きの装飾線が必要な場合 */
-.scroll-line {
-    width: 1px;
-    height: 100px;
-    background: linear-gradient(to bottom, var(--color-gold), transparent);
-    margin: 0 auto;
+/* スマホ版（画面幅768px以下）のみサイズを調整 */
+@media screen and (max-width: 768px) {
+    footer .brand-name {
+        font-size: 1.25rem;
+        letter-spacing: 0.1em;
+    }
 }
