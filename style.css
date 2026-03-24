@@ -94,10 +94,8 @@ body {
     z-index: 10;
 }
 
-/* スマホ版（画面幅768px以下）のみサイズを調整 */
-@media screen and (max-width: 768px) {
-    footer .brand-name {
-        font-size: 1.25rem;
-        letter-spacing: 0.1em;
-    }
+footer .brand-name {
+    /* 画面幅の5%のサイズにする。最大・最小サイズも指定 */
+    font-size: clamp(16px, 5vw, 24px); 
+    white-space: nowrap; 
 }
