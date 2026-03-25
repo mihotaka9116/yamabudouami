@@ -120,3 +120,37 @@ footer h4 {
         letter-spacing: 0.3em;
     }
 }
+
+/* ボタンの親要素の整列 */
+.shop-link-container {
+  text-align: center;
+  margin: 40px 0;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+
+.shop-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* ボタン本体のデザイン */
+.btn-mercari {
+  display: inline-block;
+  padding: 15px 40px;
+  background-color: #002366; /* ロイヤルブルー（お好みの色に調整可） */
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 30px; /* 丸みを持たせて柔らかい印象に */
+  transition: all 0.3s ease; /* 動きを滑らかにする */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 軽い影で立体感を出す */
+}
+
+/* マウスを乗せた時の動き（ホバーエフェクト） */
+.btn-mercari:hover {
+  background-color: #003aab; /* 少し明るいブルーに */
+  transform: translateY(-3px); /* 少し上に浮き上がる */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 影を強くして浮遊感を強調 */
+  opacity: 0.9;
+}
