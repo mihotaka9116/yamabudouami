@@ -3,7 +3,7 @@
 「一生もの」としての品質、遠野の厳しい自然が育む素材の力強さ、そして手仕事の繊細さを視覚的に伝えることを目的として制作しました。
 
 🔗 デプロイURL
-https://mihotaka9116.github.io/portfolio/yamabudouami/
+https://mihotaka9116.github.io/yamabudouami/
 
 🛠 使用技術
 Frontend: HTML5, Tailwind CSS, JavaScript (Vanilla JS)
